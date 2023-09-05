@@ -1,38 +1,55 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import Button from './Button';
+import ResetCount from './ResetCount';
 
-const Home = () => {
+const Home = ({navigation}) => {
+  const [counter, setCounter] = useState(0);
   return (
-    <View>
-      <TouchableOpacity onPress={() => console.log('next page')}>
-          <Text style={{position: 'absolute', right: 10, top: 10}}>
-            Next page
-          </Text>
-        </TouchableOpacity>
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <View style={styles.centerElements}>
-            <Text style={styles.counterStyle}>{counter}</Text>
-            <View style={styles.modifiersContainerStyle}>
-              <TouchableOpacity
-                onPress={() => setCounter(oldCount => oldCount + 1)}
-                style={styles.modifiersStyle}>
-                <Text>+</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => setCounter(oldCount => oldCount - 1)}
-                style={styles.modifiersStyle}>
-                <Text>-</Text>
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity
-              style={{position: 'absolute', bottom: 0}}
-              onPress={() => setCounter(0)}>
-              <Text>Reset?</Text>
-            </TouchableOpacity>
+    <View style={{flex: 1, position: 'relative'}}>
+      <TouchableOpacity onPress={() => navigation.navigate('secondpage')}>
+        <Text style={styles.nextPageStyle}>Next page</Text>
+      </TouchableOpacity>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.centerElements}>
+          <Text style={styles.counterStyle}>{counter}</Text>
+          <View style={styles.modifiersContainerStyle}>
+            <Button type={'increase'} setCounter={setCounter} />
+            <Button type={'decrease'} setCounter={setCounter} />
           </View>
+          <ResetCount setCounter={setCounter} />
         </View>
+      </View>
     </View>
-  )
-}
+  );
+};
+const styles = StyleSheet.create({
+  counterStyle: {
+    backgroundColor: '#0077b6',
+    paddingHorizontal: 42,
+    paddingVertical: 12,
+    fontSize: 20,
+    fontWeight: '700',
+    color: 'white',
+    borderRadius: 5,
+  },
+  centerElements: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modifiersContainerStyle: {
+    marginTop: 40,
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 50,
+  },
+  nextPageStyle: {
+    textDecorationLine: 'underline',
+    position: 'absolute',
+    right: 10,
+    top: 10,
+  },
+});
 
-export default Home
+export default Home;

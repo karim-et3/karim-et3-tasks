@@ -1,14 +1,33 @@
-import { Text, StyleSheet, View } from 'react-native'
-import React, { Component } from 'react'
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React from 'react';
 
-export default class SecondPage extends Component {
-  render() {
-    return (
-      <View>
-        <Text>SecondPage</Text>
+const SecondPage = ({navigation}) => {
+  return (
+    <View style={{flex: 1}}>
+      <TouchableOpacity
+        style={styles.goBackStyle}
+        onPress={() => navigation.goBack()}>
+        <Text>Go back</Text>
+      </TouchableOpacity>
+      <View style={styles.centerContainer}>
+        <Text style={styles.mainTextStyle}>Second Page</Text>
       </View>
-    )
-  }
-}
+    </View>
+  );
+};
 
-const styles = StyleSheet.create({})
+export default SecondPage;
+
+const styles = StyleSheet.create({
+  centerContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  goBackStyle: {
+    margin: 10,
+    padding: 3,
+    textDecorationLine: 'underline',
+  },
+  mainTextStyle: {fontSize: 24, fontWeight: '600'},
+});
