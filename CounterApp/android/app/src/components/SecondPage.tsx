@@ -1,7 +1,10 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import {NavigationProp, ParamListBase} from '@react-navigation/native';
 
-const SecondPage = ({navigation}) => {
+type SecondPageProps = {navigation: NavigationProp<ParamListBase>};
+
+const SecondPage = ({navigation}: SecondPageProps) => {
   return (
     <View style={{flex: 1}}>
       <TouchableOpacity

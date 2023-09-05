@@ -2,8 +2,11 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import Button from './Button';
 import ResetCount from './ResetCount';
+import {NavigationProp, ParamListBase} from '@react-navigation/native';
 
-const Home = ({navigation}) => {
+type HomeProps = {navigation: NavigationProp<ParamListBase>};
+
+const Home = ({navigation}: HomeProps) => {
   const [counter, setCounter] = useState(0);
   return (
     <View style={{flex: 1, position: 'relative'}}>

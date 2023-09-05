@@ -1,7 +1,10 @@
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-
-const Button = ({type, setCounter}) => {
+type ButtonProps = {
+  type: 'increase' | 'decrease';
+  setCounter: React.Dispatch<React.SetStateAction<number>>;
+};
+const Button = ({type, setCounter}: ButtonProps) => {
   return (
     <TouchableOpacity
       onPress={() =>
