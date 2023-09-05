@@ -1,7 +1,10 @@
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import DatePicker from 'react-native-date-picker';
 
 const AddTask = ({pendingTask, setPendingTask, setTasks}) => {
+  const [open, setOpen] = useState(false);
+  const [date, setDate] = useState(new Date());
   return (
     <View>
       <Text style={[styles.tasksTitleStyle, {textAlign: 'center'}]}>
@@ -11,6 +14,19 @@ const AddTask = ({pendingTask, setPendingTask, setTasks}) => {
         style={styles.inputStyle}
         value={pendingTask}
         onChangeText={setPendingTask}
+      />
+      <Button title="Open" onPress={() => setOpen(true)} />
+      <DatePicker
+        modal
+        open={open}
+        date={date}
+        onConfirm={date => {
+          setOpen(false);
+          setDate(date);
+        }}
+        onCancel={() => {
+          setOpen(false);
+        }}
       />
       <View style={styles.buttonContainerStyle}>
         <View style={styles.buttonSubContainerStyle}>
