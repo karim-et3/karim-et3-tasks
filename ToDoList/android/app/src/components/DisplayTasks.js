@@ -1,28 +1,32 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import Feather from 'react-native-vector-icons/Feather';
+// import Task from './Task';
 
 const DisplayTasks = ({tasks, setTasks}) => {
+  const deleteTask = index => {
+    setTasks(
+      tasks.filter((tempTask, tempIndex) => {
+        if (index === tempIndex) return;
+        return tempTask;
+      }),
+    );
+  };
+  const Task = ({task, index}) => (
+    <View key={index} style={styles.tasksSubContainerStyle}>
+      <Text style={styles.tasksStyle}>{task}</Text>
+      <TouchableOpacity onPress={() => deleteTask(index)}>
+        <Feather name="delete" style={{fontSize: 24}} />
+      </TouchableOpacity>
+    </View>
+  );
+
   return (
     <View>
       <Text style={styles.tasksTitleStyle}>Tasks List</Text>
       <View style={styles.tasksContainerStyle}>
         {tasks.map((task, index) => (
-          <View key={index} style={styles.tasksSubContainerStyle}>
-            <Text style={styles.tasksStyle}>{task}</Text>
-            <TouchableOpacity
-              onPress={() => {
-                setTasks(
-                  tasks.filter((tempTask, tempIndex) => {
-                    if (index === tempIndex) return;
-                    return tempTask;
-                  }),
-                );
-                console.log(tasks);
-              }}>
-              <Feather name="delete" style={{fontSize: 24}} />
-            </TouchableOpacity>
-          </View>
+          <Task task={task} index={index} />
         ))}
       </View>
     </View>
