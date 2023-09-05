@@ -5,8 +5,10 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState([
@@ -30,9 +32,28 @@ function App(): JSX.Element {
           <Text style={styles.tasksTitleStyle}>Tasks List</Text>
           <View style={styles.tasksContainerStyle}>
             {tasks.map((task, index) => (
-              <Text key={index} style={styles.tasksStyle}>
-                {task}
-              </Text>
+              <View
+                key={index}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
+                <Text style={styles.tasksStyle}>{task}</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    setTasks(
+                      tasks.filter((tempTask, tempIndex) => {
+                        if (index === tempIndex) return;
+                        return tempTask;
+                      }),
+                    );
+                    console.log(tasks);
+                  }}>
+                  <Feather name="delete" style={{fontSize: 24}} />
+                </TouchableOpacity>
+              </View>
             ))}
           </View>
         </View>
@@ -68,6 +89,8 @@ function App(): JSX.Element {
                   if (pendingtask !== '') {
                     setTasks(tasks => [...tasks, pendingtask]);
                     setPendingTask('');
+                    const numbers = [100, 200, null, 300];
+                    console.log(numbers.forEach(total => console.log(total)));
                   }
                 }}
               />
@@ -86,7 +109,8 @@ const styles = StyleSheet.create({
     color: '#fb7185',
   },
   tasksContainerStyle: {
-    marginLeft: 14,
+    gap: 3,
+    marginHorizontal: 14,
   },
   tasksStyle: {
     fontSize: 18,
