@@ -26,7 +26,7 @@ const DisplayTasks = ({tasks, setTasks}) => {
       <Text style={styles.tasksTitleStyle}>Tasks List</Text>
       <View style={styles.tasksContainerStyle}>
         {tasks.map((task, index) => (
-          <Task task={task} index={index} />
+          <Task task={task} key={index} index={index} />
         ))}
       </View>
     </View>
