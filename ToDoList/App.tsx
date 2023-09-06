@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
-import AddTask from './android/app/src/components/AddTask';
-import DisplayTasks from './android/app/src/components/DisplayTasks';
+import AddTask from './src/components/AddTask';
+import DisplayTasks from './src/components/DisplayTasks';
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState([
