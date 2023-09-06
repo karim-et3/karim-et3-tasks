@@ -5,15 +5,28 @@ import DisplayTasks from './src/components/DisplayTasks';
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState([
-    {task: 'Install visual studio', created_at: '24/10/2023'},
-    {task: 'Download brew', created_at: '01/11/2023'},
-    {task: 'android device setup', created_at: '13/12/2023'},
-    {task: 'Install xcode', created_at: '10/02/2024'},
+    {
+      task: 'Install visual studio',
+      created_at: new Date('2023-9-23'),
+      expire_at: new Date('2023-9-26'),
+    },
+    {
+      task: 'Download brew',
+      created_at: new Date('2023-11-23'),
+      expire_at: new Date('2023-12-20'),
+    },
+    {
+      task: 'android device setup',
+      created_at: new Date('2013-12-23'),
+      expire_at: new Date('2024-02-24'),
+    },
   ]);
   const [pendingTask, setPendingTask] = useState('');
+
   useEffect(() => {
     console.log(tasks), [tasks];
   });
+
   return (
     <SafeAreaView style={styles.mainContainrStyle}>
       <View style={styles.subMainContainerStyle}>

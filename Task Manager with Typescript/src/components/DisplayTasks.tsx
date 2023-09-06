@@ -2,22 +2,48 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const DisplayTasks = ({tasks, setTasks}) => {
-  const deleteTask = index => {
+type TaskProp = {
+  task: {task: string; expire_at: Date; created_at: Date};
+  index: number;
+};
+interface TaskType {
+  task: string;
+  expire_at: Date;
+  created_at: Date;
+}
+type DisplayTasks = {
+  setTasks: React.Dispatch<
+    React.SetStateAction<
+      {
+        task: string;
+        created_at: Date;
+        expire_at: Date;
+      }[]
+    >
+  >;
+  tasks: {
+    task: string;
+    created_at: Date;
+    expire_at: Date;
+  }[];
+};
+
+const DisplayTasks = ({tasks, setTasks}: DisplayTasks) => {
+  const deleteTask = (index: number): void => {
     setTasks(
-      tasks.filter((tempTask, tempIndex) => {
+      tasks.filter((tempTask: TaskType, tempIndex: number) => {
         if (index === tempIndex) return;
         return tempTask;
       }),
     );
   };
-  const Task = ({task, index}) => (
+
+  const Task = ({task, index}: TaskProp) => (
     <View
       key={index}
       style={[styles.tasksSubContainerStyle, {position: 'relative'}]}>
-      {console.log(task.task)}
       <Text style={styles.tasksStyle}>{task.task}</Text>
-      <Text>{task.created_at}</Text>
+      <Text>{task.expire_at.toLocaleDateString()}</Text>
       <TouchableOpacity
         onPress={() => deleteTask(index)}
         style={{
@@ -39,7 +65,7 @@ const DisplayTasks = ({tasks, setTasks}) => {
     <View>
       <Text style={styles.tasksTitleStyle}>Tasks List</Text>
       <View style={styles.tasksContainerStyle}>
-        {tasks.map((task, index) => (
+        {tasks.map((task: TaskType, index: number) => (
           <Task task={task} key={index} index={index} />
         ))}
       </View>
@@ -71,7 +97,7 @@ const styles = StyleSheet.create({
     paddingRight: 50,
     borderRadius: 5,
     borderWidth: 1,
-    // backgroundColor: 'green',
+    backgroundColor: '#f3f4f6',
     borderColor: 'red',
     marginVertical: 5,
   },
