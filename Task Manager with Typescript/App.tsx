@@ -1,17 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import AddTask from './src/components/AddTask';
 import DisplayTasks from './src/components/DisplayTasks';
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState([
-    'Install visual studio',
-    'Download brew',
-    'android device setup',
-    'Install xcode',
+    {task: 'Install visual studio', created_at: '24/10/2023'},
+    {task: 'Download brew', created_at: '01/11/2023'},
+    {task: 'android device setup', created_at: '13/12/2023'},
+    {task: 'Install xcode', created_at: '10/02/2024'},
   ]);
   const [pendingTask, setPendingTask] = useState('');
-
+  useEffect(() => {
+    console.log(tasks), [tasks];
+  });
   return (
     <SafeAreaView style={styles.mainContainrStyle}>
       <View style={styles.subMainContainerStyle}>

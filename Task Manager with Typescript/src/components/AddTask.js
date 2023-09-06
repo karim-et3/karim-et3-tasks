@@ -3,8 +3,11 @@ import React, {useState} from 'react';
 import DatePicker from 'react-native-date-picker';
 
 const AddTask = ({pendingTask, setPendingTask, setTasks}) => {
-  const [open, setOpen] = useState(false);
-  const [date, setDate] = useState(new Date());
+  const [openCreationDate, setOpenCreationDate] = useState(false);
+  const [openExpiryDate, setOpenExpiryDate] = useState(false);
+  const [creationDate, setCreationDate] = useState(new Date());
+  const [expiryDate, setExpiryDate] = useState(new Date());
+
   return (
     <View>
       <Text style={[styles.tasksTitleStyle, {textAlign: 'center'}]}>
@@ -14,18 +17,62 @@ const AddTask = ({pendingTask, setPendingTask, setTasks}) => {
         style={styles.inputStyle}
         value={pendingTask}
         onChangeText={setPendingTask}
+        placeholder="Your Task"
       />
-      <Button title="Open" onPress={() => setOpen(true)} />
+      <View
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 10,
+        }}>
+        <Text style={{fontWeight: '700'}}>Created At:</Text>
+        <View style={{width: 250}}>
+          <Button
+            onPress={() => setOpenCreationDate(true)}
+            color="#fca5a5"
+            title={creationDate ? creationDate.toString() : 'Add creation date'}
+          />
+        </View>
+      </View>
+      <View
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 10,
+        }}>
+        <Text style={{fontWeight: '700'}}>Deadline:</Text>
+        <View style={{width: 250}}>
+          <Button
+            onPress={() => setOpenExpiryDate(true)}
+            color="#fca5a5"
+            title={expiryDate ? expiryDate.toString() : 'Add deadline'}
+          />
+        </View>
+      </View>
       <DatePicker
         modal
-        open={open}
-        date={date}
+        open={openCreationDate}
+        date={creationDate}
         onConfirm={date => {
-          setOpen(false);
-          setDate(date);
+          setOpenCreationDate(false);
+          setCreationDate(date);
         }}
         onCancel={() => {
-          setOpen(false);
+          setCreationDate(false);
+        }}
+      />
+      <DatePicker
+        modal
+        open={openExpiryDate}
+        date={expiryDate}
+        onConfirm={date => {
+          setOpenExpiryDate(false);
+          setExpiryDate(date);
+        }}
+        onCancel={() => {
+          setExpiryDate(false);
         }}
       />
       <View style={styles.buttonContainerStyle}>
@@ -35,7 +82,14 @@ const AddTask = ({pendingTask, setPendingTask, setTasks}) => {
             title="add"
             onPress={() => {
               if (pendingTask !== '') {
-                setTasks(tasks => [...tasks, pendingTask]);
+                setTasks(tasks => [
+                  ...tasks,
+                  {
+                    task: pendingTask,
+                    created_at: creationDate,
+                    expired_at: expiryDate,
+                  },
+                ]);
                 setPendingTask('');
               }
             }}

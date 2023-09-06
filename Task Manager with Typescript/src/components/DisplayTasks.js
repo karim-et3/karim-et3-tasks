@@ -1,7 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import Feather from 'react-native-vector-icons/Feather';
-// import Task from './Task';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const DisplayTasks = ({tasks, setTasks}) => {
   const deleteTask = index => {
@@ -13,10 +12,25 @@ const DisplayTasks = ({tasks, setTasks}) => {
     );
   };
   const Task = ({task, index}) => (
-    <View key={index} style={styles.tasksSubContainerStyle}>
-      <Text style={styles.tasksStyle}>{task}</Text>
-      <TouchableOpacity onPress={() => deleteTask(index)}>
-        <Feather name="delete" style={{fontSize: 24}} />
+    <View
+      key={index}
+      style={[styles.tasksSubContainerStyle, {position: 'relative'}]}>
+      {console.log(task.task)}
+      <Text style={styles.tasksStyle}>{task.task}</Text>
+      <Text>{task.created_at}</Text>
+      <TouchableOpacity
+        onPress={() => deleteTask(index)}
+        style={{
+          position: 'absolute',
+          right: 0,
+          backgroundColor: '#fb7185',
+          paddingVertical: 5,
+          paddingHorizontal: 10,
+        }}>
+        <MaterialCommunityIcons
+          name="delete-variant"
+          style={{fontSize: 24, color: '#e7e5e4'}}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -51,6 +65,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    border: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    paddingRight: 50,
+    borderRadius: 5,
+    borderWidth: 1,
+    // backgroundColor: 'green',
+    borderColor: 'red',
+    marginVertical: 5,
   },
   tasksStyle: {
     fontSize: 18,
