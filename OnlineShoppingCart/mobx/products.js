@@ -1,15 +1,19 @@
 import {makeAutoObservable} from 'mobx';
 const watch = require('../assets/watch.png');
-const bag = require('../assets/bag-transparent.png');
+const handbag = require('../assets/handbag-transparent.png');
 const shirt = require('../assets/shirt-transparent.png');
+const wallet = require('../assets/wallet.webp');
+const smartwatch = require('../assets/smart-watch.webp');
+const mouse = require('../assets/mouse.webp');
+const backpack = require('../assets/backpack.jpeg');
 
 class Product {
   products = [
     {
       id: 1,
-      title: 'Bag',
+      title: 'Backpack',
       description: 'nice bag',
-      image: bag,
+      image: backpack,
       price: 30,
       quantity: 0,
     },
@@ -23,9 +27,9 @@ class Product {
     },
     {
       id: 3,
-      title: 'Carrots',
+      title: 'Hand-Bag',
       description: 'nice carrot',
-      image: shirt,
+      image: handbag,
       price: 30,
       quantity: 0,
     },
@@ -39,17 +43,25 @@ class Product {
     },
     {
       id: 5,
-      title: 'Carrots',
+      title: 'Mouse',
       description: 'nice carrot',
-      image: shirt,
+      image: mouse,
       price: 30,
       quantity: 0,
     },
     {
       id: 6,
-      title: 'Carrots',
+      title: 'Smart Watch',
       description: 'nice carrot',
-      image: shirt,
+      image: smartwatch,
+      price: 30,
+      quantity: 0,
+    },
+    {
+      id: 7,
+      title: 'Leather Wallet',
+      description: 'nice carrot',
+      image: wallet,
       price: 30,
       quantity: 0,
     },
