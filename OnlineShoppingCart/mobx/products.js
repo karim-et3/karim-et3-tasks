@@ -5,13 +5,21 @@ const shirt = require('../assets/shirt-transparent.png');
 
 class Product {
   products = [
-    {id: 1, title: 'Bag', description: 'nice bag', image: bag, price: 30},
+    {
+      id: 1,
+      title: 'Bag',
+      description: 'nice bag',
+      image: bag,
+      price: 30,
+      quantity: 0,
+    },
     {
       id: 2,
       title: 'watch',
       description: 'nice burger',
       image: watch,
       price: 30,
+      quantity: 0,
     },
     {
       id: 3,
@@ -19,6 +27,7 @@ class Product {
       description: 'nice carrot',
       image: shirt,
       price: 30,
+      quantity: 0,
     },
     {
       id: 4,
@@ -26,6 +35,7 @@ class Product {
       description: 'nice carrot',
       image: shirt,
       price: 30,
+      quantity: 0,
     },
     {
       id: 5,
@@ -33,6 +43,7 @@ class Product {
       description: 'nice carrot',
       image: shirt,
       price: 30,
+      quantity: 0,
     },
     {
       id: 6,
@@ -40,6 +51,7 @@ class Product {
       description: 'nice carrot',
       image: shirt,
       price: 30,
+      quantity: 0,
     },
   ];
 
