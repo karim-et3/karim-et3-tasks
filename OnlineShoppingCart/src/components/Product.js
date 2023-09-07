@@ -1,5 +1,5 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {observer} from 'mobx-react';
 import cart from '../../mobx/cart';
 
@@ -9,7 +9,6 @@ const Product = ({product}) => {
     cart.addProductToCart(product);
   };
   console.log(cart.items);
-  useEffect(() => {}, [cart.items]);
   return (
     <View style={styles.container}>
       <Image source={product.image} style={styles.image} />
@@ -42,6 +41,7 @@ const styles = StyleSheet.create({
     shadowColor: '#0ea5e9',
   },
   button: {
+    marginTop: 5,
     shadowColor: 'black',
     display: 'flex',
     alignItems: 'center',
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingVertical: 3,
     backgroundColor: 'white',
+    marginHorizontal: 2,
   },
   buttonText: {
     fontSize: 16,
@@ -61,18 +62,21 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 6,
     width: 110,
-    height: 190,
-    paddingVertical: 8,
+    height: 195,
+    // paddingVertical: 3,
   },
   image: {
+    borderTopRightRadius: 6,
+    borderTopLeftRadius: 6,
     width: '100%',
     height: 95,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
+    backgroundColor: 'white',
   },
   descriptionContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: -3,
+    // display: 'flex',
+    // flexDirection: 'column',
+    // // gap: -3,
     paddingHorizontal: 3,
   },
   price: {

@@ -1,7 +1,7 @@
 import {makeAutoObservable} from 'mobx';
 const watch = require('../assets/watch.png');
-const bag = require('../assets/bag.jpg');
-const shirt = require('../assets/shirt.webp');
+const bag = require('../assets/bag-transparent.png');
+const shirt = require('../assets/shirt-transparent.png');
 
 class Product {
   products = [

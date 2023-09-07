@@ -1,29 +1,59 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import product from './mobx/products';
-import Product from './src/components/Product';
+import {
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import {NavigationContainer, StackActions} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Home from './src/components/Home';
+import Cart from './src/components/Cart';
+import Feather from 'react-native-vector-icons/Feather';
 
 function App() {
+  const Stack = createNativeStackNavigator();
   return (
     <SafeAreaView
       style={{
         flex: 1,
-        marginHorizontal: 3,
         backgroundColor: '#f9fafb',
-        marginVertical: 10,
       }}>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: 5,
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-        }}>
-        {product.products.map(prod => (
-          <Product product={prod} key={prod.id} />
-        ))}
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="home"
+            component={Home}
+            options={({navigation}) => ({
+              title: 'Home',
+              headerStyle: {
+                backgroundColor: '#0ea5e9',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerRight: () => (
+                <Pressable
+                  onPress={() => navigation.navigate('cart')}
+                  hitSlop={15}>
+                  <Feather
+                    name="shopping-bag"
+                    style={{color: 'white', fontSize: 28}}
+                  />
+                </Pressable>
+              ),
+            })}
+          />
+          <Stack.Screen
+            name="cart"
+            component={Cart}
+            options={{
+              title: 'Cart',
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
