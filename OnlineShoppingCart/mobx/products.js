@@ -66,10 +66,6 @@ class Product {
       quantity: 0,
     },
   ];
-
-  constructore() {
-    makeAutoObservable(true);
-  }
 }
 const product = new Product();
 export default product;

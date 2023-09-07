@@ -1,10 +1,13 @@
 import React from 'react';
-import {Pressable, SafeAreaView, StyleSheet} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/components/Home';
 import Cart from './src/components/Cart';
-import Feather from 'react-native-vector-icons/Feather';
+import HeaderRight from './src/components/HeaderRight';
+import HeaderLeft from './src/components/HeaderLeft';
+import Profile from './src/components/Profile';
+import HeaderTitle from './src/components/HeaderTitle';
 
 function App() {
   const Stack = createNativeStackNavigator();
@@ -28,16 +31,9 @@ function App() {
               headerTitleStyle: {
                 fontWeight: 'bold',
               },
-              headerRight: () => (
-                <Pressable
-                  onPress={() => navigation.navigate('cart')}
-                  hitSlop={15}>
-                  <Feather
-                    name="shopping-bag"
-                    style={{color: 'white', fontSize: 28}}
-                  />
-                </Pressable>
-              ),
+              headerLeft: () => <HeaderLeft navigation={navigation} />,
+              headerRight: () => <HeaderRight navigation={navigation} />,
+              headerTitle: () => <HeaderTitle />,
             })}
           />
           <Stack.Screen
@@ -45,6 +41,13 @@ function App() {
             component={Cart}
             options={{
               title: 'Cart',
+            }}
+          />
+          <Stack.Screen
+            name="profile"
+            component={Profile}
+            options={{
+              title: 'Profile',
             }}
           />
         </Stack.Navigator>

@@ -1,8 +1,17 @@
+import {action, makeAutoObservable, observable} from 'mobx';
+
 class User {
-  Person = {
-    name,
+  user = {
+    name: '',
+    address: '',
   };
+  addUser(name, address) {
+    this.user.name = name;
+    this.user.address = address;
+  }
   constructor() {
-    makeAutoObservable(true);
+    makeAutoObservable(this);
   }
 }
+const user = new User();
+export default user;

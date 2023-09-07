@@ -4,9 +4,9 @@ import {observer} from 'mobx-react';
 import cart from '../../mobx/cart';
 
 const Product = ({product}) => {
-  const addToCart = product => {
-    console.log(product);
-    cart.addProductToCart(product);
+  const addToCart = addProd => {
+    console.log(addProd);
+    cart.addProductToCart(addProd);
   };
   console.log(cart.items);
   return (
