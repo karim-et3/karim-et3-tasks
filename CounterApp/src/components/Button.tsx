@@ -1,5 +1,6 @@
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {colors} from '../../styles/styles';
 type ButtonProps = {
   type: 'increase' | 'decrease';
   setCounter: React.Dispatch<React.SetStateAction<number>>;
@@ -29,6 +30,6 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     borderRadius: 75,
-    backgroundColor: '#d1d5db',
+    backgroundColor: colors.secondary,
   },
 });

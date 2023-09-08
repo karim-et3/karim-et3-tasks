@@ -5,9 +5,7 @@ type ResetCountProps = {
 };
 const ResetCount = ({setCounter}: ResetCountProps) => {
   return (
-    <TouchableOpacity
-      style={{position: 'absolute', bottom: 0}}
-      onPress={() => setCounter(0)}>
+    <TouchableOpacity style={{top: 80}} onPress={() => setCounter(0)}>
       <Text>Reset?</Text>
     </TouchableOpacity>
   );

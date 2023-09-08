@@ -3,17 +3,20 @@ import React, {useState} from 'react';
 import Button from './Button';
 import ResetCount from './ResetCount';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import {colors} from '../../styles/styles';
 
 type HomeProps = {navigation: NavigationProp<ParamListBase>};
 
 const Home = ({navigation}: HomeProps) => {
   const [counter, setCounter] = useState(0);
   return (
-    <View style={{flex: 1, position: 'relative'}}>
-      <TouchableOpacity onPress={() => navigation.navigate('secondpage')}>
+    <View style={{flex: 1}}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('secondpage')}
+        style={styles.nextPageContainer}>
         <Text style={styles.nextPageStyle}>Next page</Text>
       </TouchableOpacity>
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={styles.mainContainer}>
         <View style={styles.centerElements}>
           <Text style={styles.counterStyle}>{counter}</Text>
           <View style={styles.modifiersContainerStyle}>
@@ -28,7 +31,7 @@ const Home = ({navigation}: HomeProps) => {
 };
 const styles = StyleSheet.create({
   counterStyle: {
-    backgroundColor: '#0077b6',
+    backgroundColor: colors.primary,
     paddingHorizontal: 42,
     paddingVertical: 12,
     fontSize: 20,
@@ -49,9 +52,18 @@ const styles = StyleSheet.create({
   },
   nextPageStyle: {
     textDecorationLine: 'underline',
-    position: 'absolute',
     right: 10,
     top: 10,
+  },
+  nextPageContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
+  mainContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
