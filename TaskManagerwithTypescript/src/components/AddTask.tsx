@@ -1,13 +1,8 @@
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
 import React, {useState} from 'react';
-import DatePickerComponent from './DatePickerComponent';
 import Toast from 'react-native-toast-message';
+import DateContainer from './DateContainer';
 
-type taskProp = {
-  task: string;
-  expire_at: Date;
-  created_at: Date;
-}[];
 interface AddTaskProp {
   pendingTask: string;
   setPendingTask: React.Dispatch<React.SetStateAction<string>>;
@@ -26,6 +21,36 @@ const AddTask = ({pendingTask, setPendingTask, setTasks}: AddTaskProp) => {
   const [expiryDate, setExpiryDate] = useState<Date>(new Date());
   const [creationDate, setCreationDate] = useState<Date>(new Date());
 
+  const handleAddTask = () => {
+    if (pendingTask.length === 0) {
+      Toast.show({
+        type: 'error',
+        text1: 'Enter a Task.',
+      });
+    } else if (pendingTask.length <= 5) {
+      Toast.show({
+        type: 'error',
+        text1: 'Task must be at least 6 characters.',
+      });
+    } else if (pendingTask.length > 25) {
+      Toast.show({
+        type: 'error',
+        text1: 'Task too long. Maximum is 25 characters.',
+      });
+    } else {
+      setTasks(tasks => [
+        ...tasks,
+        {
+          task: pendingTask,
+          created_at: creationDate,
+          expire_at: expiryDate,
+        },
+      ]);
+      setPendingTask('');
+    }
+    
+  };
+
   return (
     <View>
       <Text style={[styles.tasksTitleStyle, {textAlign: 'center'}]}>
@@ -37,58 +62,16 @@ const AddTask = ({pendingTask, setPendingTask, setTasks}: AddTaskProp) => {
         onChangeText={setPendingTask}
         placeholder="Your Task"
       />
-      <DatePickerComponent
-        title={'Created At'}
-        date={creationDate}
-        setDate={setCreationDate}
-      />
-      <DatePickerComponent
-        title={'Deadline'}
-        date={expiryDate}
-        setDate={setExpiryDate}
+      <DateContainer
+        expiryDate={expiryDate}
+        setExpiryDate={setExpiryDate}
+        creationDate={creationDate}
+        setCreationDate={setCreationDate}
       />
 
       <View style={styles.buttonContainerStyle}>
         <View style={styles.buttonSubContainerStyle}>
-          <Button
-            color="#fb7185"
-            title="add"
-            onPress={() => {
-              if (pendingTask.length >= 25)
-                Toast.show({
-                  type: 'error',
-                  text1: 'Task too long. Maximum is 12 letters',
-                });
-              else if (pendingTask.length === 0)
-                Toast.show({
-                  type: 'error',
-                  text1: 'Enter a Task.',
-                });
-              else if (pendingTask.length <= 5)
-                Toast.show({
-                  type: 'error',
-                  text1: 'Task must be al teast of 6 characters',
-                });
-              else if (pendingTask.length === 0) {
-                Toast.show({
-                  type: 'error',
-                  text1: 'Enter a Task.',
-                });
-              } else {
-                setTasks(
-                  (tasks): taskProp => [
-                    ...tasks,
-                    {
-                      task: pendingTask,
-                      created_at: creationDate,
-                      expire_at: expiryDate,
-                    },
-                  ],
-                );
-                setPendingTask('');
-              }
-            }}
-          />
+          <Button color="#fb7185" title="add" onPress={handleAddTask} />
         </View>
       </View>
     </View>
