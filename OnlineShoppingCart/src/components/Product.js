@@ -5,7 +5,6 @@ import cart from '../../mobx/cart';
 
 const Product = ({product}) => {
   const addToCart = addProd => {
-    console.log(addProd);
     cart.addProductToCart(addProd);
   };
   console.log(cart.items);

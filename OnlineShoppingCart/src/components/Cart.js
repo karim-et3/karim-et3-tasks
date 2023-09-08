@@ -7,7 +7,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const Cart = () => {
   return (
     <View style={{flex: 1, marginHorizontal: 20}}>
-      {console.log(cart.items.length)}
       {cart.items.length !== 0 ? (
         cart.items.map(item => (
           <View

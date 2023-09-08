@@ -26,10 +26,7 @@ class Cart {
       this.items = this.items.filter(it => (it.id !== item.id ? it : null));
     else {
       const itemIndex = this.items.findIndex(it => it.id === item.id);
-      console.log('index', itemIndex);
-      console.log('before', this.items[itemIndex]);
       this.items[itemIndex].quantity -= 1;
-      console.log('after', this.items[itemIndex]);
     }
   }
 }
