@@ -1,13 +1,12 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {observer} from 'mobx-react';
-import cart from '../../mobx/cart';
+import cart from '../../mobx/Cart';
 
 const Product = ({product}) => {
   const addToCart = addProd => {
     cart.addProductToCart(addProd);
   };
-  console.log(cart.items);
   return (
     <View style={styles.container}>
       <Image source={product.image} style={styles.image} />

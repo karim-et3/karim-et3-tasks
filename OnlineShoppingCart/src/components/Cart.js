@@ -1,6 +1,6 @@
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import cart from '../../mobx/cart';
+import cart from '../../mobx/Cart';
 import {observer} from 'mobx-react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 

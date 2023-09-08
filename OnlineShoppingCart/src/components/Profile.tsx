@@ -2,20 +2,18 @@ import {StyleSheet, View, Text, Pressable} from 'react-native';
 import React, {useState} from 'react';
 import InputArea from './InputArea';
 import {observer} from 'mobx-react';
-import user from '../../mobx/user';
+// import user from '../../mobx/user';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import userStore from '../../mobx/UserStore';
 
 const Profile = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
-  const [name, setName] = useState<string>(
-    user.user.name ? user.user.name : '',
-  );
-  const [address, setAddress] = useState(
-    user.user.address ? user.user.address : '',
-  );
+  const [name, setName] = useState<string>(userStore?.user.name ?? '');
+  const [address, setAddress] = useState<string>(userStore?.user.address ?? '');
   const saveUserData = () => {
-    user.addUser(name, address);
+    userStore.addUser(name, address);
+    userStore.addUser(name, address);
     navigation.navigate('home');
   };
   return (

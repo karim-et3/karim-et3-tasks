@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import product from '../../mobx/products';
+import product from '../../mobx/Product';
 import Product from './Product';
 
 const Home = () => {

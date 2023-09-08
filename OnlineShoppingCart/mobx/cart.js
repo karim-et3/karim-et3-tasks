@@ -1,4 +1,4 @@
-import {makeAutoObservable} from 'mobx';
+import {action, computed, makeAutoObservable, observable} from 'mobx';
 
 const addProductToCart = (items, newProduct) => {
   const itemIndex = items.findIndex(item => item.id === newProduct.id);
@@ -15,12 +15,23 @@ const addProductToCart = (items, newProduct) => {
 class Cart {
   items = [];
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {
+      logCartItem: action,
+      addProductToCart: action,
+      deleteProduct: action,
+      getItems: computed,
+      items: observable,
+    });
   }
+  get getItems() {
+    return this.items;
+  }
+  logCartItem = () => console.log(cart);
 
   addProductToCart(newProduct) {
     this.items = addProductToCart(this.items, newProduct);
   }
+
   deleteProduct(item) {
     if (item.quantity === 1)
       this.items = this.items.filter(it => (it.id !== item.id ? it : null));
