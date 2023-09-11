@@ -1,11 +1,11 @@
 import {makeAutoObservable} from 'mobx';
-const watch = require('../assets/watch.png');
-const handbag = require('../assets/handbag-transparent.png');
-const shirt = require('../assets/shirt-transparent.png');
-const wallet = require('../assets/wallet.webp');
-const smartwatch = require('../assets/smart-watch.webp');
-const mouse = require('../assets/mouse.webp');
-const backpack = require('../assets/backpack.jpeg');
+const watch = require('../../assets/watch.png');
+const handbag = require('../../assets/handbag-transparent.png');
+const shirt = require('../../assets/shirt-transparent.png');
+const wallet = require('../../assets/wallet.webp');
+const smartwatch = require('../../assets/smart-watch.webp');
+const mouse = require('../../assets/mouse.webp');
+const backpack = require('../../assets/backpack.jpeg');
 
 class Product {
   products = [

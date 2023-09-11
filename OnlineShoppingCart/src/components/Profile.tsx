@@ -1,14 +1,14 @@
-import {StyleSheet, View, Text, Pressable} from 'react-native';
+import {View, Text, Pressable} from 'react-native';
 import React, {useState} from 'react';
 import InputArea from './InputArea';
 import {observer} from 'mobx-react';
-// import user from '../../mobx/user';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {NavigationProp, ParamListBase} from '@react-navigation/native';
-import userStore from '../../mobx/UserStore';
+import userStore from '../mobx/UserStore';
+import {colors} from '../styles';
+import {Tnavigation} from '../types';
 
-const Profile = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
+const Profile = ({navigation}: Tnavigation) => {
   const [name, setName] = useState<string>(userStore?.user.name ?? '');
   const [address, setAddress] = useState<string>(userStore?.user.address ?? '');
   const saveUserData = () => {
@@ -22,7 +22,10 @@ const Profile = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
         value={name}
         setValue={setName}
         icon={
-          <FontAwesome name="user-o" style={{fontSize: 24, color: '#0ea5e9'}} />
+          <FontAwesome
+            name="user-o"
+            style={{fontSize: 24, color: colors.primary}}
+          />
         }
         placeholder="Username"
       />
@@ -30,7 +33,10 @@ const Profile = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
         value={address}
         setValue={setAddress}
         icon={
-          <Entypo name="address" style={{fontSize: 24, color: '#0ea5e9'}} />
+          <Entypo
+            name="address"
+            style={{fontSize: 24, color: colors.primary}}
+          />
         }
         placeholder="Address"
       />
@@ -39,7 +45,7 @@ const Profile = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
           marginTop: 20,
           paddingVertical: 10,
           borderRadius: 8,
-          backgroundColor: '#0ea5e9',
+          backgroundColor: colors.primary,
           justifyContent: 'center',
           alignItems: 'center',
         }}
@@ -51,5 +57,3 @@ const Profile = ({navigation}: {navigation: NavigationProp<ParamListBase>}) => {
 };
 
 export default observer(Profile);
-
-const styles = StyleSheet.create({});

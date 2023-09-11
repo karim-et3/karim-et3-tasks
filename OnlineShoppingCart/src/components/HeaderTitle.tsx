@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import React from 'react';
 
 const HeaderTitle = () => {
@@ -23,5 +23,3 @@ const HeaderTitle = () => {
 };
 
 export default HeaderTitle;
-
-const styles = StyleSheet.create({});

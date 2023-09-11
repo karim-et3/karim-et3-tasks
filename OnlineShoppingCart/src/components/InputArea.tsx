@@ -1,14 +1,9 @@
-import {StyleSheet, View, TextInput} from 'react-native';
+import {View, TextInput} from 'react-native';
 import React, {useState} from 'react';
+import {colors} from '../styles';
+import {TInputAreaProp} from '../types';
 
-type InputAreaProp = {
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
-  icon: any;
-  placeholder: string;
-};
-
-const InputArea = ({value, setValue, icon, placeholder}: InputAreaProp) => {
+const InputArea = ({value, setValue, icon, placeholder}: TInputAreaProp) => {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -23,7 +18,7 @@ const InputArea = ({value, setValue, icon, placeholder}: InputAreaProp) => {
         borderRadius: 5,
 
         marginTop: 20,
-        borderColor: focused ? '#0ea5e9' : 'black',
+        borderColor: focused ? colors.primary : colors.black,
         paddingHorizontal: 20,
       }}>
       {icon}
@@ -40,29 +35,3 @@ const InputArea = ({value, setValue, icon, placeholder}: InputAreaProp) => {
 };
 
 export default InputArea;
-
-const styles = StyleSheet.create({});
-{
-  /* <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 5,
-          borderWidth: StyleSheet.hairlineWidth,
-          borderRadius: 5,
-          marginHorizontal: 10,
-          marginTop: 20,
-          paddingHorizontal: 20,
-          borderColor: focusedAddress ? '#0ea5e9' : 'black',
-        }}>
-        
-        <TextInput
-         
-          style={{fontSize: 20}}
-          value={user.Person.address ? user.Person.address : address}
-          onChangeText={e => setAddress(e)}
-          placeholder="Address"
-        />
-      </View> */
-}
