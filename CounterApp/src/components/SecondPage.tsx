@@ -1,36 +1,20 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import {Tnavigation} from '../types';
 
-type SecondPageProps = {navigation: NavigationProp<ParamListBase>};
-
-const SecondPage = ({navigation}: SecondPageProps) => {
+const SecondPage = ({navigation}: Tnavigation) => {
   return (
     <View style={{flex: 1}}>
       <TouchableOpacity
-        style={styles.goBackStyle}
+        style={{margin: 10, padding: 3}}
         onPress={() => navigation.goBack()}>
-        <Text>Go back</Text>
+        <Text style={{textDecorationLine: 'underline'}}>Go back</Text>
       </TouchableOpacity>
-      <View style={styles.centerContainer}>
-        <Text style={styles.mainTextStyle}>Second Page</Text>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{fontSize: 24, fontWeight: '600'}}>Second Page</Text>
       </View>
     </View>
   );
 };
 
 export default SecondPage;
-
-const styles = StyleSheet.create({
-  centerContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  goBackStyle: {
-    margin: 10,
-    padding: 3,
-    textDecorationLine: 'underline',
-  },
-  mainTextStyle: {fontSize: 24, fontWeight: '600'},
-});

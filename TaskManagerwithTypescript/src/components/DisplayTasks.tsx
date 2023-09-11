@@ -21,7 +21,10 @@ type DisplayTasksProps = {
 
 const DisplayTasks = ({tasks, setTasks}: DisplayTasksProps) => {
   const deleteTask = (index: number) => {
-    setTasks(tasks.filter((_, tempIndex: number) => tempIndex !== index));
+    const filtered = tasks.filter(
+      (_, tempIndex: number) => tempIndex !== index,
+    );
+    setTasks(filtered);
   };
 
   return (
