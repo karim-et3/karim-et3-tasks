@@ -3,9 +3,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './components/Home';
 import SecondPage from './components/SecondPage';
 
+const Stack = createNativeStackNavigator();
 const RootNavigation = () => {
-  const Stack = createNativeStackNavigator();
-
   return (
     <Stack.Navigator>
       <Stack.Screen
