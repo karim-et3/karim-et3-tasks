@@ -1,18 +1,13 @@
 import React from 'react';
 import DatePickerComponent from './DatePickerComponent';
+import {TDateContainerProp} from '../types';
 
-type DateContainerProp = {
-  creationDate: Date;
-  setCreationDate: React.Dispatch<React.SetStateAction<Date>>;
-  expiryDate: Date;
-  setExpiryDate: React.Dispatch<React.SetStateAction<Date>>;
-};
 const DateContainer = ({
   creationDate,
   setCreationDate,
   expiryDate,
   setExpiryDate,
-}: DateContainerProp) => {
+}: TDateContainerProp) => {
   return (
     <>
       <DatePickerComponent

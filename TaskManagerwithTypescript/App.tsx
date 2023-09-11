@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import AddTask from './src/components/AddTask';
 import DisplayTasks from './src/components/DisplayTasks';
-import Toast, {ErrorToast} from 'react-native-toast-message';
+import Toast, {BaseToastProps, ErrorToast} from 'react-native-toast-message';
 
 function App(): JSX.Element {
   const [tasks, setTasks] = useState([
@@ -29,8 +29,14 @@ function App(): JSX.Element {
   });
 
   return (
-    <SafeAreaView style={styles.mainContainrStyle}>
-      <View style={styles.subMainContainerStyle}>
+    <SafeAreaView style={{flex: 1, marginHorizontal: 24, marginVertical: 14}}>
+      <View
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}>
         <DisplayTasks setTasks={setTasks} tasks={tasks} />
         <AddTask
           setTasks={setTasks}
@@ -43,7 +49,7 @@ function App(): JSX.Element {
   );
 }
 const config = {
-  error: props => (
+  error: (props: React.JSX.IntrinsicAttributes & BaseToastProps) => (
     <ErrorToast
       {...props}
       text1Style={{
@@ -52,19 +58,5 @@ const config = {
     />
   ),
 };
-const styles = StyleSheet.create({
-  mainContainrStyle: {
-    flex: 1,
-    marginHorizontal: 24,
-    marginVertical: 14,
-  },
-  subMainContainerStyle: {
-    position: 'relative',
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-});
 
 export default App;

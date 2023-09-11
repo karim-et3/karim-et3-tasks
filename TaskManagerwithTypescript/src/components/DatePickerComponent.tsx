@@ -1,18 +1,14 @@
 import {StyleSheet, Text, Button, View} from 'react-native';
 import React, {useState} from 'react';
 import DatePicker from 'react-native-date-picker';
-
-type DatePickerComponentProps = {
-  title: string;
-  date: Date;
-  setDate: React.Dispatch<React.SetStateAction<Date>>;
-};
+import {TDatePickerComponentProps} from '../types';
+import {colors} from '../styles';
 
 const DatePickerComponent = ({
   title,
   date,
   setDate,
-}: DatePickerComponentProps) => {
+}: TDatePickerComponentProps) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -22,7 +18,7 @@ const DatePickerComponent = ({
         <View style={styles.buttonContainer}>
           <Button
             onPress={() => setOpen(true)}
-            color="#fca5a5"
+            color={colors.secondary}
             title={date ? date.toString() : 'Add creation date'}
           />
         </View>
