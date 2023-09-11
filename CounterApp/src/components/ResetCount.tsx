@@ -6,13 +6,20 @@ type ResetCountProps = {
 const ResetCount = ({setCounter}: ResetCountProps) => {
   return (
     <TouchableOpacity
-      style={{position: 'absolute', bottom: 0}}
+      style={styles.resetContainer}
       onPress={() => setCounter(0)}>
-      <Text>Reset?</Text>
+      <Text style={styles.resetText}>Reset?</Text>
     </TouchableOpacity>
   );
 };
 
 export default ResetCount;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  resetContainer: {
+    top: 80,
+  },
+  resetText: {
+    textDecorationLine: 'underline',
+  },
+});

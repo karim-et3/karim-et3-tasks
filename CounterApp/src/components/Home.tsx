@@ -3,17 +3,18 @@ import React, {useState} from 'react';
 import Button from './Button';
 import ResetCount from './ResetCount';
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import {colors} from '../styles';
 
 type HomeProps = {navigation: NavigationProp<ParamListBase>};
 
 const Home = ({navigation}: HomeProps) => {
   const [counter, setCounter] = useState(0);
   return (
-    <View style={{flex: 1, position: 'relative'}}>
+    <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('secondpage')}>
         <Text style={styles.nextPageStyle}>Next page</Text>
       </TouchableOpacity>
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={styles.mainContainer}>
         <View style={styles.centerElements}>
           <Text style={styles.counterStyle}>{counter}</Text>
           <View style={styles.modifiersContainerStyle}>
@@ -27,8 +28,17 @@ const Home = ({navigation}: HomeProps) => {
   );
 };
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    position: 'relative',
+  },
+  mainContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   counterStyle: {
-    backgroundColor: '#0077b6',
+    backgroundColor: colors.primary,
     paddingHorizontal: 42,
     paddingVertical: 12,
     fontSize: 20,
