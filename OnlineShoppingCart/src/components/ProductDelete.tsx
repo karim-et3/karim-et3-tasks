@@ -3,6 +3,7 @@ import React from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import cart from '../mobx/Cart';
 import {TProduct} from '../types';
+import {observer} from 'mobx-react';
 
 const ProductDelete = ({product}: TProduct) => {
   return (
@@ -31,4 +32,4 @@ const ProductDelete = ({product}: TProduct) => {
   );
 };
 
-export default ProductDelete;
+export default observer(ProductDelete);
