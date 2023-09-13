@@ -4,7 +4,13 @@ import {TLoginProp} from '../types';
 import {colors} from '../styles';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
-const InputText = ({value, setValue, type, icon, placeholder}: TLoginProp) => {
+const InputText = ({
+  value,
+  setValue,
+  type = 'text',
+  icon,
+  placeholder = '',
+}: TLoginProp) => {
   const [focused, setFocused] = useState(false);
   return (
     <View
@@ -29,6 +35,20 @@ const InputText = ({value, setValue, type, icon, placeholder}: TLoginProp) => {
       <TextInput
         secureTextEntry={type === 'password' ? true : false}
         onFocus={() => setFocused(true)}
+        textContentType={
+          type === 'age'
+            ? 'URL'
+            : type === 'phone'
+            ? 'telephoneNumber'
+            : type === 'adress'
+            ? 'addressCity'
+            : type === 'username'
+            ? 'username'
+            : 'none'
+        }
+        keyboardType={
+          type === 'age' || type === 'phone' ? 'numeric' : 'default'
+        }
         onBlur={() => setFocused(false)}
         value={value}
         passwordRules="required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8"
@@ -41,4 +61,8 @@ const InputText = ({value, setValue, type, icon, placeholder}: TLoginProp) => {
   );
 };
 
+InputText.defaultProps = {
+  type: 'text',
+  placeholder: '',
+};
 export default InputText;
