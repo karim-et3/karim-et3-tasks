@@ -5,7 +5,7 @@ import Product from './Product';
 const ListProducts = () => {
   return (
     <>
-      {product.products.map(prod => (
+      {product.getData.map(prod => (
         <Product product={prod} key={prod.id} />
       ))}
     </>

@@ -5,7 +5,6 @@ import {colors} from '../styles';
 import {ToastContext} from './ToastContext';
 
 const AddProductToCart = ({addToCart}: TAddProductToCart) => {
-  console.log(useContext(ToastContext));
   const {changeVisiblity} = useContext(ToastContext);
   const [disabled, setDisabled] = useState(false);
   const animatedButtonScale = new Animated.Value(1);

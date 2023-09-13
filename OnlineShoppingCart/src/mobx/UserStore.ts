@@ -14,7 +14,7 @@ class UserStore {
     });
   }
 
-  addUser(name, address) {
+  addUser(name: string, address: string) {
     this.user.name = name;
     this.user.address = address;
   }
