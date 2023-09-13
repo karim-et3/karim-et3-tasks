@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import Animated, {FadeOutRight} from 'react-native-reanimated';
 import React from 'react';
 import {TProduct} from '../types';
 import {observer} from 'mobx-react';
@@ -8,7 +8,8 @@ import ProductImage from './ProductImage';
 
 const CartItem = ({product, index}: TProduct & {index: number}) => {
   return (
-    <View
+    <Animated.View
+      exiting={FadeOutRight}
       style={{
         marginVertical: 10,
         borderBottomWidth: 1,
@@ -23,7 +24,7 @@ const CartItem = ({product, index}: TProduct & {index: number}) => {
       <ProductImage image={product.image} />
       <ProductDescription product={product} />
       <ProductDelete product={product} />
-    </View>
+    </Animated.View>
   );
 };
 

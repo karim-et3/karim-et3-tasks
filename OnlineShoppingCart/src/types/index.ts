@@ -27,3 +27,6 @@ export type TaddProd = {
   quantity: number;
   title: string;
 };
+export type TAddProductToCart = {
+  addToCart: () => void;
+};
