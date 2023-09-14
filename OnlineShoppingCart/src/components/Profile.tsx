@@ -2,11 +2,10 @@ import {View, Text, Pressable} from 'react-native';
 import React, {useState} from 'react';
 import InputArea from './InputArea';
 import {observer} from 'mobx-react';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import userStore from '../mobx/UserStore';
 import {colors} from '../styles';
 import {Tnavigation} from '../types';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 const Profile = ({navigation}: Tnavigation) => {
   const [name, setName] = useState<string>(userStore?.user.name ?? '');
@@ -22,9 +21,10 @@ const Profile = ({navigation}: Tnavigation) => {
         value={name}
         setValue={setName}
         icon={
-          <FontAwesome
-            name="user-o"
-            style={{fontSize: 24, color: colors.primary}}
+          <FontAwesomeIcon
+            icon="fa-solid fa-user-gear"
+            size={24}
+            color={colors.primary}
           />
         }
         placeholder="Username"
@@ -33,9 +33,10 @@ const Profile = ({navigation}: Tnavigation) => {
         value={address}
         setValue={setAddress}
         icon={
-          <Entypo
-            name="address"
-            style={{fontSize: 24, color: colors.primary}}
+          <FontAwesomeIcon
+            icon="fa-solid fa-location-dot"
+            size={24}
+            color={colors.primary}
           />
         }
         placeholder="Address"

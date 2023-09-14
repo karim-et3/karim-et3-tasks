@@ -1,18 +1,6 @@
 import {action, computed, makeAutoObservable, observable} from 'mobx';
 import {TaddProd} from '../types';
 
-const addProductToCart = (items: Array<TaddProd>, newProduct: TaddProd) => {
-  const itemIndex = items.findIndex(item => item.id === newProduct.id);
-
-  if (itemIndex !== -1) {
-    const updatedItems = [...items];
-    updatedItems[itemIndex].quantity += 1;
-    return updatedItems;
-  } else {
-    return [...items, {...newProduct, quantity: newProduct.quantity + 1}];
-  }
-};
-
 class Cart {
   items: Array<TaddProd> = [];
   constructor() {
@@ -27,10 +15,20 @@ class Cart {
   get getItems() {
     return this.items;
   }
-  logCartItem = () => console.log(cart);
+  logCartItem = () => console.log(this.items);
 
   addProductToCart(newProduct: TaddProd) {
-    this.items = addProductToCart(this.items, newProduct);
+    const itemIndex = this.items.findIndex(item => item.id === newProduct.id);
+    if (itemIndex !== -1) {
+      const updatedItems = [...this.items];
+      updatedItems[itemIndex].quantity += 1;
+      return (this.items = updatedItems);
+    } else {
+      return (this.items = [
+        ...this.items,
+        {...newProduct, quantity: newProduct.quantity + 1},
+      ]);
+    }
   }
 
   deleteProduct(item: TaddProd) {
@@ -42,5 +40,5 @@ class Cart {
     }
   }
 }
-const cart = new Cart();
-export default cart;
+const cartStore = new Cart();
+export default cartStore;

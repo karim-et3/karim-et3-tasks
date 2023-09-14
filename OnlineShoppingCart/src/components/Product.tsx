@@ -1,7 +1,7 @@
 import {Image, Text, View} from 'react-native';
 import React from 'react';
 import {observer} from 'mobx-react';
-import cart from '../mobx/Cart';
+import cartStore from '../mobx/Cart';
 import {TProduct, TaddProd} from '../types';
 import {Shadow} from 'react-native-shadow-2';
 import AddProductToCart from './AddProductToCart';
@@ -9,7 +9,7 @@ import {colors} from '../styles';
 
 const Product = ({product}: TProduct) => {
   const addToCart = (addProd: TaddProd) => {
-    cart.addProductToCart(addProd);
+    cartStore.addProductToCart(addProd);
   };
   return (
     <Shadow distance={3} paintInside={false}>

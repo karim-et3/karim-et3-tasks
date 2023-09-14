@@ -1,9 +1,10 @@
 import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import React from 'react';
 
 export type TInputAreaProp = {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  icon: any;
+  icon: React.JSX.Element;
   placeholder: string;
 };
 export type Tnavigation = {

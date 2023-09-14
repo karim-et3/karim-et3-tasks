@@ -1,5 +1,4 @@
 import {action, computed, makeAutoObservable, observable} from 'mobx';
-
 class UserStore {
   user = {
     name: '',

@@ -10,5 +10,5 @@ class Product {
     return this.products;
   }
 }
-const product = new Product();
-export default product;
+const productStore = new Product();
+export default productStore;

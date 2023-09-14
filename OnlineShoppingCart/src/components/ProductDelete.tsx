@@ -1,9 +1,9 @@
 import {View, Text, Pressable} from 'react-native';
 import React from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import cart from '../mobx/Cart';
+import cartStore from '../mobx/Cart';
 import {TProduct} from '../types';
 import {observer} from 'mobx-react';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 const ProductDelete = ({product}: TProduct) => {
   return (
@@ -13,7 +13,7 @@ const ProductDelete = ({product}: TProduct) => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 5,
+        gap: 10,
       }}>
       <Text
         style={{
@@ -25,8 +25,12 @@ const ProductDelete = ({product}: TProduct) => {
         }}>
         {product.quantity}
       </Text>
-      <Pressable onPress={() => cart.deleteProduct(product)}>
-        <MaterialIcons name="delete" style={{fontSize: 32, color: '#f43f5e'}} />
+      <Pressable onPress={() => cartStore.deleteProduct(product)}>
+        <FontAwesomeIcon
+          icon="fa-solid fa-circle-minus"
+          size={26}
+          color={'#f43f5e'}
+        />
       </Pressable>
     </View>
   );

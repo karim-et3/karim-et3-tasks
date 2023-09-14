@@ -22,9 +22,6 @@ const ToastContextProvider = ({children}: {children: ReactNode}) => {
       return () => clearTimeout(timer);
     }
   }, [showToast]);
-  useEffect(() => {
-    console.log(showToast);
-  }, [showToast]);
 
   return (
     <ToastContext.Provider value={{changeVisiblity}}>

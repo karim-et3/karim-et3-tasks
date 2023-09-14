@@ -53,7 +53,11 @@ const AddProductToCart = ({addToCart}: TAddProductToCart) => {
             justifyContent: 'center',
             borderRadius: 4,
             paddingVertical: 3,
-            backgroundColor: 'white',
+            backgroundColor: disabled
+              ? colors.disabledbBackground
+              : colors.white,
+            borderWidth: 0.5,
+            borderColor: disabled ? colors.disabledBorder : colors.border,
             marginHorizontal: 10,
           },
         ]}>
@@ -63,7 +67,7 @@ const AddProductToCart = ({addToCart}: TAddProductToCart) => {
             lineHeight: 21,
             fontWeight: 'bold',
             letterSpacing: 0.25,
-            color: disabled ? colors.grey : colors.primary,
+            color: disabled ? colors.white : colors.primary,
           }}>
           Add
         </Text>

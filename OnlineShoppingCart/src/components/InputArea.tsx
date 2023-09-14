@@ -26,9 +26,10 @@ const InputArea = ({value, setValue, icon, placeholder}: TInputAreaProp) => {
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         value={value}
-        style={{fontSize: 20, width: '100%'}}
+        style={{fontSize: 20, width: '100%', color: colors.black}}
         onChangeText={e => setValue(e)}
         placeholder={placeholder}
+        placeholderTextColor={colors.grey}
       />
     </View>
   );

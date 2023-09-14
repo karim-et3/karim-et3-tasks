@@ -1,14 +1,15 @@
 import React from 'react';
-import cart from '../mobx/Cart';
+import cartStore from '../mobx/Cart';
 import CartItem from './CartItem';
 import EmptyCart from './EmptyCart';
 import {observer} from 'mobx-react';
+import {TaddProd} from '../types';
 
 const ListCartItems = () => {
   return (
     <>
-      {cart.items.length !== 0 ? (
-        cart.items.map((item, index) => (
+      {cartStore.items.length !== 0 ? (
+        cartStore.items.map((item: TaddProd, index: number) => (
           <CartItem product={item} index={index} />
         ))
       ) : (

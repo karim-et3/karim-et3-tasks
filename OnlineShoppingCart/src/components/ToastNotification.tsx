@@ -1,8 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
 import Animated, {FadeInUp, FadeOutUp} from 'react-native-reanimated';
 import React from 'react';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../styles';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 const ToastNotification = () => {
   return (
@@ -26,7 +26,11 @@ const ToastNotification = () => {
         justifyContent: 'flex-start',
         alignItems: 'center',
       }}>
-      <FontAwesome name="check-circle-o" size={30} color={colors.white} />
+      <FontAwesomeIcon
+        icon="fa-solid fa-circle-check"
+        size={26}
+        color={colors.white}
+      />
       <View>
         <Text style={{fontSize: 18, fontWeight: 'bold', color: colors.white}}>
           Added to cart!
