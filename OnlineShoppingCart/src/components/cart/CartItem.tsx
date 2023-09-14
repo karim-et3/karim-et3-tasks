@@ -1,6 +1,6 @@
 import Animated, {FadeOutRight} from 'react-native-reanimated';
 import React from 'react';
-import {TProduct} from '../types';
+import {TProduct} from '../../types';
 import {observer} from 'mobx-react';
 import ProductDescription from './ProductDescription';
 import ProductDelete from './ProductDelete';

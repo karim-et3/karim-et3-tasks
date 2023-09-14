@@ -31,3 +31,15 @@ export type TaddProd = {
 export type TAddProductToCart = {
   addToCart: () => void;
 };
+export type TUsernameInput = {
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
+};
+export type TAddressInput = {
+  address: string;
+  setAddress: React.Dispatch<React.SetStateAction<string>>;
+};
+export type TSubmit = Tnavigation & {
+  name: string;
+  address: string;
+};

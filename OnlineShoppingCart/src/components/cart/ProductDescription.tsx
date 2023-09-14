@@ -1,6 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {TProduct} from '../types';
+import {TProduct} from '../../types';
 
 const ProductDescription = ({product}: TProduct) => {
   return (

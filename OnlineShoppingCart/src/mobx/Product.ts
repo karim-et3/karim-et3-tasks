@@ -1,5 +1,5 @@
 import {computed, makeAutoObservable} from 'mobx';
-import {products} from '../constants';
+import {products} from '../constants/products';
 
 class Product {
   products = products;

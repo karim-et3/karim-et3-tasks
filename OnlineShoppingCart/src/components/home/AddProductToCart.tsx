@@ -1,8 +1,8 @@
 import {Animated, Text, TouchableOpacity} from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
-import {TAddProductToCart} from '../types';
-import {colors} from '../styles';
-import {ToastContext} from './ToastContext';
+import {TAddProductToCart} from '../../types';
+import {COLORS} from '../../constants';
+import {ToastContext} from '../context';
 
 const AddProductToCart = ({addToCart}: TAddProductToCart) => {
   const {changeVisiblity} = useContext(ToastContext);
@@ -54,10 +54,10 @@ const AddProductToCart = ({addToCart}: TAddProductToCart) => {
             borderRadius: 4,
             paddingVertical: 3,
             backgroundColor: disabled
-              ? colors.disabledbBackground
-              : colors.white,
+              ? COLORS.disabledbBackground
+              : COLORS.white,
             borderWidth: 0.5,
-            borderColor: disabled ? colors.disabledBorder : colors.border,
+            borderColor: disabled ? COLORS.disabledBorder : COLORS.border,
             marginHorizontal: 10,
           },
         ]}>
@@ -67,7 +67,7 @@ const AddProductToCart = ({addToCart}: TAddProductToCart) => {
             lineHeight: 21,
             fontWeight: 'bold',
             letterSpacing: 0.25,
-            color: disabled ? colors.white : colors.primary,
+            color: disabled ? COLORS.disabledText : COLORS.primary,
           }}>
           Add
         </Text>

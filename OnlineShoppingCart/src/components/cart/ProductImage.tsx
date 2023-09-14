@@ -1,12 +1,13 @@
 import {Image} from 'react-native';
 import React from 'react';
+import {COLORS} from '../../constants';
 
 const ProductImage = ({image}: {image: number}) => {
   return (
     <Image
       style={{
         width: '25%',
-        backgroundColor: 'white',
+        backgroundColor: COLORS.white,
         height: 80,
         resizeMode: 'cover',
         borderRadius: 8,

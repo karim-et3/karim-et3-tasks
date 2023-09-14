@@ -1,7 +1,7 @@
 import {View, TextInput} from 'react-native';
 import React, {useState} from 'react';
-import {colors} from '../styles';
-import {TInputAreaProp} from '../types';
+import {COLORS} from '../../constants';
+import {TInputAreaProp} from '../../types';
 
 const InputArea = ({value, setValue, icon, placeholder}: TInputAreaProp) => {
   const [focused, setFocused] = useState(false);
@@ -18,7 +18,7 @@ const InputArea = ({value, setValue, icon, placeholder}: TInputAreaProp) => {
         borderRadius: 5,
 
         marginTop: 20,
-        borderColor: focused ? colors.primary : colors.black,
+        borderColor: focused ? COLORS.primary : COLORS.black,
         paddingHorizontal: 20,
       }}>
       {icon}
@@ -26,10 +26,10 @@ const InputArea = ({value, setValue, icon, placeholder}: TInputAreaProp) => {
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         value={value}
-        style={{fontSize: 20, width: '100%', color: colors.black}}
+        style={{fontSize: 20, width: '100%', color: COLORS.black}}
         onChangeText={e => setValue(e)}
         placeholder={placeholder}
-        placeholderTextColor={colors.grey}
+        placeholderTextColor={COLORS.grey}
       />
     </View>
   );

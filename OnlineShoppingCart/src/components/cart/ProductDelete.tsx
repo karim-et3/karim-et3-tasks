@@ -1,9 +1,10 @@
 import {View, Text, Pressable} from 'react-native';
 import React from 'react';
-import cartStore from '../mobx/Cart';
-import {TProduct} from '../types';
+import cartStore from '../../mobx/Cart';
+import {TProduct} from '../../types';
 import {observer} from 'mobx-react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {COLORS} from '../../constants';
 
 const ProductDelete = ({product}: TProduct) => {
   return (
@@ -21,7 +22,7 @@ const ProductDelete = ({product}: TProduct) => {
           padding: 8,
           fontWeight: '500',
           borderRadius: 4,
-          backgroundColor: 'white',
+          backgroundColor: COLORS.white,
         }}>
         {product.quantity}
       </Text>

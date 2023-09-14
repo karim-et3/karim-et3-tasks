@@ -6,7 +6,6 @@ const Home = () => {
   return (
     <View
       style={{
-        display: 'flex',
         flexDirection: 'row',
         gap: 8,
         justifyContent: 'center',

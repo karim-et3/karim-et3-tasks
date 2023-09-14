@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import Animated, {FadeInUp, FadeOutUp} from 'react-native-reanimated';
 import React from 'react';
-import {colors} from '../styles';
+import {COLORS} from '../../constants';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 const ToastNotification = () => {
@@ -14,8 +14,8 @@ const ToastNotification = () => {
         position: 'absolute',
         top: 80,
         width: '90%',
-        backgroundColor: colors.primary,
-        borderColor: colors.grey,
+        backgroundColor: COLORS.primary,
+        borderColor: COLORS.grey,
         zIndex: 10,
         borderWidth: StyleSheet.hairlineWidth,
         elevation: 2,
@@ -29,10 +29,10 @@ const ToastNotification = () => {
       <FontAwesomeIcon
         icon="fa-solid fa-circle-check"
         size={26}
-        color={colors.white}
+        color={COLORS.white}
       />
       <View>
-        <Text style={{fontSize: 18, fontWeight: 'bold', color: colors.white}}>
+        <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.white}}>
           Added to cart!
         </Text>
       </View>

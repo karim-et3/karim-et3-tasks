@@ -1,19 +1,19 @@
 import {Pressable} from 'react-native';
 import React from 'react';
-import {Tnavigation} from '../types';
+import {Tnavigation} from '../../types';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {colors} from '../styles';
+import {COLORS} from '../../constants';
 
-const Header = ({navigation}: Tnavigation) => {
+const HomeHeaderLeft = ({navigation}: Tnavigation) => {
   return (
     <Pressable onPress={() => navigation.navigate('profile')} hitSlop={15}>
       <FontAwesomeIcon
         icon="fa-regular fa-circle-user"
         size={28}
-        color={colors.white}
+        color={COLORS.white}
       />
     </Pressable>
   );
 };
 
-export default Header;
+export default HomeHeaderLeft;

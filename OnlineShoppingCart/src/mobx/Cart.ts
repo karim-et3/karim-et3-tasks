@@ -1,5 +1,7 @@
 import {action, computed, makeAutoObservable, observable} from 'mobx';
-import {TaddProd} from '../types';
+import {TaddProd} from '../src/types';
+// import lodash from 'lodash';
+const {memoize} = require('lodash');
 
 class Cart {
   items: Array<TaddProd> = [];
@@ -12,6 +14,7 @@ class Cart {
       items: observable,
     });
   }
+
   get getItems() {
     return this.items;
   }
@@ -41,4 +44,5 @@ class Cart {
   }
 }
 const cartStore = new Cart();
+// const cartStore = lodash.memoize(() => test);
 export default cartStore;

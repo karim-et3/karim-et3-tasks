@@ -1,11 +1,12 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from './Home';
-import Cart from './Cart';
-import HeaderRight from './HeaderRight';
-import HeaderLeft from './HeaderLeft';
-import Profile from './Profile';
-import HeaderTitle from './HeaderTitle';
+import Home from '../home/Home';
+import Cart from '../cart/Cart';
+import HomeHeaderRight from '../home/HomeHeaderRight';
+import HomeHeaderLeft from '../home/HomeHeaderLeft';
+import Profile from '../profile/Profile';
+import HomeHeaderTitle from '../home/HomeHeaderTitle';
+import {COLORS} from '../../constants';
 
 const Stack = createNativeStackNavigator();
 const RootNavigation = () => {
@@ -17,15 +18,15 @@ const RootNavigation = () => {
         options={({navigation}) => ({
           title: 'Home',
           headerStyle: {
-            backgroundColor: '#0ea5e9',
+            backgroundColor: COLORS.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
-          headerLeft: () => <HeaderLeft navigation={navigation} />,
-          headerRight: () => <HeaderRight navigation={navigation} />,
-          headerTitle: () => <HeaderTitle />,
+          headerLeft: () => <HomeHeaderLeft navigation={navigation} />,
+          headerRight: () => <HomeHeaderRight navigation={navigation} />,
+          headerTitle: () => <HomeHeaderTitle />,
         })}
       />
       <Stack.Screen

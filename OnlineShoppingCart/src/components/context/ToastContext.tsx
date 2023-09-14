@@ -1,5 +1,5 @@
 import React, {useState, createContext, ReactNode, useEffect} from 'react';
-import ToastNotification from './ToastNotification';
+import ToastNotification from '../common/ToastNotification';
 import {View} from 'react-native';
 
 export const ToastContext = createContext(null);

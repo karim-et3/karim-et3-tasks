@@ -1,7 +1,7 @@
 import {Text, View} from 'react-native';
 import React from 'react';
 
-const HeaderTitle = () => {
+const HomeHeaderTitle = () => {
   return (
     <View
       style={{
@@ -22,4 +22,4 @@ const HeaderTitle = () => {
   );
 };
 
-export default HeaderTitle;
+export default HomeHeaderTitle;

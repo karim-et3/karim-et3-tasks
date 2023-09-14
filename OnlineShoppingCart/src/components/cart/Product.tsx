@@ -1,15 +1,16 @@
 import {Image, Text, View} from 'react-native';
 import React from 'react';
 import {observer} from 'mobx-react';
-import cartStore from '../mobx/Cart';
-import {TProduct, TaddProd} from '../types';
+import cartStore from '../../mobx/Cart';
+import {TProduct, TaddProd} from '../../types';
 import {Shadow} from 'react-native-shadow-2';
-import AddProductToCart from './AddProductToCart';
-import {colors} from '../styles';
+import AddProductToCart from '../home/AddProductToCart';
+import {COLORS} from '../../constants';
 
 const Product = ({product}: TProduct) => {
+  console.log(cartStore);
   const addToCart = (addProd: TaddProd) => {
-    cartStore.addProductToCart(addProd);
+    cartStore.memoize_addProductToCart(addProd);
   };
   return (
     <Shadow distance={3} paintInside={false}>
@@ -29,7 +30,7 @@ const Product = ({product}: TProduct) => {
             width: '100%',
             height: 95,
             resizeMode: 'cover',
-            backgroundColor: 'white',
+            backgroundColor: COLORS.white,
           }}
         />
         <AddProductToCart addToCart={() => addToCart(product)} />
@@ -39,7 +40,7 @@ const Product = ({product}: TProduct) => {
           </Text>
           <Text
             numberOfLines={2}
-            style={{color: colors.secondary, fontWeight: '500'}}>
+            style={{color: COLORS.secondary, fontWeight: '500'}}>
             {product.title}
           </Text>
         </View>
