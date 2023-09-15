@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Login from './Login';
-import EditProfile from './EditProfile';
+import Login from '../Login';
+import EditProfile from '../EditProfile';
 import {NavigationContainer} from '@react-navigation/native';
 import RootDrawerNavigation from './RootDrawerNavigation';
 

@@ -1,9 +1,9 @@
 import {View, Button} from 'react-native';
 import React, {useState} from 'react';
 import InputText from './InputText';
-import {colors} from '../styles';
 import userStore from '../mobx/Admin';
 import {Tnavigation} from '../types';
+import {COLORS} from '../constants';
 
 const EditProfile = ({navigation}: Tnavigation) => {
   const [username, setUsername] = useState<string>(
@@ -48,7 +48,7 @@ const EditProfile = ({navigation}: Tnavigation) => {
         placeholder="Your Address"
       />
       <View style={{marginTop: 12}}>
-        <Button title="Submit" color={colors.primary} onPress={updateUser} />
+        <Button title="Submit" color={COLORS.primary} onPress={updateUser} />
       </View>
     </View>
   );

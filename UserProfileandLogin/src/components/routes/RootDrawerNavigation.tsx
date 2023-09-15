@@ -6,8 +6,8 @@ import {
   createDrawerNavigator,
 } from '@react-navigation/drawer';
 // import AddUser from './AddUser';
-import Home from './Home';
-import DeleteUser from './DeleteUser';
+import Home from '../Home';
+import DeleteUser from '../DeleteUser';
 
 const Drawer = createDrawerNavigator();
 const RootDrawerNavigation = () => {

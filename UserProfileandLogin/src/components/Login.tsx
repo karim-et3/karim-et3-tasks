@@ -1,10 +1,10 @@
 import {Button, View} from 'react-native';
 import React, {useState} from 'react';
 import InputText from './InputText';
-import {colors} from '../styles';
 import userStore from '../mobx/Admin';
 import {observer} from 'mobx-react';
 import {Tnavigation} from '../types';
+import {COLORS} from '../constants';
 
 const Login = observer(({navigation}: Tnavigation) => {
   const [username, setUsername] = useState('');
@@ -39,7 +39,7 @@ const Login = observer(({navigation}: Tnavigation) => {
         placeholder={'Password'}
       />
       <View style={{width: '100%'}}>
-        <Button title="Submit" color={colors.primary} onPress={addUser} />
+        <Button title="Submit" color={COLORS.primary} onPress={addUser} />
       </View>
     </View>
   );

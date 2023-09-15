@@ -8,11 +8,11 @@ import {
 } from 'react-native';
 import React, {useCallback, useEffect, useState} from 'react';
 import userStore from '../mobx/Admin';
-import {colors} from '../styles';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+// import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Tnavigation} from '../types';
 import {observer} from 'mobx-react';
 import {useNavigationState} from '@react-navigation/native';
+import {COLORS} from '../constants';
 const Home = observer(({navigation}: Tnavigation) => {
   const navIndex = useNavigationState(s => s.index);
   const [backPressCount, setBackPressCount] = useState(0);
@@ -42,7 +42,7 @@ const Home = observer(({navigation}: Tnavigation) => {
       <Text
         style={{
           fontSize: 28,
-          color: colors.black,
+          color: COLORS.black,
           textAlign: 'center',
           marginTop: 100,
           fontWeight: '500',
@@ -58,7 +58,7 @@ const Home = observer(({navigation}: Tnavigation) => {
           gap: 6,
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: colors.primary,
+          backgroundColor: COLORS.primary,
           paddingHorizontal: 16,
           borderRadius: 12,
           marginTop: 20,
@@ -66,8 +66,8 @@ const Home = observer(({navigation}: Tnavigation) => {
           marginHorizontal: 135,
         }}
         onPress={() => navigation.navigate('edit')}>
-        <Text style={{color: colors.white}}>Edit profile</Text>
-        <FontAwesome5 color={colors.white} style={{}} name="user-edit" />
+        <Text style={{color: COLORS.white}}>Edit profile</Text>
+        {/* <FontAwesome5 color={colors.white} style={{}} name="user-edit" /> */}
       </TouchableOpacity>
     </View>
   );

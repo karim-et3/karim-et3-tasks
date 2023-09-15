@@ -1,8 +1,8 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import AllUsers from './AllUsers';
-import Home from './Home';
-import AddUser from './AddUser';
+import AllUsers from '../AllUsers';
+import Home from '../Home';
+import AddUser from '../AddUser';
 
 const Tab = createMaterialBottomTabNavigator();
 const RootTabNavigation = () => {

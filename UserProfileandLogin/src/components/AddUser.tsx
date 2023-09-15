@@ -1,11 +1,11 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {colors} from '../styles';
+import {COLORS} from '../constants';
 
 const AddUser = () => {
   return (
     <View>
-      <Text style={{color: colors.black}}>AddProfile</Text>
+      <Text style={{color: COLORS.black}}>AddProfile</Text>
     </View>
   );
 };

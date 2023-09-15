@@ -10,3 +10,8 @@ export type TLoginProp = {
 export type Tnavigation = {
   navigation: NavigationProp<ParamListBase>;
 };
+export type TToast = {
+  error: boolean;
+  text: string;
+  icon: string;
+};
