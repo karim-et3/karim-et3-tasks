@@ -40,7 +40,11 @@ const AddProductToCart = ({addToCart}: TAddProductToCart) => {
       onPress={() => {
         addToCart();
         setDisabled(true);
-        changeVisiblity();
+        changeVisiblity({
+          text: 'Added to cart!',
+          icon: 'fa-regular fa-circle-check',
+          error: false,
+        });
       }}>
       <Animated.View
         style={[
@@ -48,7 +52,6 @@ const AddProductToCart = ({addToCart}: TAddProductToCart) => {
           {
             marginTop: 5,
             shadowColor: 'black',
-            display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 4,

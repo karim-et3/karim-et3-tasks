@@ -1,19 +1,29 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {TProduct} from '../../types';
+import {COLORS, FONT, SIZES} from '../../constants';
 
 const ProductDescription = ({product}: TProduct) => {
   return (
     <View
       style={{
         width: '60%',
-        display: 'flex',
         justifyContent: 'center',
       }}>
-      <Text style={{color: 'black', fontSize: 24, fontWeight: '800'}}>
+      <Text
+        style={{
+          color: COLORS.black,
+          fontSize: SIZES.xLarge,
+          fontWeight: FONT.bold,
+        }}>
         {product.price} $
       </Text>
-      <Text style={{fontSize: 24, fontWeight: '600', color: '#52525b'}}>
+      <Text
+        style={{
+          fontSize: SIZES.medium,
+          fontWeight: FONT.medium,
+          color: COLORS.secondary,
+        }}>
         {product.title}
       </Text>
     </View>

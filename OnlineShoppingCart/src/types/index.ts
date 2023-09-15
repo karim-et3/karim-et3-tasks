@@ -43,3 +43,8 @@ export type TSubmit = Tnavigation & {
   name: string;
   address: string;
 };
+export type TToast = {
+  error: boolean;
+  text: string;
+  icon: string;
+};

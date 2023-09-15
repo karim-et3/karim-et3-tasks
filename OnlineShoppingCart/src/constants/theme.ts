@@ -8,6 +8,7 @@ const COLORS = {
   disabledBorder: '#a3a3a3',
   disabledText: '#e7e5e4',
   border: '#0066cc',
+  error: '#f43f5e',
 };
 
 const SIZES = {

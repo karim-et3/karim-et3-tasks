@@ -30,7 +30,7 @@ const ProductDelete = ({product}: TProduct) => {
         <FontAwesomeIcon
           icon="fa-solid fa-circle-minus"
           size={26}
-          color={'#f43f5e'}
+          color={COLORS.error}
         />
       </Pressable>
     </View>

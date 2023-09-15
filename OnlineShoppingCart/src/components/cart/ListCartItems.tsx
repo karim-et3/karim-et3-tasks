@@ -8,9 +8,10 @@ import {TaddProd} from '../../types';
 const ListCartItems = () => {
   return (
     <>
-      {cartStore.items.length !== 0 ? (
-        cartStore.items.map((item: TaddProd, index: number) => (
-          <CartItem product={item} index={index} />
+      {cartStore.logCartItem()}
+      {cartStore.cartItems.length !== 0 ? (
+        cartStore.cartItems.map((item: TaddProd, index: number) => (
+          <CartItem product={item} index={index} key={index} />
         ))
       ) : (
         <EmptyCart />

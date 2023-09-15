@@ -8,10 +8,10 @@ import AddProductToCart from './AddProductToCart';
 import {COLORS} from '../../constants';
 
 const Product = ({product}: TProduct) => {
-  console.log(cartStore);
   const addToCart = (addProd: TaddProd) => {
     cartStore.addProductToCart(addProd);
   };
+
   return (
     <Shadow distance={3} paintInside={false}>
       <View

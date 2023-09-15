@@ -6,8 +6,7 @@ import {TSubmit} from '../../types';
 
 const Submit = ({navigation, name, address}: TSubmit) => {
   const saveUserData = () => {
-    userStore.addUser(name, address);
-    userStore.addUser(name, address);
+    userStore.addUser({name, address});
     navigation.navigate('home');
   };
   return (
