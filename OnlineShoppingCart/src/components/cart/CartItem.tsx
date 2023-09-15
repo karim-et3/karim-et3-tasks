@@ -1,10 +1,10 @@
 import Animated, {FadeOutRight} from 'react-native-reanimated';
 import React from 'react';
 import {TProduct} from '../../types';
-import {observer} from 'mobx-react';
 import ProductDescription from './ProductDescription';
 import ProductDelete from './ProductDelete';
 import ProductImage from './ProductImage';
+import {withLiteObserver} from '../hoc';
 
 const CartItem = ({product, index}: TProduct & {index: number}) => {
   return (
@@ -28,4 +28,4 @@ const CartItem = ({product, index}: TProduct & {index: number}) => {
   );
 };
 
-export default observer(CartItem);
+export default withLiteObserver(CartItem);

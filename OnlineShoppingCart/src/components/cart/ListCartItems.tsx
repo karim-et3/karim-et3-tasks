@@ -2,8 +2,8 @@ import React from 'react';
 import cartStore from '../../mobx/Cart';
 import CartItem from './CartItem';
 import EmptyCart from './EmptyCart';
-import {observer} from 'mobx-react';
 import {TaddProd} from '../../types';
+import {withLiteObserver} from '../hoc';
 
 const ListCartItems = () => {
   return (
@@ -20,4 +20,4 @@ const ListCartItems = () => {
   );
 };
 
-export default observer(ListCartItems);
+export default withLiteObserver(ListCartItems);

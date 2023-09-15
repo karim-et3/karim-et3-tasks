@@ -9,11 +9,7 @@ const AddressInput = ({address, setAddress}: TAddressInput) => {
       value={address}
       setValue={setAddress}
       icon={
-        <FontAwesomeIcon
-          icon="fa-solid fa-location-dot"
-          size={24}
-          color={COLORS.primary}
-        />
+        <FontAwesomeIcon icon="location-dot" size={24} color={COLORS.primary} />
       }
       placeholder="Address"
     />

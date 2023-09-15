@@ -10,11 +10,7 @@ const UsernameInput = ({name, setName}: TUsernameInput) => {
       value={name}
       setValue={setName}
       icon={
-        <FontAwesomeIcon
-          icon="fa-solid fa-user-gear"
-          size={24}
-          color={COLORS.primary}
-        />
+        <FontAwesomeIcon icon="user-gear" size={24} color={COLORS.primary} />
       }
       placeholder="Username"
     />

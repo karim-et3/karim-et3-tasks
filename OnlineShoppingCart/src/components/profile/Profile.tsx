@@ -1,11 +1,11 @@
 import {View} from 'react-native';
 import React, {useState} from 'react';
-import {observer} from 'mobx-react';
 import userStore from '../../mobx/UserStore';
 import {Tnavigation} from '../../types';
 import UsernameInput from './UsernameInput';
 import AddressInput from './AddressInput';
 import Submit from './Submit';
+import {withLiteObserver} from '../hoc';
 
 const Profile = ({navigation}: Tnavigation) => {
   const [name, setName] = useState<string>(userStore?.user.name ?? '');
@@ -20,4 +20,4 @@ const Profile = ({navigation}: Tnavigation) => {
   );
 };
 
-export default observer(Profile);
+export default withLiteObserver(Profile);

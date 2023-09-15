@@ -1,11 +1,11 @@
 import {Image, Text, View} from 'react-native';
 import React from 'react';
-import {observer} from 'mobx-react';
 import cartStore from '../../mobx/Cart';
 import {TProduct, TaddProd} from '../../types';
 import {Shadow} from 'react-native-shadow-2';
 import AddProductToCart from './AddProductToCart';
 import {COLORS} from '../../constants';
+import {withLiteObserver} from '../hoc';
 
 const Product = ({product}: TProduct) => {
   const addToCart = (addProd: TaddProd) => {
@@ -49,4 +49,4 @@ const Product = ({product}: TProduct) => {
   );
 };
 
-export default observer(Product);
+export default withLiteObserver(Product);

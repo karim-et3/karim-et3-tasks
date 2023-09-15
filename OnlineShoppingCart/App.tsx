@@ -14,15 +14,12 @@ function App() {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: COLORS.primary,
       }}>
-      <View style={{flex: 1, backgroundColor: COLORS.primary}}>
-        <NavigationContainer>
-          <ToastContextProvider>
-            <RootNavigation />
-          </ToastContextProvider>
-        </NavigationContainer>
-      </View>
+      <NavigationContainer>
+        <ToastContextProvider>
+          <RootNavigation />
+        </ToastContextProvider>
+      </NavigationContainer>
     </SafeAreaView>
   );
 }

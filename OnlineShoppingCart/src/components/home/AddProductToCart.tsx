@@ -42,7 +42,8 @@ const AddProductToCart = ({addToCart}: TAddProductToCart) => {
         setDisabled(true);
         changeVisiblity({
           text: 'Added to cart!',
-          icon: 'fa-regular fa-circle-check',
+          // icon: 'anchor-circle-check',
+          icon: 'circle-check',
           error: false,
         });
       }}>

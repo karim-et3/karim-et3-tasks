@@ -8,11 +8,7 @@ const HomeHeaderRight = ({navigation}: Tnavigation) => {
   return (
     <Pressable onPress={() => navigation.navigate('cart')} hitSlop={15}>
       {/* <Feather name="shopping-bag" style={{color: 'white', fontSize: 28}} /> */}
-      <FontAwesomeIcon
-        icon="fa-brand fa-basket-shopping"
-        size={28}
-        color={COLORS.white}
-      />
+      <FontAwesomeIcon icon="basket-shopping" size={28} color={COLORS.white} />
     </Pressable>
   );
 };
