@@ -8,9 +8,21 @@ const Tab = createMaterialBottomTabNavigator();
 const RootTabNavigation = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="all-users" component={AllUsers} />
-      <Tab.Screen name="home-tab" component={Home} />
-      <Tab.Screen name="add-user" component={AddUser} />
+      <Tab.Screen
+        name="all-users"
+        component={AllUsers}
+        options={{tabBarLabel: 'All Users'}}
+      />
+      <Tab.Screen
+        name="home-tab"
+        component={Home}
+        options={{tabBarLabel: 'Home'}}
+      />
+      <Tab.Screen
+        name="add-user"
+        component={AddUser}
+        options={{tabBarLabel: 'Add User'}}
+      />
     </Tab.Navigator>
   );
 };

@@ -14,9 +14,8 @@ const EditProfile = ({navigation}: Tnavigation) => {
   const [phone, setPhone] = useState<string>(userStore?.getPhone || '');
 
   function updateUser(): void {
-    userStore.update(username, age, address, phone)
-      ? navigation.navigate('home')
-      : '';
+    userStore.update({username, age, address, phone});
+    navigation.navigate('home');
   }
 
   return (

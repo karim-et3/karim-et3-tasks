@@ -6,8 +6,9 @@ import {
   createDrawerNavigator,
 } from '@react-navigation/drawer';
 // import AddUser from './AddUser';
-import Home from '../Home';
 import DeleteUser from '../DeleteUser';
+import Logout from '../Logout';
+import RootTabNavigation from './RootTabNavigation';
 
 const Drawer = createDrawerNavigator();
 const RootDrawerNavigation = () => {
@@ -19,14 +20,14 @@ const RootDrawerNavigation = () => {
             <DrawerItemList {...props} />
             <DrawerItem
               label={'logout'}
-              onPress={() => props.navigation.navigate('delete-user')}
+              onPress={() => props.navigation.navigate('logout')}
             />
           </DrawerContentScrollView>
         );
       }}>
       <Drawer.Screen
-        name="home"
-        component={Home}
+        name="home_tab"
+        component={RootTabNavigation}
         options={{
           title: 'Home',
         }}
@@ -40,6 +41,11 @@ const RootDrawerNavigation = () => {
         name="delete-user"
         component={DeleteUser}
         options={{title: 'Delete users'}}
+      />
+      <Drawer.Screen
+        name="logout"
+        component={Logout}
+        options={{title: 'Logout'}}
       />
     </Drawer.Navigator>
   );

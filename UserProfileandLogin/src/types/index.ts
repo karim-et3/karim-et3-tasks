@@ -15,3 +15,10 @@ export type TToast = {
   text: string;
   icon: string;
 };
+export type TAdmin = {
+  username: string;
+  age: string;
+  address: string;
+  phone: string;
+};
+export type TLogin = {username: string; password: string};

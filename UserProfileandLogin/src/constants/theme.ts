@@ -5,6 +5,12 @@ const COLORS = {
   black: '#262626',
   placeholder: '#a8a29e',
   white: '#f5f5f5',
+  grey: '#d1d5db',
+  disabledbBackground: '#d4d4d4',
+  disabledBorder: '#a3a3a3',
+  disabledText: '#e7e5e4',
+  border: '#0066cc',
+  error: '#f43f5e',
 };
 const SIZES = {
   xSmall: 10,
