@@ -1,5 +1,6 @@
 const COLORS = {
   primary: '#22c55e',
+  primary_faded: '#22c55e66',
   secondary: '#a1a1aa',
   background: '#fafafa',
   black: '#262626',
