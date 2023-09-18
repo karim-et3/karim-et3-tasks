@@ -5,7 +5,7 @@ import {TProduct, TaddProd} from '../../types';
 import {Shadow} from 'react-native-shadow-2';
 import AddProductToCart from './AddProductToCart';
 import {COLORS} from '../../constants';
-import {withLiteObserver} from '../hoc';
+import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
 
 const Product = ({product}: TProduct) => {
   const addToCart = (addProd: TaddProd) => {
@@ -49,4 +49,4 @@ const Product = ({product}: TProduct) => {
   );
 };
 
-export default withLiteObserver(Product);
+export default withLiteObserverAndTheme(Product);

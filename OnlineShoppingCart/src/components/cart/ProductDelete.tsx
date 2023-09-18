@@ -1,12 +1,11 @@
 import {View, Text, Pressable} from 'react-native';
 import React from 'react';
 import cartStore from '../../mobx/Cart';
-import {TProduct} from '../../types';
+import {TProductDelete} from '../../types';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {COLORS} from '../../constants';
-import {withLiteObserver} from '../hoc';
+import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
 
-const ProductDelete = ({product}: TProduct) => {
+const ProductDelete = ({product, COLORS}: TProductDelete) => {
   return (
     <View
       style={{
@@ -33,4 +32,4 @@ const ProductDelete = ({product}: TProduct) => {
   );
 };
 
-export default withLiteObserver(ProductDelete);
+export default withLiteObserverAndTheme(ProductDelete);

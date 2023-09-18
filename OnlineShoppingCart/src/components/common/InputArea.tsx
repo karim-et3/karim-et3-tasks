@@ -1,9 +1,15 @@
 import {View, TextInput} from 'react-native';
 import React, {useState} from 'react';
-import {COLORS} from '../../constants';
 import {TInputAreaProp} from '../../types';
+import {withLiteObserverAndTheme} from '../hoc';
 
-const InputArea = ({value, setValue, icon, placeholder}: TInputAreaProp) => {
+const InputArea = ({
+  value,
+  setValue,
+  icon,
+  placeholder,
+  COLORS,
+}: TInputAreaProp) => {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -35,4 +41,4 @@ const InputArea = ({value, setValue, icon, placeholder}: TInputAreaProp) => {
   );
 };
 
-export default InputArea;
+export default withLiteObserverAndTheme(InputArea);

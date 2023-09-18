@@ -1,12 +1,12 @@
 import Animated, {FadeOutRight} from 'react-native-reanimated';
 import React from 'react';
-import {TProduct} from '../../types';
+import {TCartItem} from '../../types';
 import ProductDescription from './ProductDescription';
 import ProductDelete from './ProductDelete';
 import ProductImage from './ProductImage';
-import {withLiteObserver} from '../hoc';
+import {withLiteObserverAndTheme} from '../hoc';
 
-const CartItem = ({product, index}: TProduct & {index: number}) => {
+const CartItem = ({product, index}: TCartItem) => {
   return (
     <Animated.View
       exiting={FadeOutRight}
@@ -20,12 +20,14 @@ const CartItem = ({product, index}: TProduct & {index: number}) => {
         gap: 8,
         alignItems: 'flex-start',
       }}
-      key={`${product.quantity}-${product.id}-${index}`}>
-      <ProductImage image={product.image} />
-      <ProductDescription product={product} />
-      <ProductDelete product={product} />
+      // key={`${product.quantity}-${product.id}-${index}`}
+    >
+      {/* <ProductImage image={product.image} /> */}
+      {console.log('product', product)}
+      {/* <ProductDescription product={product} /> */}
+      {/* <ProductDelete product={product} /> */}
     </Animated.View>
   );
 };
 
-export default withLiteObserver(CartItem);
+export default withLiteObserverAndTheme(CartItem);

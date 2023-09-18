@@ -1,10 +1,10 @@
 import {Pressable, Text} from 'react-native';
 import React from 'react';
-import {COLORS} from '../../constants';
 import userStore from '../../mobx/UserStore';
 import {TSubmit} from '../../types';
+import {withLiteObserverAndTheme} from '../hoc';
 
-const Submit = ({navigation, name, address}: TSubmit) => {
+const Submit = ({navigation, name, address, COLORS}: TSubmit) => {
   const saveUserData = () => {
     userStore.addUser({name, address});
     navigation.navigate('home');
@@ -25,4 +25,4 @@ const Submit = ({navigation, name, address}: TSubmit) => {
   );
 };
 
-export default Submit;
+export default withLiteObserverAndTheme(Submit);

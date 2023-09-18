@@ -5,15 +5,14 @@ import {Tnavigation} from '../../types';
 import UsernameInput from './UsernameInput';
 import AddressInput from './AddressInput';
 import Submit from './Submit';
-import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
+import {withLiteObserverAndTheme} from '../hoc';
 
-const Profile = (props, {navigation}: Tnavigation) => {
+const Profile = (props: React.ReactPropTypes, {navigation}: Tnavigation) => {
   const [name, setName] = useState<string>(userStore?.user.name ?? '');
   const [address, setAddress] = useState<string>(userStore?.user.address ?? '');
 
   return (
     <View style={{marginHorizontal: 10}}>
-      {console.log(props.COLORS)}
       <UsernameInput name={name} setName={setName} />
       <AddressInput address={address} setAddress={setAddress} />
       <Submit navigation={navigation} name={name} address={address} />
@@ -21,4 +20,4 @@ const Profile = (props, {navigation}: Tnavigation) => {
   );
 };
 
-export default withLiteObserver(Profile);
+export default withLiteObserverAndTheme(Profile);

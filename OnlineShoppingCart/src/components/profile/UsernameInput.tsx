@@ -1,10 +1,10 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import InputArea from '../common/InputArea';
-import {COLORS} from '../../constants';
 import {TUsernameInput} from '../../types';
+import {withLiteObserverAndTheme} from '../hoc';
 
-const UsernameInput = ({name, setName}: TUsernameInput) => {
+const UsernameInput = ({name, setName, COLORS}: TUsernameInput) => {
   return (
     <InputArea
       value={name}
@@ -17,4 +17,4 @@ const UsernameInput = ({name, setName}: TUsernameInput) => {
   );
 };
 
-export default UsernameInput;
+export default withLiteObserverAndTheme(UsernameInput);

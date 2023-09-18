@@ -1,7 +1,8 @@
 import React, {useState, createContext, ReactNode, useEffect} from 'react';
 import ToastNotification from '../common/ToastNotification';
 import {View} from 'react-native';
-import {TToast} from '../../types';
+import {TToastContext} from '../../types';
+import {COLORS} from '../../constants';
 
 export const ToastContext = createContext(null);
 
@@ -12,7 +13,7 @@ const ToastContextProvider = ({children}: {children: ReactNode}) => {
   const [icon, setIcon] = useState('');
   const [text, setText] = useState('');
 
-  const changeVisiblity = ({text, icon, error}: TToast) => {
+  const changeVisiblity = ({text, icon, error}: TToastContext) => {
     setText(text);
     setIcon(icon);
     setError(error);
@@ -41,7 +42,14 @@ const ToastContextProvider = ({children}: {children: ReactNode}) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <ToastNotification icon={icon} text={text} error={error} />
+          {text && (
+            <ToastNotification
+              icon={icon}
+              text={text}
+              error={error}
+              COLORS={COLORS}
+            />
+          )}
         </View>
       )}
     </ToastContext.Provider>

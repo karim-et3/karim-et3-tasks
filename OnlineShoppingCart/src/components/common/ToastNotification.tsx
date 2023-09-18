@@ -1,17 +1,15 @@
 import {StyleSheet, Text, View} from 'react-native';
 import Animated, {FadeInUp, FadeOutUp} from 'react-native-reanimated';
 import React from 'react';
-import {COLORS, SHADOWS} from '../../constants';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {TToast} from '../../types';
+import {TToastNotification} from '../../types';
 
-const ToastNotification = ({error, text, icon}: TToast) => {
+const ToastNotification = ({error, text, icon, COLORS}: TToastNotification) => {
   return (
     <Animated.View
       entering={FadeInUp}
       exiting={FadeOutUp}
       style={[
-        SHADOWS.medium,
         {
           position: 'absolute',
           top: 80,

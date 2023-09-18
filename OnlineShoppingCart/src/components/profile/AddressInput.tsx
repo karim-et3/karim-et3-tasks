@@ -1,9 +1,9 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import InputArea from '../common/InputArea';
-import {COLORS} from '../../constants';
 import {TAddressInput} from '../../types';
-const AddressInput = ({address, setAddress}: TAddressInput) => {
+import {withLiteObserverAndTheme} from '../hoc';
+const AddressInput = ({address, setAddress, COLORS}: TAddressInput) => {
   return (
     <InputArea
       value={address}
@@ -16,4 +16,4 @@ const AddressInput = ({address, setAddress}: TAddressInput) => {
   );
 };
 
-export default AddressInput;
+export default withLiteObserverAndTheme(AddressInput);

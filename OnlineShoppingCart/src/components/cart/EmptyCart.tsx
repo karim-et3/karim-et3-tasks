@@ -1,8 +1,9 @@
 import {Text, View} from 'react-native';
 import React from 'react';
-import {COLORS} from '../../constants';
+import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
+import {TCOLORS} from '../../types';
 
-const EmptyCart = () => {
+const EmptyCart = ({COLORS}: {COLORS: TCOLORS}) => {
   return (
     <View
       style={{
@@ -10,11 +11,16 @@ const EmptyCart = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text style={{fontSize: 24, color: COLORS.secondary, fontWeight: '600'}}>
+      <Text
+        style={{
+          fontSize: 24,
+          color: COLORS.secondary,
+          fontWeight: '600',
+        }}>
         Cart is empty
       </Text>
     </View>
   );
 };
 
-export default EmptyCart;
+export default withLiteObserverAndTheme(EmptyCart);

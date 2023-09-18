@@ -1,8 +1,9 @@
 import {Image} from 'react-native';
 import React from 'react';
-import {COLORS} from '../../constants';
+import {TProductImage} from '../../types';
+import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
 
-const ProductImage = ({image}: {image: number}) => {
+const ProductImage = ({image, COLORS}: TProductImage) => {
   return (
     <Image
       style={{
@@ -17,4 +18,4 @@ const ProductImage = ({image}: {image: number}) => {
   );
 };
 
-export default ProductImage;
+export default withLiteObserverAndTheme(ProductImage);

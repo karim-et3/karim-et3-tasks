@@ -1,9 +1,14 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {TProduct} from '../../types';
-import {COLORS, FONT, SIZES} from '../../constants';
+import {TProductDescription} from '../../types';
+import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
 
-const ProductDescription = ({product}: TProduct) => {
+const ProductDescription = ({
+  product,
+  COLORS,
+  SIZES,
+  FONTS,
+}: TProductDescription) => {
   return (
     <View
       style={{
@@ -14,14 +19,14 @@ const ProductDescription = ({product}: TProduct) => {
         style={{
           color: COLORS.black,
           fontSize: SIZES.xLarge,
-          fontWeight: FONT.bold,
+          fontWeight: FONTS.bold,
         }}>
         {product.price} $
       </Text>
       <Text
         style={{
           fontSize: SIZES.medium,
-          fontWeight: FONT.medium,
+          fontWeight: FONTS.medium,
           color: COLORS.secondary,
         }}>
         {product.title}
@@ -30,4 +35,4 @@ const ProductDescription = ({product}: TProduct) => {
   );
 };
 
-export default ProductDescription;
+export default withLiteObserverAndTheme(ProductDescription);

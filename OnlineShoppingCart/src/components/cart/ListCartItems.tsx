@@ -3,7 +3,7 @@ import cartStore from '../../mobx/Cart';
 import CartItem from './CartItem';
 import EmptyCart from './EmptyCart';
 import {TaddProd} from '../../types';
-import {withLiteObserver} from '../hoc';
+import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
 
 const ListCartItems = () => {
   return (
@@ -20,4 +20,4 @@ const ListCartItems = () => {
   );
 };
 
-export default withLiteObserver(ListCartItems);
+export default withLiteObserverAndTheme(ListCartItems);

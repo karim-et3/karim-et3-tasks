@@ -1,29 +1,15 @@
-import {
-  // action, computed, makeAutoObservable,
-  observable,
-  runInAction,
-} from 'mobx';
+import {observable, runInAction} from 'mobx';
 import {TaddProd} from '../types';
 import memoize from 'lodash/memoize';
 
 class Cart {
   items = observable.array<TaddProd>([]);
 
-  // constructor() {
-  //   makeAutoObservable(this, {
-  //     logCartItem: action,
-  //     addProductToCart: action,
-  //     deleteProduct: action,
-  //     cartItems: computed,
-  //     items: observable,
-  //   });
-  // }
-
   get cartItems() {
     return this.items;
   }
 
-  logCartItem = () => runInAction(() => console.log('logItem:', this.items));
+  logCartItem = () => runInAction(() => console.log('logItems:', this.items));
 
   addProductToCart(newProduct: TaddProd) {
     runInAction(() => {

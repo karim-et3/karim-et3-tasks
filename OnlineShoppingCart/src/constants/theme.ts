@@ -10,7 +10,6 @@ const COLORS = {
   border: '#0066cc',
   error: '#f43f5e',
 };
-
 const SIZES = {
   xSmall: 10,
   small: 12,
