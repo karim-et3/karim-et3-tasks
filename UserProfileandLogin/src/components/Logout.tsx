@@ -1,12 +1,8 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {observer} from 'mobx-react';
+import adminStore from '../mobx/Admin';
 
 const Logout = () => {
-  return (
-    <View>
-      <Text>Logout</Text>
-    </View>
-  );
+  return adminStore.logOut();
 };
 
-export default Logout;
+export default observer(Logout);

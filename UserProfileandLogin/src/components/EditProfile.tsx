@@ -1,6 +1,6 @@
 import {View, Button} from 'react-native';
 import React, {useState} from 'react';
-import InputText from './InputText';
+import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
 import {Tnavigation} from '../types';
 import {COLORS} from '../constants';
@@ -15,7 +15,7 @@ const EditProfile = ({navigation}: Tnavigation) => {
 
   function updateUser(): void {
     userStore.update({username, age, address, phone});
-    navigation.navigate('home');
+    navigation.navigate('home-stack');
   }
 
   return (

@@ -12,6 +12,12 @@ const COLORS = {
   disabledText: '#e7e5e4',
   border: '#0066cc',
   error: '#f43f5e',
+  test_primary: '#29a54d',
+  test_primary1: '#2f8147',
+  test_primary2: '#355e41',
+  test_primary3: '#3b3b3b',
+  test_white: '#f9f9f9',
+  test_grey: '#cbd5e1',
 };
 const SIZES = {
   xSmall: 10,

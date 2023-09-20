@@ -1,11 +1,10 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {COLORS} from '../constants';
 
-const DeleteUser = () => {
+const DeleteUser = ({user}) => {
   return (
     <View>
-      <Text style={{color: COLORS.black}}>DeleteUser</Text>
+      <Text style={{color: 'black'}}>DeleteUser</Text>
     </View>
   );
 };

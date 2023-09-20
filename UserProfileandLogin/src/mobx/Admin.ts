@@ -1,10 +1,6 @@
-import {
-  // computed, action, makeAutoObservable,
-  observable,
-  runInAction,
-} from 'mobx';
+import {observable, runInAction} from 'mobx';
 import memoize from 'lodash/memoize';
-import {TAdmin, TLogin} from '../types';
+import {TUpdateAdmin, TLogin} from '../types';
 
 class Admin {
   user = observable({
@@ -12,25 +8,17 @@ class Admin {
     age: '',
     address: '',
     phone: '',
+    loggedIn: false,
   });
 
-  // constructor() {
-  //   makeAutoObservable(this, {
-  //     user: observable,
-  //     login: action,
-  //     logOut: action,
-  //     update: action,
-  //     getUsername: computed,
-  //     getPhone: computed,
-  //     getAddress: computed,
-  //     getAge: computed,
-  //   });
-  // }
-
+  checkAuth = () => {
+    return this.user.loggedIn;
+  };
   login = ({username, password}: TLogin) => {
     return runInAction(() => {
       if (username === 'test' && password === '123') {
         this.user.username = username;
+        this.user.loggedIn = true;
         console.log('in');
         return true;
       }
@@ -44,10 +32,11 @@ class Admin {
       this.user.age = '';
       this.user.address = '';
       this.user.phone = '';
+      this.user.loggedIn = false;
     });
   };
 
-  update = ({username, age, address, phone}: TAdmin) => {
+  update = ({username, age, address, phone}: TUpdateAdmin) => {
     runInAction(() => {
       try {
         this.user.username = username;

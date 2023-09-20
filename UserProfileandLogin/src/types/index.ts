@@ -8,6 +8,7 @@ export type TLoginProp = {
   type: string;
 };
 export type Tnavigation = {
+  setOptions(arg0: {title: string}): unknown;
   navigation: NavigationProp<ParamListBase>;
 };
 export type TToast = {
@@ -20,5 +21,24 @@ export type TAdmin = {
   age: string;
   address: string;
   phone: string;
+  loggedIn: boolean;
 };
-export type TLogin = {username: string; password: string};
+export type TLogin = {
+  username: string;
+  password: string;
+};
+export type TUsers = {
+  firstName: string;
+  lastName: string;
+  dob: Date;
+  image: number;
+  id: number;
+  online: boolean;
+  description: string;
+};
+export type TUpdateAdmin = {
+  username: string;
+  age: string;
+  address: string;
+  phone: string;
+};

@@ -1,13 +1,13 @@
 import {Button, View} from 'react-native';
 import React, {useContext, useState} from 'react';
-import InputText from './InputText';
+import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
 import {observer} from 'mobx-react';
 import {Tnavigation} from '../types';
 import {COLORS} from '../constants';
 import {ToastContext} from './context/ToastContext';
 
-const Login = observer(({navigation}: Tnavigation) => {
+const Login = ({navigation}: Tnavigation) => {
   const {changeVisiblity} = useContext(ToastContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -32,7 +32,7 @@ const Login = observer(({navigation}: Tnavigation) => {
         error: false,
       });
       return setTimeout(() => {
-        navigation.navigate('Home_stack');
+        navigation.navigate('home-stack');
       }, 1000);
     } else {
       return changeVisiblity({
@@ -57,21 +57,21 @@ const Login = observer(({navigation}: Tnavigation) => {
         value={username}
         setValue={setUsername}
         type="text"
-        icon={'user'}
+        icon="fa-solid fa-user"
         placeholder={'Username'}
       />
       <InputText
         value={password}
         setValue={setPassword}
         type="password"
-        icon={'lock'}
+        icon="fa-solid fa-lock"
         placeholder={'Password'}
       />
-      <View style={{width: '100%'}}>
+      <View style={{width: '100%', marginTop: 20}}>
         <Button title="Submit" color={COLORS.primary} onPress={login} />
       </View>
     </View>
   );
-});
+};
 
-export default Login;
+export default observer(Login);
