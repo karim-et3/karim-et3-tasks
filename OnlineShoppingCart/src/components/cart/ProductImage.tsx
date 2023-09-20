@@ -1,7 +1,7 @@
 import {Image} from 'react-native';
 import React from 'react';
 import {TProductImage} from '../../types';
-import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
+import {withLiteObserverAndTheme} from '../hoc';
 
 const ProductImage = ({image, COLORS}: TProductImage) => {
   return (

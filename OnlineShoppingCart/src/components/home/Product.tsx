@@ -1,14 +1,14 @@
 import {Image, Text, View} from 'react-native';
 import React from 'react';
 import cartStore from '../../mobx/Cart';
-import {TProduct, TaddProd} from '../../types';
+import {TProduct} from '../../types';
 import {Shadow} from 'react-native-shadow-2';
 import AddProductToCart from './AddProductToCart';
 import {COLORS} from '../../constants';
-import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
+import {withLiteObserverAndTheme} from '../hoc';
 
-const Product = ({product}: TProduct) => {
-  const addToCart = (addProd: TaddProd) => {
+const Product = ({product}: {product: TProduct}) => {
+  const addToCart = (addProd: TProduct) => {
     cartStore.addProductToCart(addProd);
   };
 

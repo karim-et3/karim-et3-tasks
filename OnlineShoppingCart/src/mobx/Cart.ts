@@ -1,9 +1,9 @@
 import {observable, runInAction} from 'mobx';
-import {TaddProd} from '../types';
+import {TProduct} from '../types';
 import memoize from 'lodash/memoize';
 
 class Cart {
-  items = observable.array<TaddProd>([]);
+  items = observable.array<TProduct>([]);
 
   get cartItems() {
     return this.items;
@@ -11,7 +11,7 @@ class Cart {
 
   logCartItem = () => runInAction(() => console.log('logItems:', this.items));
 
-  addProductToCart(newProduct: TaddProd) {
+  addProductToCart(newProduct: TProduct) {
     runInAction(() => {
       const itemIndex = this.items.findIndex(item => item.id === newProduct.id);
       if (itemIndex !== -1) {
@@ -22,7 +22,7 @@ class Cart {
     });
   }
 
-  deleteProduct(item: TaddProd) {
+  deleteProduct(item: TProduct) {
     runInAction(() => {
       const itemIndex = this.items.findIndex(it => it.id === item.id);
       if (itemIndex !== -1)

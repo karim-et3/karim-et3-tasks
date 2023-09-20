@@ -19,7 +19,7 @@ const SIZES = {
   xxLarge: 32,
 };
 
-const FONT = {
+const FONTS = {
   regular: '400',
   medium: '500',
   bold: '700',
@@ -48,4 +48,4 @@ const SHADOWS = {
   },
 };
 
-export {COLORS, SIZES, FONT, SHADOWS};
+export {COLORS, SIZES, FONTS, SHADOWS};

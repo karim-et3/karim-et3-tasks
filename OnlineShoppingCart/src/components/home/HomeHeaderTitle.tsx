@@ -1,5 +1,6 @@
 import {Text, View} from 'react-native';
 import React from 'react';
+import {withLiteObserverAndTheme} from '../hoc';
 
 const HomeHeaderTitle = () => {
   return (
@@ -22,4 +23,4 @@ const HomeHeaderTitle = () => {
   );
 };
 
-export default HomeHeaderTitle;
+export default withLiteObserverAndTheme(HomeHeaderTitle);

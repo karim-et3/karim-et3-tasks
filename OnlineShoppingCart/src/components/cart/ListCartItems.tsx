@@ -2,16 +2,16 @@ import React from 'react';
 import cartStore from '../../mobx/Cart';
 import CartItem from './CartItem';
 import EmptyCart from './EmptyCart';
-import {TaddProd} from '../../types';
-import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
+import {TProduct} from '../../types';
+import {withLiteObserverAndTheme} from '../hoc';
 
 const ListCartItems = () => {
   return (
     <>
       {cartStore.logCartItem()}
       {cartStore.cartItems.length !== 0 ? (
-        cartStore.cartItems.map((item: TaddProd, index: number) => (
-          <CartItem product={item} index={index} key={index} />
+        cartStore.cartItems.map((item: TProduct, index: number) => (
+          <CartItem product={item} key={index} />
         ))
       ) : (
         <EmptyCart />

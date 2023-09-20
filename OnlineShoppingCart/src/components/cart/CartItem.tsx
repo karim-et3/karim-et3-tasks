@@ -20,12 +20,10 @@ const CartItem = ({product, index}: TCartItem) => {
         gap: 8,
         alignItems: 'flex-start',
       }}
-      // key={`${product.quantity}-${product.id}-${index}`}
-    >
-      {/* <ProductImage image={product.image} /> */}
-      {console.log('product', product)}
-      {/* <ProductDescription product={product} /> */}
-      {/* <ProductDelete product={product} /> */}
+      key={`${product.quantity}-${product.id}-${index}`}>
+      <ProductImage image={product.image} />
+      <ProductDescription product={product} />
+      <ProductDelete product={product} />
     </Animated.View>
   );
 };

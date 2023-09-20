@@ -3,7 +3,7 @@ import React from 'react';
 import cartStore from '../../mobx/Cart';
 import {TProductDelete} from '../../types';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
+import {withLiteObserverAndTheme} from '../hoc';
 
 const ProductDelete = ({product, COLORS}: TProductDelete) => {
   return (

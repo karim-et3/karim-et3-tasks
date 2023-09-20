@@ -3,6 +3,7 @@ import React from 'react';
 import {Tnavigation} from '../../types';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {COLORS} from '../../constants';
+import {withLiteObserverAndTheme} from '../hoc';
 
 const HomeHeaderRight = ({navigation}: Tnavigation) => {
   return (
@@ -12,4 +13,4 @@ const HomeHeaderRight = ({navigation}: Tnavigation) => {
   );
 };
 
-export default HomeHeaderRight;
+export default withLiteObserverAndTheme(HomeHeaderRight);

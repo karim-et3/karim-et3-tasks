@@ -31,16 +31,10 @@ export type TProduct = {
   quantity: number;
   title: string;
 };
-export type TaddProd = {
-  description: string;
-  id: number;
-  image: number;
-  price: number;
-  quantity: number;
-  title: string;
-};
+
 export type TAddProductToCart = {
   addToCart: () => void;
+  COLORS: TCOLORS;
 };
 export type TUsernameInput = {
   name: string;
@@ -101,4 +95,12 @@ export type TProductDescription = {
 export type TProductImage = {
   image: number;
   COLORS: TCOLORS;
+};
+export type Tprops = {
+  props: React.JSX.IntrinsicAttributes;
+};
+export type TAddButton = {
+  COLORS: TCOLORS;
+  animatedButtonScale: object;
+  disabled: boolean;
 };

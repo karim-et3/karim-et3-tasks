@@ -1,6 +1,7 @@
 import {View} from 'react-native';
 import React from 'react';
 import ListProducts from './ListProducts';
+import {withLiteObserverAndTheme} from '../hoc';
 
 const Home = () => {
   return (
@@ -17,4 +18,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withLiteObserverAndTheme(Home);

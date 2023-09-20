@@ -7,7 +7,7 @@ import AddressInput from './AddressInput';
 import Submit from './Submit';
 import {withLiteObserverAndTheme} from '../hoc';
 
-const Profile = (props: React.ReactPropTypes, {navigation}: Tnavigation) => {
+const Profile = ({navigation}: Tnavigation) => {
   const [name, setName] = useState<string>(userStore?.user.name ?? '');
   const [address, setAddress] = useState<string>(userStore?.user.address ?? '');
 

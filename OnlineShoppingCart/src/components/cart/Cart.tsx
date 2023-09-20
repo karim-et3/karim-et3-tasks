@@ -1,6 +1,7 @@
 import {View} from 'react-native';
 import React from 'react';
 import ListCartItems from './ListCartItems';
+import {withLiteObserverAndTheme} from '../hoc';
 
 const Cart = () => {
   return (
@@ -10,4 +11,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default withLiteObserverAndTheme(Cart);

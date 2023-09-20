@@ -1,7 +1,7 @@
 import {Text, View} from 'react-native';
 import React from 'react';
-import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
 import {TCOLORS} from '../../types';
+import {withLiteObserverAndTheme} from '../hoc';
 
 const EmptyCart = ({COLORS}: {COLORS: TCOLORS}) => {
   return (

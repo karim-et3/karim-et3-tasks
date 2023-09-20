@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {TProductDescription} from '../../types';
-import {withLiteObserver, withLiteObserverAndTheme} from '../hoc';
+import {withLiteObserverAndTheme} from '../hoc';
 
 const ProductDescription = ({
   product,
