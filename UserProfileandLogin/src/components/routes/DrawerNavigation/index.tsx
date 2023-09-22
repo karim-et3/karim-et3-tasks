@@ -5,17 +5,18 @@ import {
   DrawerItemList,
   createDrawerNavigator,
 } from '@react-navigation/drawer';
-import Logout from '../../Logout';
 import RootTabNavigation from '../TabNavigation';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {COLORS} from '../../../constants';
+import {COLORS, SIZES} from '../../../constants';
 import Login from '../../Login';
 import adminStore from '../../../mobx/Admin';
-import Test from '../Test';
-import {observer} from 'mobx-react';
+import {observer} from 'mobx-react-lite';
+import LanguageSwitch from './LanguageSwitch';
+import {useTranslation} from 'react-i18next';
 
 const Drawer = createDrawerNavigator();
 const RootDrawerNavigation = () => {
+  const {t} = useTranslation();
   return (
     <Drawer.Navigator
       initialRouteName="home-drawer"
@@ -35,7 +36,38 @@ const RootDrawerNavigation = () => {
           <DrawerContentScrollView>
             <DrawerItemList {...props} />
             <DrawerItem
-              label={'logout'}
+              label={t('deleter')}
+              icon={() => (
+                <FontAwesomeIcon
+                  icon="user-slash"
+                  size={18}
+                  color={COLORS.test_primary3}
+                />
+              )}
+              inactiveTintColor={COLORS.test_primary3}
+              labelStyle={{
+                marginLeft: -10,
+                color: COLORS.test_primary3,
+                fontSize: SIZES.medium,
+              }}
+              onPress={() => props.navigation.navigate('delete-user')}
+            />
+            <LanguageSwitch />
+            <DrawerItem
+              label={t('logout')}
+              icon={() => (
+                <FontAwesomeIcon
+                  icon="right-from-bracket"
+                  size={18}
+                  color={COLORS.test_primary3}
+                />
+              )}
+              inactiveTintColor={COLORS.test_primary3}
+              labelStyle={{
+                marginLeft: -10,
+                color: COLORS.test_primary3,
+                fontSize: SIZES.medium,
+              }}
               onPress={() => props.navigation.navigate('logout')}
             />
           </DrawerContentScrollView>
@@ -47,42 +79,29 @@ const RootDrawerNavigation = () => {
             name="home-drawer"
             component={RootTabNavigation}
             options={{
-              title: 'Home',
+              drawerLabelStyle: {fontSize: SIZES.medium, marginLeft: -10},
+              title: t('home'),
               drawerIcon: props => (
                 <FontAwesomeIcon icon="home" size={18} color={props.color} />
               ),
             }}
           />
-          <Drawer.Screen
-            name="delete-user"
-            component={Test}
-            options={{
-              drawerLabel: 'Delete users',
-              headerShown: false,
-              swipeEdgeWidth: 0,
-              drawerIcon: props => (
-                <FontAwesomeIcon
-                  icon="user-slash"
-                  size={18}
-                  color={props.color}
-                />
-              ),
-            }}
-          />
-          <Drawer.Screen
+          {/* <Drawer.Screen
             name="logout"
             component={Logout}
-            options={{
-              title: 'Logout',
-              drawerIcon: props => (
-                <FontAwesomeIcon
-                  icon="right-from-bracket"
-                  size={18}
-                  color={props.color}
-                />
-              ),
-            }}
-          />
+            options={
+              {
+                // title: 'Logout',
+                // drawerIcon: props => (
+                //   <FontAwesomeIcon
+                //     icon="right-from-bracket"
+                //     size={18}
+                //     color={props.color}
+                //   />
+                // ),
+              }
+            }
+          /> */}
         </>
       ) : (
         <Drawer.Screen

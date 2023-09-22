@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {TLoginProp} from '../../types';
 import {COLORS} from '../../constants';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useTranslation} from 'react-i18next';
 
 const InputText = ({
   value,
@@ -12,6 +13,7 @@ const InputText = ({
   placeholder = '',
 }: TLoginProp) => {
   const [focused, setFocused] = useState(false);
+  const {t} = useTranslation();
   return (
     <View
       style={{
@@ -52,10 +54,17 @@ const InputText = ({
         onBlur={() => setFocused(false)}
         value={value}
         passwordRules="required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8"
-        placeholder={placeholder}
+        placeholder={t(placeholder)}
         onChangeText={setValue}
         placeholderTextColor={COLORS.placeholder}
-        style={{color: COLORS.black, fontSize: 16, width: '100%'}}
+        style={{
+          color: COLORS.black,
+          fontSize: 16,
+          direction: 'rtl',
+          writingDirection: 'rtl',
+          width: '100%',
+          paddingHorizontal: 10,
+        }}
       />
     </View>
   );

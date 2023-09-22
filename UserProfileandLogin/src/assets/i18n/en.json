@@ -1,0 +1,19 @@
+{
+    "translation": {
+        "test": "test",
+        "arabic": "العربية",
+        "english": "English",
+        "deleter": "Deleter",
+        "logout": "Logout",
+        "home": "Home",
+        "password": "Password",
+        "submit": "Submit",
+        "username": "Username",
+        "welcome": "Welcome",
+        "edit-profile": "Edit Profile",
+        "profile": "Profile",
+        "all-users": "All Users",
+        "add-user": "Add User",
+        "delete": "delete"
+    }
+}

@@ -5,9 +5,12 @@ import Home from '../../Home';
 import AddUser from '../../AddUser';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {COLORS} from '../../../constants';
+import {useTranslation} from 'react-i18next';
 
 const Tab = createMaterialBottomTabNavigator();
 const RootTabNavigation = () => {
+  const {t} = useTranslation();
+
   return (
     <Tab.Navigator
       initialRouteName="home-tab"
@@ -19,7 +22,7 @@ const RootTabNavigation = () => {
         name="all-users"
         component={AllUsers}
         options={{
-          tabBarLabel: 'All Users',
+          tabBarLabel: t('all-users'),
           tabBarIcon: props => (
             <FontAwesomeIcon
               icon="user-gear"
@@ -33,7 +36,7 @@ const RootTabNavigation = () => {
         name="home-tab"
         component={Home}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: t('home'),
           tabBarIcon: props => (
             <FontAwesomeIcon
               icon={'home'}
@@ -47,7 +50,7 @@ const RootTabNavigation = () => {
         name="add-user"
         component={AddUser}
         options={{
-          tabBarLabel: 'Add User',
+          tabBarLabel: t('add-user'),
           tabBarIcon: props => (
             <FontAwesomeIcon
               icon="user-plus"

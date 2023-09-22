@@ -27,7 +27,7 @@ class Admin {
   };
 
   logOut = () => {
-    runInAction(() => {
+    return runInAction(() => {
       this.user.username = '';
       this.user.age = '';
       this.user.address = '';

@@ -1,0 +1,22 @@
+{
+    "translation": {
+        "test": "تيست",
+        "arabic": "العربية",
+        "deleter": "الحاذف",
+        "logout": "تسجيل خروج",
+        "home": "الرئيسية",
+        "password": "كلمة السر",
+        "submit": "تسجيل دخول",
+        "username": "الإسم",
+        "welcome": "اهلا بك",
+        "profile": "الملف الشخصي",
+        "edit-profile": "تعديل الملف",
+        "all-users": "جميع المستخدمين",
+        "add-user": "إضافة مستخدم جديد",
+        "delete": "حذف",
+        "your username": "الاسم",
+        "your phone": "رقم الهاتف",
+        "your age": "العمر",
+        "your address": "العناون"
+    }
+}

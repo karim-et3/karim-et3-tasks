@@ -4,6 +4,7 @@ import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
 import {Tnavigation} from '../types';
 import {COLORS} from '../constants';
+import {useTranslation} from 'react-i18next';
 
 const EditProfile = ({navigation}: Tnavigation) => {
   const [username, setUsername] = useState<string>(
@@ -13,6 +14,7 @@ const EditProfile = ({navigation}: Tnavigation) => {
   const [age, setAge] = useState<string>(userStore?.getAge || '');
   const [phone, setPhone] = useState<string>(userStore?.getPhone || '');
 
+  const {t} = useTranslation();
   function updateUser(): void {
     userStore.update({username, age, address, phone});
     navigation.navigate('home-stack');
@@ -24,30 +26,34 @@ const EditProfile = ({navigation}: Tnavigation) => {
         value={username}
         setValue={setUsername}
         icon="user"
-        placeholder="Your Username"
+        placeholder="your username"
       />
       <InputText
         value={phone}
         setValue={setPhone}
         icon="phone"
         type="phone"
-        placeholder="Your Phone"
+        placeholder="your phone"
       />
       <InputText
         value={age}
         setValue={setAge}
         icon="image-portrait"
         type="age"
-        placeholder="Your Age"
+        placeholder="your age"
       />
       <InputText
         value={address}
         setValue={setAddress}
         icon="location-dot"
-        placeholder="Your Address"
+        placeholder="your address"
       />
       <View style={{marginTop: 12}}>
-        <Button title="Submit" color={COLORS.primary} onPress={updateUser} />
+        <Button
+          title={t('submit')}
+          color={COLORS.primary}
+          onPress={updateUser}
+        />
       </View>
     </View>
   );

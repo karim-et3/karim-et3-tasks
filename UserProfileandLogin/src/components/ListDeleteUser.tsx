@@ -1,18 +1,27 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
-import {COLORS} from '../constants';
 import usersStore from '../mobx/Users';
 import DeleteUser from './DeleteUser';
+import {withObserverAndTheme} from './hoc';
+import {ScrollView} from 'react-native-gesture-handler';
+import {TSIZES} from '../types';
 
-const ListDeleteUser = () => {
+const ListDeleteUser = ({SIZES}: {SIZES: TSIZES}) => {
   return (
-    <View>
-      {usersStore.getUsers.map(user => (
-        <DeleteUser user={user} />
-      ))}
-      <Text style={{color: COLORS.black}}>DeleteUser</Text>
-    </View>
+    <ScrollView showsVerticalScrollIndicator={true}>
+      <View
+        style={{
+          flexDirection: 'column',
+          gap: 10,
+          marginHorizontal: SIZES.medium,
+          marginVertical: SIZES.xSmall,
+        }}>
+        {usersStore.getUsers.map(user => (
+          <DeleteUser user={user} key={user.id} />
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 
-export default ListDeleteUser;
+export default withObserverAndTheme(ListDeleteUser);

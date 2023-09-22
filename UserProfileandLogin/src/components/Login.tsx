@@ -6,11 +6,13 @@ import {observer} from 'mobx-react';
 import {Tnavigation} from '../types';
 import {COLORS} from '../constants';
 import {ToastContext} from './context/ToastContext';
+import {useTranslation} from 'react-i18next';
 
 const Login = ({navigation}: Tnavigation) => {
   const {changeVisiblity} = useContext(ToastContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const {t} = useTranslation();
   const login = () => {
     if (!username)
       return changeVisiblity({
@@ -58,17 +60,17 @@ const Login = ({navigation}: Tnavigation) => {
         setValue={setUsername}
         type="text"
         icon="fa-solid fa-user"
-        placeholder={'Username'}
+        placeholder={t('username')}
       />
       <InputText
         value={password}
         setValue={setPassword}
         type="password"
         icon="fa-solid fa-lock"
-        placeholder={'Password'}
+        placeholder={t('password')}
       />
       <View style={{width: '100%', marginTop: 20}}>
-        <Button title="Submit" color={COLORS.primary} onPress={login} />
+        <Button title={t('submit')} color={COLORS.primary} onPress={login} />
       </View>
     </View>
   );

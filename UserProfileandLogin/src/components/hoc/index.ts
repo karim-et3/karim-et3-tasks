@@ -1,12 +1,6 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {observer as LiteObserver} from 'mobx-react-lite';
+import compose from './Recompose';
+import CustomTheme from '../../theme';
 
-const index = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  );
-};
-
-export default index;
+export const withObserverAndTheme = (component: React.ComponentType) =>
+  compose(LiteObserver, CustomTheme)(component);
