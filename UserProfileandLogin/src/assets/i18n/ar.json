@@ -19,6 +19,8 @@
         "your age": "العمر",
         "your address": "العناون",
         "Logged in.": ".تم تسجيل الدخول",
-        "Wrong username or password.": "خظأ في الإسم أو كلمة السر"
+        "Wrong username or password.": "خظأ في الإسم أو كلمة السر",
+        "no users.": "لا يوجد مستخدمين",
+        "testinggg": "تيستنغغغ"
     }
 }

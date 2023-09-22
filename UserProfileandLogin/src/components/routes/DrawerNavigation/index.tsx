@@ -7,16 +7,15 @@ import {
 } from '@react-navigation/drawer';
 import RootTabNavigation from '../TabNavigation';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {COLORS, SIZES} from '../../../constants';
 import Login from '../../Login';
 import adminStore from '../../../mobx/Admin';
-import {observer} from 'mobx-react-lite';
 import LanguageSwitch from './LanguageSwitch';
-import {useTranslation} from 'react-i18next';
+import {withObserverAndTheme} from '../../hoc';
+import langaugeStore from '../../../mobx/Language';
+import {TRootDrawerNavigation} from '../../../types';
 
 const Drawer = createDrawerNavigator();
-const RootDrawerNavigation = () => {
-  const {t} = useTranslation();
+const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
   return (
     <Drawer.Navigator
       initialRouteName="home-drawer"
@@ -36,7 +35,7 @@ const RootDrawerNavigation = () => {
           <DrawerContentScrollView>
             <DrawerItemList {...props} />
             <DrawerItem
-              label={t('deleter')}
+              label={langaugeStore.translate('deleter')}
               icon={() => (
                 <FontAwesomeIcon
                   icon="user-slash"
@@ -54,7 +53,7 @@ const RootDrawerNavigation = () => {
             />
             <LanguageSwitch />
             <DrawerItem
-              label={t('logout')}
+              label={langaugeStore.translate('logout')}
               icon={() => (
                 <FontAwesomeIcon
                   icon="right-from-bracket"
@@ -80,7 +79,7 @@ const RootDrawerNavigation = () => {
             component={RootTabNavigation}
             options={{
               drawerLabelStyle: {fontSize: SIZES.medium, marginLeft: -10},
-              title: t('home'),
+              title: langaugeStore.translate('home'),
               drawerIcon: props => (
                 <FontAwesomeIcon icon="home" size={18} color={props.color} />
               ),
@@ -114,4 +113,4 @@ const RootDrawerNavigation = () => {
   );
 };
 
-export default observer(RootDrawerNavigation);
+export default withObserverAndTheme(RootDrawerNavigation);

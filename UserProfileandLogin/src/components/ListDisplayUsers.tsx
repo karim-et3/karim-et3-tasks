@@ -4,6 +4,7 @@ import usersStore from '../mobx/Users';
 import {SIZES} from '../constants';
 import DisplayUser from './DisplayUser';
 import {ScrollView} from 'react-native-gesture-handler';
+import {withObserverAndTheme} from './hoc';
 
 const ListDisplayUsers = () => {
   return (
@@ -24,4 +25,4 @@ const ListDisplayUsers = () => {
   );
 };
 
-export default ListDisplayUsers;
+export default withObserverAndTheme(ListDisplayUsers);

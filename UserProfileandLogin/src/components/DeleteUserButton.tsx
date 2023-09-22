@@ -1,20 +1,11 @@
 import {Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {withObserverAndTheme} from './hoc';
-import {TCOLORS, TSIZES} from '../types';
-import {useTranslation} from 'react-i18next';
+import {TDeleteUserButton} from '../types';
 import usersStore from '../mobx/Users';
+import langaugeStore from '../mobx/Language';
 
-const DeleteUserButton = ({
-  COLORS,
-  SIZES,
-  id,
-}: {
-  COLORS: TCOLORS;
-  SIZES: TSIZES;
-  id: number;
-}) => {
-  const {t} = useTranslation();
+const DeleteUserButton = ({id, COLORS, SIZES}: TDeleteUserButton) => {
   return (
     <TouchableOpacity
       onPress={() => usersStore.deleteUser(id)}
@@ -26,7 +17,9 @@ const DeleteUserButton = ({
         justifyContent: 'center',
         borderRadius: 10,
       }}>
-      <Text style={{color: COLORS.white}}>{t('delete')}</Text>
+      <Text style={{color: COLORS.white}}>
+        {langaugeStore.translate('delete')}
+      </Text>
     </TouchableOpacity>
   );
 };

@@ -1,23 +1,22 @@
 import {memoize} from 'lodash';
 import {users} from '../constants/users';
+import {observable, runInAction} from 'mobx';
 import {TUsers} from '../types';
-import {runInAction} from 'mobx';
 
 class Users {
-  users: Array<TUsers> = users;
+  users = observable.array<TUsers>(users);
 
   get getUsers() {
     return this.users;
   }
-  set setUsers(users: TUsers[]) {
-    this.users = users;
-  }
+
   getUser(id: number) {
-    return users.find(user => user.id === id);
+    return this.users.find(user => user.id === id);
   }
   deleteUser(id: number) {
-    return runInAction(() => {
-      return (this.users = this.users.filter(user => user.id !== id));
+    runInAction(() => {
+      const index = this.users.findIndex(item => item.id === id);
+      this.users.remove(this.users[index]);
     });
   }
 }

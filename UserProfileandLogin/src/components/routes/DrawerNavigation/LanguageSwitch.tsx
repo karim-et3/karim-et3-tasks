@@ -4,10 +4,13 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {withObserverAndTheme} from '../../hoc';
 import {TLanguageSwitch} from '../../../types';
 import {useTranslation} from 'react-i18next';
+import langaugeStore from '../../../mobx/Language';
 
 const LanguageSwitch = ({COLORS, SIZES, FONTS}: TLanguageSwitch) => {
-  const {t, i18n} = useTranslation();
-  const [arabicLanguage, setArabicLanguage] = useState(false);
+  const {i18n} = useTranslation();
+  const [arabicLanguage, setArabicLanguage] = useState(
+    i18n.language === 'ar' ? true : false,
+  );
 
   const changeLanguage = () => {
     i18n.changeLanguage(arabicLanguage ? 'en' : 'ar');
@@ -38,7 +41,9 @@ const LanguageSwitch = ({COLORS, SIZES, FONTS}: TLanguageSwitch) => {
             fontWeight: FONTS.medium,
             color: COLORS.test_primary3,
           }}>
-          {arabicLanguage ? t('english') : t('arabic')}
+          {arabicLanguage
+            ? langaugeStore.translate('english')
+            : langaugeStore.translate('arabic')}
         </Text>
         <Switch
           style={{marginLeft: 10}}

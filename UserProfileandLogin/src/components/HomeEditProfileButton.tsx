@@ -1,17 +1,13 @@
 import {Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {withObserverAndTheme} from './hoc';
-import {TCOLORS, Tnavigation} from '../types';
-import {useTranslation} from 'react-i18next';
+import {THomeEditProfileButton} from '../types';
+import langaugeStore from '../mobx/Language';
 
 const HomeEditProfileButton = ({
   COLORS,
   navigation,
-}: {
-  COLORS: TCOLORS;
-  navigation: Tnavigation;
-}) => {
-  const {t} = useTranslation();
+}: THomeEditProfileButton) => {
   return (
     <TouchableOpacity
       style={{
@@ -27,7 +23,9 @@ const HomeEditProfileButton = ({
         marginHorizontal: 135,
       }}
       onPress={() => navigation.navigate('edit')}>
-      <Text style={{color: COLORS.white}}>{t('edit-profile')}</Text>
+      <Text style={{color: COLORS.white}}>
+        {langaugeStore.translate('edit-profile')}
+      </Text>
     </TouchableOpacity>
   );
 };

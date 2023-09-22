@@ -14,8 +14,10 @@
         "profile": "Profile",
         "all-users": "All Users",
         "add-user": "Add User",
-        "delete": "delete",
+        "delete": "Delete",
         "Logged in.": "Logged in.",
-        "Wrong username or password.": "Wrong username or password."
+        "Wrong username or password.": "Wrong username or password.",
+        "no users.": "No users.",
+        "testinggg": "TESTINGGG"
     }
 }

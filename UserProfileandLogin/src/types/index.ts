@@ -17,6 +17,7 @@ export type UserDetailsParamsList = {
 export type TUserDetails = {
   navigation: Tnavigation;
   route: RouteProp<UserDetailsParamsList, 'user-details'>;
+  COLORS: TCOLORS;
 };
 export type Tnavigation = {
   navigate(arg0: string): void;
@@ -35,7 +36,7 @@ export type TAdmin = {
   phone: string;
   loggedIn: boolean;
 };
-export type TLogin = {
+export type TLoginInput = {
   username: string;
   password: string;
 };
@@ -95,9 +96,9 @@ export type TSIZES = {
 };
 
 export type TFONTS = {
-  regular: string;
-  medium: string;
-  bold: string;
+  regular: '400';
+  medium: '500';
+  bold: '700';
 };
 
 export type TSHADOWS = {
@@ -139,4 +140,43 @@ export type TLanguageSwitch = {
   COLORS: TCOLORS;
   SIZES: TSIZES;
   FONTS: TFONTS;
+};
+export type TDeleteUserButton = {
+  COLORS: TCOLORS;
+  SIZES: TSIZES;
+  id: number;
+};
+export type TEditProfile = {
+  COLORS: TCOLORS;
+  navigation: Tnavigation;
+};
+export type TDisplayUser = {
+  COLORS: TCOLORS;
+  FONTS: TFONTS;
+  SIZES: TSIZES;
+  user: TUsers;
+};
+export type THome = {
+  navigation: Tnavigation;
+};
+export type THomeText = {
+  COLORS: TCOLORS;
+  username: string;
+};
+export type TListDeleteUser = {
+  COLORS: TCOLORS;
+  FONTS: TFONTS;
+  SIZES: TSIZES;
+};
+export type TLogin = {
+  navigation: Tnavigation;
+  COLORS: TCOLORS;
+};
+export type THomeEditProfileButton = {
+  COLORS: TCOLORS;
+  navigation: Tnavigation;
+};
+export type TRootDrawerNavigation = {
+  COLORS: TCOLORS;
+  SIZES: TSIZES;
 };

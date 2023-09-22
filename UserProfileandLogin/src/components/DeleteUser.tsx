@@ -4,12 +4,12 @@ import {TDeleteUser} from '../types';
 import {withObserverAndTheme} from './hoc';
 import DeleteUserButton from './DeleteUserButton';
 import DeleteUserDescription from './DeleteUserDescription';
-import Animated, {FadeOut} from 'react-native-reanimated';
+import Animated, {ZoomOutEasyUp} from 'react-native-reanimated';
 
-const DeleteUser = ({SIZES, SHADOWS, user}: TDeleteUser) => {
+const DeleteUser = ({SHADOWS, SIZES, user}: TDeleteUser) => {
   return (
     <Animated.View
-      exiting={FadeOut}
+      exiting={ZoomOutEasyUp}
       key={user.id}
       style={[
         SHADOWS.small,

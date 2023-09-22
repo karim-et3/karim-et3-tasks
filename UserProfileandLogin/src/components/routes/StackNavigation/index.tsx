@@ -6,11 +6,10 @@ import RootDrawerNavigation from '../DrawerNavigation';
 import UserDetails from '../../UserDetails';
 import ListDeleteUser from '../../ListDeleteUser';
 import Logout from '../../Logout';
-import {useTranslation} from 'react-i18next';
+import langaugeStore from '../../../mobx/Language';
 
 const Stack = createStackNavigator();
 const RootStackNavigation = () => {
-  const {t} = useTranslation();
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -22,13 +21,13 @@ const RootStackNavigation = () => {
         <Stack.Screen
           name="edit"
           component={EditProfile}
-          options={{title: t('profile')}}
+          options={{title: langaugeStore.translate('profile')}}
         />
         <Stack.Screen name="user-details" component={UserDetails} />
         <Stack.Screen
           name="delete-user"
           component={ListDeleteUser}
-          options={{title: t('deleter')}}
+          options={{title: langaugeStore.translate('deleter')}}
         />
         <Stack.Screen
           name="logout"

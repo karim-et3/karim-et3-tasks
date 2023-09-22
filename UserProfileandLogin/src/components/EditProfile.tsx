@@ -2,11 +2,11 @@ import {View, Button} from 'react-native';
 import React, {useState} from 'react';
 import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
-import {Tnavigation} from '../types';
-import {useTranslation} from 'react-i18next';
+import {TEditProfile} from '../types';
 import {withObserverAndTheme} from './hoc';
+import langaugeStore from '../mobx/Language';
 
-const EditProfile = ({COLORS, navigation}: Tnavigation) => {
+const EditProfile = ({COLORS, navigation}: TEditProfile) => {
   const [username, setUsername] = useState<string>(
     userStore?.getUsername || '',
   );
@@ -14,7 +14,6 @@ const EditProfile = ({COLORS, navigation}: Tnavigation) => {
   const [age, setAge] = useState<string>(userStore?.getAge || '');
   const [phone, setPhone] = useState<string>(userStore?.getPhone || '');
 
-  const {t} = useTranslation();
   function updateUser(): void {
     userStore.update({username, age, address, phone});
     navigation.navigate('home-stack');
@@ -50,7 +49,7 @@ const EditProfile = ({COLORS, navigation}: Tnavigation) => {
       />
       <View style={{marginTop: 12}}>
         <Button
-          title={t('submit')}
+          title={langaugeStore.translate('submit')}
           color={COLORS.primary}
           onPress={updateUser}
         />

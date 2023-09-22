@@ -1,11 +1,11 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {TUsers} from '../types';
+import {TDisplayUser} from '../types';
 import LinkButton from './common/LinkButton';
 import {withObserverAndTheme} from './hoc';
 
-const User = ({COLORS, FONTS, SIZES, user}: {user: TUsers}) => {
+const DisplayUser = ({COLORS, FONTS, SIZES, user}: TDisplayUser) => {
   return (
     <LinkButton
       to={{screen: 'user-details', params: {id: user.id}}}
@@ -67,4 +67,4 @@ const User = ({COLORS, FONTS, SIZES, user}: {user: TUsers}) => {
   );
 };
 
-export default withObserverAndTheme(User);
+export default withObserverAndTheme(DisplayUser);

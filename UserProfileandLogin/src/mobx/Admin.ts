@@ -1,6 +1,6 @@
 import {observable, runInAction} from 'mobx';
 import memoize from 'lodash/memoize';
-import {TUpdateAdmin, TLogin} from '../types';
+import {TUpdateAdmin, TLoginInput} from '../types';
 
 class Admin {
   user = observable({
@@ -14,7 +14,7 @@ class Admin {
   checkAuth = () => {
     return this.user.loggedIn;
   };
-  login = ({username, password}: TLogin) => {
+  login = ({username, password}: TLoginInput) => {
     return runInAction(() => {
       if (username === 'test' && password === '123') {
         this.user.username = username;

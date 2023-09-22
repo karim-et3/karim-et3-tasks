@@ -2,16 +2,15 @@ import {Button, View} from 'react-native';
 import React, {useContext, useState} from 'react';
 import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
-import {Tnavigation} from '../types';
+import {TLogin} from '../types';
 import {ToastContext} from './context/ToastContext';
-import {useTranslation} from 'react-i18next';
 import {withObserverAndTheme} from './hoc';
+import langaugeStore from '../mobx/Language';
 
-const Login = ({navigation, COLORS}: Tnavigation) => {
+const Login = ({navigation, COLORS}: TLogin) => {
   const {changeVisiblity} = useContext(ToastContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const {t} = useTranslation();
   const login = () => {
     if (!username)
       return changeVisiblity({
@@ -59,17 +58,21 @@ const Login = ({navigation, COLORS}: Tnavigation) => {
         setValue={setUsername}
         type="text"
         icon="fa-solid fa-user"
-        placeholder={t('username')}
+        placeholder={'username'}
       />
       <InputText
         value={password}
         setValue={setPassword}
         type="password"
         icon="fa-solid fa-lock"
-        placeholder={t('password')}
+        placeholder={'password'}
       />
       <View style={{width: '100%', marginTop: 20}}>
-        <Button title={t('submit')} color={COLORS.primary} onPress={login} />
+        <Button
+          title={langaugeStore.translate('submit')}
+          color={COLORS.primary}
+          onPress={login}
+        />
       </View>
     </View>
   );

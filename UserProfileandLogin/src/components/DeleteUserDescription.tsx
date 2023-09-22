@@ -4,10 +4,10 @@ import {withObserverAndTheme} from './hoc';
 import {TDeleteUserDescription} from '../types';
 
 const DeleteUserDescription = ({
-  user,
   COLORS,
   FONTS,
   SIZES,
+  user,
 }: TDeleteUserDescription) => {
   return (
     <View>
