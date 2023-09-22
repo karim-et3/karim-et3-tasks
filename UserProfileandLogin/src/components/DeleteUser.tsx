@@ -4,10 +4,12 @@ import {TDeleteUser} from '../types';
 import {withObserverAndTheme} from './hoc';
 import DeleteUserButton from './DeleteUserButton';
 import DeleteUserDescription from './DeleteUserDescription';
+import Animated, {FadeOut} from 'react-native-reanimated';
 
 const DeleteUser = ({SIZES, SHADOWS, user}: TDeleteUser) => {
   return (
-    <View
+    <Animated.View
+      exiting={FadeOut}
       key={user.id}
       style={[
         SHADOWS.small,
@@ -38,9 +40,9 @@ const DeleteUser = ({SIZES, SHADOWS, user}: TDeleteUser) => {
           justifyContent: 'space-between',
         }}>
         <DeleteUserDescription user={user} />
-        <DeleteUserButton />
+        <DeleteUserButton id={user.id} />
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

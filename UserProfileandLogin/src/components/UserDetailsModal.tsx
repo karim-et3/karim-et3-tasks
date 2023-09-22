@@ -2,10 +2,12 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
 import {COLORS, FONTS, SHADOWS, SIZES} from '../constants';
 import {TUserDetailsModal} from '../types';
+import Animated, {ZoomIn} from 'react-native-reanimated';
 
 const UserDetailsModal = ({userDetails}: {userDetails: TUserDetailsModal}) => {
   return (
-    <View
+    <Animated.View
+      entering={ZoomIn}
       style={[
         SHADOWS.medium,
         {
@@ -47,7 +49,7 @@ const UserDetailsModal = ({userDetails}: {userDetails: TUserDetailsModal}) => {
         }}>
         {userDetails.description}
       </Text>
-    </View>
+    </Animated.View>
   );
 };
 

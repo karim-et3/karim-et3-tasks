@@ -20,5 +20,5 @@ function App(): JSX.Element {
   );
 }
 
-export default withObserverAndTheme(App);
+export default App;
 library.add(fab, fas, far, faSquareCheck);

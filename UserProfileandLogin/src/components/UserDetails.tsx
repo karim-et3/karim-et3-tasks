@@ -1,13 +1,12 @@
 import {View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import usersStore from '../mobx/Users';
-import {observer} from 'mobx-react';
-import {COLORS} from '../constants';
 import {TUserDetails} from '../types';
 import UserDetailsModal from './UserDetailsModal';
 import Loading from './Loading';
+import {withObserverAndTheme} from './hoc';
 
-const UserDetails = ({route, navigation}: TUserDetails) => {
+const UserDetails = ({route, navigation, COLORS}: TUserDetails) => {
   const [userDetails, setUserDetails] = useState({
     firstName: '',
     lastName: '',
@@ -60,4 +59,4 @@ const UserDetails = ({route, navigation}: TUserDetails) => {
   );
 };
 
-export default observer(UserDetails);
+export default withObserverAndTheme(UserDetails);

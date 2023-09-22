@@ -3,10 +3,10 @@ import React, {useState} from 'react';
 import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
 import {Tnavigation} from '../types';
-import {COLORS} from '../constants';
 import {useTranslation} from 'react-i18next';
+import {withObserverAndTheme} from './hoc';
 
-const EditProfile = ({navigation}: Tnavigation) => {
+const EditProfile = ({COLORS, navigation}: Tnavigation) => {
   const [username, setUsername] = useState<string>(
     userStore?.getUsername || '',
   );
@@ -59,4 +59,4 @@ const EditProfile = ({navigation}: Tnavigation) => {
   );
 };
 
-export default EditProfile;
+export default withObserverAndTheme(EditProfile);

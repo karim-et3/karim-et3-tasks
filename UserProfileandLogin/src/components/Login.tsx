@@ -2,13 +2,12 @@ import {Button, View} from 'react-native';
 import React, {useContext, useState} from 'react';
 import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
-import {observer} from 'mobx-react';
 import {Tnavigation} from '../types';
-import {COLORS} from '../constants';
 import {ToastContext} from './context/ToastContext';
 import {useTranslation} from 'react-i18next';
+import {withObserverAndTheme} from './hoc';
 
-const Login = ({navigation}: Tnavigation) => {
+const Login = ({navigation, COLORS}: Tnavigation) => {
   const {changeVisiblity} = useContext(ToastContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -76,4 +75,4 @@ const Login = ({navigation}: Tnavigation) => {
   );
 };
 
-export default observer(Login);
+export default withObserverAndTheme(Login);

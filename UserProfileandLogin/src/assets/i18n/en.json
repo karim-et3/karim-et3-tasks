@@ -14,6 +14,8 @@
         "profile": "Profile",
         "all-users": "All Users",
         "add-user": "Add User",
-        "delete": "delete"
+        "delete": "delete",
+        "Logged in.": "Logged in.",
+        "Wrong username or password.": "Wrong username or password."
     }
 }

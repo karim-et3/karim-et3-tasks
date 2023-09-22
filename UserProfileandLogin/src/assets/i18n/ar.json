@@ -17,6 +17,8 @@
         "your username": "الاسم",
         "your phone": "رقم الهاتف",
         "your age": "العمر",
-        "your address": "العناون"
+        "your address": "العناون",
+        "Logged in.": ".تم تسجيل الدخول",
+        "Wrong username or password.": "خظأ في الإسم أو كلمة السر"
     }
 }

@@ -3,17 +3,21 @@ import React from 'react';
 import {withObserverAndTheme} from './hoc';
 import {TCOLORS, TSIZES} from '../types';
 import {useTranslation} from 'react-i18next';
+import usersStore from '../mobx/Users';
 
 const DeleteUserButton = ({
   COLORS,
   SIZES,
+  id,
 }: {
   COLORS: TCOLORS;
   SIZES: TSIZES;
+  id: number;
 }) => {
   const {t} = useTranslation();
   return (
     <TouchableOpacity
+      onPress={() => usersStore.deleteUser(id)}
       style={{
         backgroundColor: COLORS.error,
         paddingHorizontal: SIZES.medium,
