@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {observer} from 'mobx-react-lite';
-import themeStore from '../mobx/Theme';
+import themeStore from '../../mobx/Theme';
 
 const Search = () => {
   return (
