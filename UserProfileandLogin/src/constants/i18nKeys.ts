@@ -1,6 +1,5 @@
 export const languageResources = {
   AR: {
-    test: 'تيست',
     arabic: 'العربية',
     deleter: 'الحاذف',
     logout: 'تسجيل خروج',
@@ -23,7 +22,6 @@ export const languageResources = {
     'no users.': 'لا يوجد مستخدمين',
   },
   ENG: {
-    test: 'test',
     arabic: 'العربية',
     english: 'English',
     deleter: 'Deleter',
@@ -41,6 +39,5 @@ export const languageResources = {
     'Logged in.': 'Logged in.',
     'Wrong username or password.': 'Wrong username or password.',
     'no users.': 'No users.',
-    testinggg: 'TESTINGGG',
   },
 };

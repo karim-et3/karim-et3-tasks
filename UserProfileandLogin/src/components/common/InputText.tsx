@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {TLoginProp} from '../../types';
 import {COLORS} from '../../constants';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import transaltionStore from '../../mobx/Translation';
+import translationStore from '../../mobx/Translation';
 
 const InputText = ({
   value,
@@ -53,7 +53,7 @@ const InputText = ({
         onBlur={() => setFocused(false)}
         value={value}
         passwordRules="required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8"
-        placeholder={transaltionStore.get(placeholder)}
+        placeholder={translationStore.get(placeholder)}
         onChangeText={setValue}
         placeholderTextColor={COLORS.placeholder}
         style={{

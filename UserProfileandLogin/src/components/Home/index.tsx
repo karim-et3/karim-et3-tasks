@@ -6,13 +6,13 @@ import {withObserverAndTheme} from '../../hoc';
 import HomeEditProfileButton from './HomeEditProfileButton';
 import HomeText from './HomeText';
 import globalStore from '../../mobx/Global';
-import transaltionStore from '../../mobx/Translation';
+import translationStore from '../../mobx/Translation';
 
 const Home = ({navigation}: THome) => {
   useEffect(() => {
     globalStore.backPress(globalStore.handleBackPress);
   }, [globalStore.handleBackPress]);
-  console.log(transaltionStore.get('profile'));
+  console.log(translationStore.get('profile'));
   return (
     <View style={{flexDirection: 'column'}}>
       <HomeText username={userStore.user.username} />

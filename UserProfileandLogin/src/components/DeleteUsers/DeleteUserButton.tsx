@@ -3,7 +3,7 @@ import React from 'react';
 import {withObserverAndTheme} from '../../hoc';
 import {TDeleteUserButton} from '../../types';
 import usersStore from '../../mobx/Users';
-import transaltionStore from '../../mobx/Translation';
+import translationStore from '../../mobx/Translation';
 
 const DeleteUserButton = ({id, COLORS, SIZES}: TDeleteUserButton) => {
   return (
@@ -18,7 +18,7 @@ const DeleteUserButton = ({id, COLORS, SIZES}: TDeleteUserButton) => {
         borderRadius: 10,
       }}>
       <Text style={{color: COLORS.white}}>
-        {transaltionStore.get('delete')}
+        {translationStore.get('delete')}
       </Text>
     </TouchableOpacity>
   );

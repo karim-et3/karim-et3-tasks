@@ -2,10 +2,10 @@ import {memoize} from 'lodash';
 import {observable, runInAction} from 'mobx';
 import {languageResources} from '../constants';
 
-class Transaltion {
+class Translation {
   language = observable.box<string>('ENG');
 
-  get(text: string) {
+  get(text: string): string {
     return languageResources[this.language.get()][text];
   }
   setLanguage(lang: 'AR' | 'ENG') {
@@ -22,8 +22,8 @@ class Transaltion {
   }
 }
 const createTranslationInstance = memoize(
-  () => new Transaltion(),
+  () => new Translation(),
   () => 1,
 );
-const transaltionStore = createTranslationInstance();
-export default transaltionStore;
+const translationStore = createTranslationInstance();
+export default translationStore;

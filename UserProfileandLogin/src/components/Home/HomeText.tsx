@@ -2,7 +2,7 @@ import {Text} from 'react-native';
 import React from 'react';
 import {withObserverAndTheme} from '../../hoc';
 import {THomeText} from '../../types';
-import transaltionStore from '../../mobx/Translation';
+import translationStore from '../../mobx/Translation';
 
 const HomeText = ({COLORS, username}: THomeText) => {
   return (
@@ -14,7 +14,7 @@ const HomeText = ({COLORS, username}: THomeText) => {
         marginTop: 100,
         fontWeight: '500',
       }}>
-      {transaltionStore.get('welcome')}{' '}
+      {translationStore.get('welcome')}{' '}
       <Text style={{fontSize: 33, fontWeight: '600'}}>{username}.</Text>
     </Text>
   );

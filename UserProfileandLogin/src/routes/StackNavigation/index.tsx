@@ -9,7 +9,7 @@ import Logout from '../../components/Logout';
 import Login from '../../components/Login';
 import adminStore from '../../mobx/Admin';
 import {withObserverAndTheme} from '../../hoc';
-import transaltionStore from '../../mobx/Translation';
+import translationStore from '../../mobx/Translation';
 
 const Stack = createStackNavigator();
 const RootStackNavigation = () => {
@@ -26,13 +26,13 @@ const RootStackNavigation = () => {
             <Stack.Screen
               name="edit"
               component={EditProfile}
-              options={{title: transaltionStore.get('profile')}}
+              options={{title: translationStore.get('profile')}}
             />
             <Stack.Screen name="user-details" component={UserDetails} />
             <Stack.Screen
               name="delete-user"
               component={ListDeleteUser}
-              options={{title: transaltionStore.get('deleter')}}
+              options={{title: translationStore.get('deleter')}}
             />
             <Stack.Screen
               name="logout"

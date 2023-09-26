@@ -6,7 +6,7 @@ import AddUser from '../../components/AddUser';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {COLORS} from '../../constants';
 import {withObserverAndTheme} from '../../hoc';
-import transaltionStore from '../../mobx/Translation';
+import translationStore from '../../mobx/Translation';
 
 const Tab = createMaterialBottomTabNavigator();
 const RootTabNavigation = () => {
@@ -21,7 +21,7 @@ const RootTabNavigation = () => {
         name="all-users"
         component={AllUsers}
         options={{
-          tabBarLabel: transaltionStore.get('all-users'),
+          tabBarLabel: translationStore.get('all-users'),
           tabBarIcon: props => (
             <FontAwesomeIcon
               icon="user-gear"
@@ -35,7 +35,7 @@ const RootTabNavigation = () => {
         name="home-tab"
         component={Home}
         options={{
-          tabBarLabel: transaltionStore.get('home'),
+          tabBarLabel: translationStore.get('home'),
           tabBarIcon: props => (
             <FontAwesomeIcon
               icon={'home'}
@@ -49,7 +49,7 @@ const RootTabNavigation = () => {
         name="add-user"
         component={AddUser}
         options={{
-          tabBarLabel: transaltionStore.get('add-user'),
+          tabBarLabel: translationStore.get('add-user'),
           tabBarIcon: props => (
             <FontAwesomeIcon
               icon="user-plus"

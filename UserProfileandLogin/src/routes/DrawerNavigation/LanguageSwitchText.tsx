@@ -3,7 +3,7 @@ import React from 'react';
 import LanguageSwitchSwitch from './LanguageSwitchSwitch';
 import {withObserverAndTheme} from '../../hoc';
 import {TLanguageSwitchText} from '../../types';
-import transaltionStore from '../../mobx/Translation';
+import translationStore from '../../mobx/Translation';
 
 const LanguageSwitchText = ({COLORS, SIZES, FONTS}: TLanguageSwitchText) => {
   return (
@@ -19,9 +19,9 @@ const LanguageSwitchText = ({COLORS, SIZES, FONTS}: TLanguageSwitchText) => {
           fontWeight: FONTS.medium,
           color: COLORS.test_primary3,
         }}>
-        {transaltionStore.IsArabic
-          ? transaltionStore.get('english')
-          : transaltionStore.get('arabic')}
+        {translationStore.IsArabic
+          ? translationStore.get('english')
+          : translationStore.get('arabic')}
       </Text>
       <LanguageSwitchSwitch />
     </View>
