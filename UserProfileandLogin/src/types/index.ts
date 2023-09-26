@@ -4,8 +4,10 @@ import {
   RouteProp,
 } from '@react-navigation/native';
 
+type TsetString = React.Dispatch<React.SetStateAction<string>>;
+
 export type TLoginProp = {
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  setValue: TsetString;
   value: string;
   icon: any;
   placeholder: string;
@@ -138,8 +140,6 @@ export type TDeleteUserDescription = {
 };
 export type TLanguageSwitch = {
   COLORS: TCOLORS;
-  SIZES: TSIZES;
-  FONTS: TFONTS;
 };
 export type TDeleteUserButton = {
   COLORS: TCOLORS;
@@ -179,4 +179,17 @@ export type THomeEditProfileButton = {
 export type TRootDrawerNavigation = {
   COLORS: TCOLORS;
   SIZES: TSIZES;
+};
+export type TLanguageSwitchText = {
+  COLORS: TCOLORS;
+  SIZES: TSIZES;
+  FONTS: TFONTS;
+};
+export type TLanguageSwitchSwitch = {
+  COLORS: TCOLORS;
+};
+export type TNoUsers = {
+  COLORS: TCOLORS;
+  SIZES: TSIZES;
+  FONTS: TFONTS;
 };

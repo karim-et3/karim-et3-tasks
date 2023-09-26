@@ -1,8 +1,8 @@
 import compose from './Recompose';
-import CustomTheme from '../../theme';
+import CustomTheme from '../theme';
 import {observer as LiteObserver} from 'mobx-react-lite';
 import {ComponentType} from 'react';
-import {TCOLORS} from '../../types';
+import {TCOLORS} from '../types';
 
 type WithThemeAndLiteObserver = <T extends {}>(
   component: ComponentType<T & {theme: TCOLORS}>,

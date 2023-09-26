@@ -1,10 +1,10 @@
 import {View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import usersStore from '../mobx/Users';
-import {TUserDetails} from '../types';
+import usersStore from '../../mobx/Users';
+import {TUserDetails} from '../../types';
 import UserDetailsModal from './UserDetailsModal';
-import Loading from './Loading';
-import {withObserverAndTheme} from './hoc';
+import Loading from '../Loading';
+import {withObserverAndTheme} from '../../hoc';
 
 const UserDetails = ({route, navigation, COLORS}: TUserDetails) => {
   const [userDetails, setUserDetails] = useState({

@@ -3,11 +3,11 @@ import React, {useContext, useState} from 'react';
 import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
 import {TLogin} from '../types';
-import {ToastContext} from './context/ToastContext';
-import {withObserverAndTheme} from './hoc';
-import langaugeStore from '../mobx/Language';
+import {ToastContext} from '../context/ToastContext';
+import {withObserverAndTheme} from '../hoc';
+import i18n from '../mobx/i18n';
 
-const Login = ({navigation, COLORS}: TLogin) => {
+const Login = ({COLORS}: TLogin) => {
   const {changeVisiblity} = useContext(ToastContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -31,9 +31,6 @@ const Login = ({navigation, COLORS}: TLogin) => {
         icon: 'fa-solid fa-circle-check',
         error: false,
       });
-      return setTimeout(() => {
-        navigation.navigate('home-stack');
-      }, 1000);
     } else {
       return changeVisiblity({
         text: 'Wrong username or password.',
@@ -69,7 +66,7 @@ const Login = ({navigation, COLORS}: TLogin) => {
       />
       <View style={{width: '100%', marginTop: 20}}>
         <Button
-          title={langaugeStore.translate('submit')}
+          title={i18n.get('submit')}
           color={COLORS.primary}
           onPress={login}
         />

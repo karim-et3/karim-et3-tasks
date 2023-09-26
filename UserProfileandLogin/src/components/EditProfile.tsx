@@ -3,8 +3,8 @@ import React, {useState} from 'react';
 import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
 import {TEditProfile} from '../types';
-import {withObserverAndTheme} from './hoc';
-import langaugeStore from '../mobx/Language';
+import {withObserverAndTheme} from '../hoc';
+import i18n from '../mobx/i18n';
 
 const EditProfile = ({COLORS, navigation}: TEditProfile) => {
   const [username, setUsername] = useState<string>(
@@ -49,7 +49,7 @@ const EditProfile = ({COLORS, navigation}: TEditProfile) => {
       />
       <View style={{marginTop: 12}}>
         <Button
-          title={langaugeStore.translate('submit')}
+          title={i18n.get('submit')}
           color={COLORS.primary}
           onPress={updateUser}
         />

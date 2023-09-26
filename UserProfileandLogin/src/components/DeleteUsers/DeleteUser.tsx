@@ -1,7 +1,7 @@
 import {View, Image} from 'react-native';
 import React from 'react';
-import {TDeleteUser} from '../types';
-import {withObserverAndTheme} from './hoc';
+import {TDeleteUser} from '../../types';
+import {withObserverAndTheme} from '../../hoc';
 import DeleteUserButton from './DeleteUserButton';
 import DeleteUserDescription from './DeleteUserDescription';
 import Animated, {ZoomOutEasyUp} from 'react-native-reanimated';

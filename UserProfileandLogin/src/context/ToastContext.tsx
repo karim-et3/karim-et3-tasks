@@ -1,7 +1,7 @@
 import React, {useState, createContext, ReactNode, useEffect} from 'react';
-import ToastNotification from '../common/ToastNotification';
+import ToastNotification from '../components/common/ToastNotification';
 import {View} from 'react-native';
-import {TToast} from '../../types';
+import {TToast} from '../types';
 
 export const ToastContext = createContext(null);
 

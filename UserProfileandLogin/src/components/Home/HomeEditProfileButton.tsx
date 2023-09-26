@@ -1,8 +1,8 @@
 import {Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {withObserverAndTheme} from './hoc';
-import {THomeEditProfileButton} from '../types';
-import langaugeStore from '../mobx/Language';
+import {withObserverAndTheme} from '../../hoc';
+import {THomeEditProfileButton} from '../../types';
+import i18n from '../../mobx/i18n';
 
 const HomeEditProfileButton = ({
   COLORS,
@@ -23,9 +23,7 @@ const HomeEditProfileButton = ({
         marginHorizontal: 135,
       }}
       onPress={() => navigation.navigate('edit')}>
-      <Text style={{color: COLORS.white}}>
-        {langaugeStore.translate('edit-profile')}
-      </Text>
+      <Text style={{color: COLORS.white}}>{i18n.get('edit-profile')}</Text>
     </TouchableOpacity>
   );
 };

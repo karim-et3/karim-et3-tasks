@@ -1,10 +1,11 @@
 import {observer} from 'mobx-react-lite';
 import adminStore from '../mobx/Admin';
-import {Tnavigation} from '../types';
+import {useEffect} from 'react';
 
-const Logout = ({navigation}): Tnavigation => {
-  adminStore.logOut();
-  return navigation.goBack();
+const Logout = () => {
+  useEffect(() => {
+    adminStore.logOut();
+  }, []);
 };
 
 export default observer(Logout);

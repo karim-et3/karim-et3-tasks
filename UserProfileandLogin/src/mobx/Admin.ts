@@ -11,9 +11,6 @@ class Admin {
     loggedIn: false,
   });
 
-  checkAuth = () => {
-    return this.user.loggedIn;
-  };
   login = ({username, password}: TLoginInput) => {
     return runInAction(() => {
       if (username === 'test' && password === '123') {
@@ -27,7 +24,7 @@ class Admin {
   };
 
   logOut = () => {
-    return runInAction(() => {
+    runInAction(() => {
       this.user.username = '';
       this.user.age = '';
       this.user.address = '';
@@ -51,6 +48,9 @@ class Admin {
     });
   };
 
+  get checkAuth() {
+    return this.user.loggedIn;
+  }
   get getAdmin() {
     return {
       username: this.user.username,

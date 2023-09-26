@@ -7,12 +7,10 @@ import {
 } from '@react-navigation/drawer';
 import RootTabNavigation from '../TabNavigation';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import Login from '../../Login';
-import adminStore from '../../../mobx/Admin';
 import LanguageSwitch from './LanguageSwitch';
 import {withObserverAndTheme} from '../../hoc';
-import langaugeStore from '../../../mobx/Language';
-import {TRootDrawerNavigation} from '../../../types';
+import i18n from '../../mobx/i18n';
+import {TRootDrawerNavigation} from '../../types';
 
 const Drawer = createDrawerNavigator();
 const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
@@ -35,7 +33,7 @@ const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
           <DrawerContentScrollView>
             <DrawerItemList {...props} />
             <DrawerItem
-              label={langaugeStore.translate('deleter')}
+              label={i18n.get('deleter')}
               icon={() => (
                 <FontAwesomeIcon
                   icon="user-slash"
@@ -53,7 +51,7 @@ const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
             />
             <LanguageSwitch />
             <DrawerItem
-              label={langaugeStore.translate('logout')}
+              label={i18n.get('logout')}
               icon={() => (
                 <FontAwesomeIcon
                   icon="right-from-bracket"
@@ -72,43 +70,17 @@ const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
           </DrawerContentScrollView>
         );
       }}>
-      {adminStore.checkAuth() ? (
-        <>
-          <Drawer.Screen
-            name="home-drawer"
-            component={RootTabNavigation}
-            options={{
-              drawerLabelStyle: {fontSize: SIZES.medium, marginLeft: -10},
-              title: langaugeStore.translate('home'),
-              drawerIcon: props => (
-                <FontAwesomeIcon icon="home" size={18} color={props.color} />
-              ),
-            }}
-          />
-          {/* <Drawer.Screen
-            name="logout"
-            component={Logout}
-            options={
-              {
-                // title: 'Logout',
-                // drawerIcon: props => (
-                //   <FontAwesomeIcon
-                //     icon="right-from-bracket"
-                //     size={18}
-                //     color={props.color}
-                //   />
-                // ),
-              }
-            }
-          /> */}
-        </>
-      ) : (
-        <Drawer.Screen
-          name="login"
-          component={Login}
-          options={{headerShown: false, swipeEnabled: false, swipeEdgeWidth: 0}}
-        />
-      )}
+      <Drawer.Screen
+        name="home-drawer"
+        component={RootTabNavigation}
+        options={{
+          drawerLabelStyle: {fontSize: SIZES.medium, marginLeft: -10},
+          title: i18n.get('home'),
+          drawerIcon: props => (
+            <FontAwesomeIcon icon="home" size={18} color={props.color} />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 };

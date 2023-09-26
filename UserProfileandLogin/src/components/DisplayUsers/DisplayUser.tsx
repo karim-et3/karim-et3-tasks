@@ -1,9 +1,9 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {TDisplayUser} from '../types';
-import LinkButton from './common/LinkButton';
-import {withObserverAndTheme} from './hoc';
+import {TDisplayUser} from '../../types';
+import LinkButton from '../common/LinkButton';
+import {withObserverAndTheme} from '../../hoc';
 
 const DisplayUser = ({COLORS, FONTS, SIZES, user}: TDisplayUser) => {
   return (

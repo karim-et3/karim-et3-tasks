@@ -1,10 +1,10 @@
 import {View} from 'react-native';
 import React from 'react';
-import usersStore from '../mobx/Users';
-import {SIZES} from '../constants';
+import usersStore from '../../mobx/Users';
+import {SIZES} from '../../constants';
 import DisplayUser from './DisplayUser';
 import {ScrollView} from 'react-native-gesture-handler';
-import {withObserverAndTheme} from './hoc';
+import {withObserverAndTheme} from '../../hoc';
 
 const ListDisplayUsers = () => {
   return (

@@ -1,12 +1,10 @@
 import {Text} from 'react-native';
 import React from 'react';
-import {withObserverAndTheme} from './hoc';
-import {useTranslation} from 'react-i18next';
-import {THomeText} from '../types';
-import langaugeStore from '../mobx/Language';
+import {withObserverAndTheme} from '../../hoc';
+import {THomeText} from '../../types';
+import i18n from '../../mobx/i18n';
 
 const HomeText = ({COLORS, username}: THomeText) => {
-  const {t} = useTranslation();
   return (
     <Text
       style={{
@@ -16,7 +14,7 @@ const HomeText = ({COLORS, username}: THomeText) => {
         marginTop: 100,
         fontWeight: '500',
       }}>
-      {langaugeStore.translate('welcome')}{' '}
+      {i18n.get('welcome')}{' '}
       <Text style={{fontSize: 33, fontWeight: '600'}}>{username}.</Text>
     </Text>
   );

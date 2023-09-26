@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {withObserverAndTheme} from './hoc';
-import {TDeleteUserDescription} from '../types';
+import {withObserverAndTheme} from '../../hoc';
+import {TDeleteUserDescription} from '../../types';
 
 const DeleteUserDescription = ({
   COLORS,

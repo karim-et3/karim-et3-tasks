@@ -1,13 +1,13 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import RootStackNavigation from './src/components/routes/StackNavigation';
-import ToastContextProvider from './src/components/context/ToastContext';
+import RootStackNavigation from './src/routes/StackNavigation';
+import ToastContextProvider from './src/context/ToastContext';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import {far} from '@fortawesome/free-regular-svg-icons';
 import {faSquareCheck} from '@fortawesome/free-solid-svg-icons/faSquareCheck';
-import {withObserverAndTheme} from './src/components/hoc';
+import {withObserverAndTheme} from './src/hoc';
 import './src/assets/i18n/i18n';
 
 function App(): JSX.Element {
