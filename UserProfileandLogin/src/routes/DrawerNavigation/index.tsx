@@ -9,8 +9,8 @@ import RootTabNavigation from '../TabNavigation';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import LanguageSwitch from './LanguageSwitch';
 import {withObserverAndTheme} from '../../hoc';
-import i18n from '../../mobx/i18n';
 import {TRootDrawerNavigation} from '../../types';
+import transaltionStore from '../../mobx/Translation';
 
 const Drawer = createDrawerNavigator();
 const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
@@ -33,7 +33,7 @@ const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
           <DrawerContentScrollView>
             <DrawerItemList {...props} />
             <DrawerItem
-              label={i18n.get('deleter')}
+              label={transaltionStore.get('deleter')}
               icon={() => (
                 <FontAwesomeIcon
                   icon="user-slash"
@@ -51,7 +51,7 @@ const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
             />
             <LanguageSwitch />
             <DrawerItem
-              label={i18n.get('logout')}
+              label={transaltionStore.get('logout')}
               icon={() => (
                 <FontAwesomeIcon
                   icon="right-from-bracket"
@@ -75,7 +75,7 @@ const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
         component={RootTabNavigation}
         options={{
           drawerLabelStyle: {fontSize: SIZES.medium, marginLeft: -10},
-          title: i18n.get('home'),
+          title: transaltionStore.get('home'),
           drawerIcon: props => (
             <FontAwesomeIcon icon="home" size={18} color={props.color} />
           ),

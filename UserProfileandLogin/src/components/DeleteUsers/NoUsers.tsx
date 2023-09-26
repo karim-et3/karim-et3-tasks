@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {withObserverAndTheme} from '../../hoc';
-import i18n from '../../mobx/i18n';
+import transaltionStore from '../../mobx/Translation';
 
 const NoUsers = ({COLORS, SIZES, FONTS}) => {
   return (
@@ -16,7 +16,7 @@ const NoUsers = ({COLORS, SIZES, FONTS}) => {
           fontSize: SIZES.large,
           fontWeight: FONTS.bold,
         }}>
-        {i18n.get('no users.')}
+        {transaltionStore.get('no users.')}
       </Text>
     </View>
   );

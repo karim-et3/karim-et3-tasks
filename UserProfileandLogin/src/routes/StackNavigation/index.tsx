@@ -6,11 +6,10 @@ import RootDrawerNavigation from '../DrawerNavigation';
 import UserDetails from '../../components/UserDetails';
 import ListDeleteUser from '../../components/DeleteUsers';
 import Logout from '../../components/Logout';
-import i18n from '../../mobx/i18n';
 import Login from '../../components/Login';
 import adminStore from '../../mobx/Admin';
-import {observer} from 'mobx-react-lite';
 import {withObserverAndTheme} from '../../hoc';
+import transaltionStore from '../../mobx/Translation';
 
 const Stack = createStackNavigator();
 const RootStackNavigation = () => {
@@ -27,13 +26,13 @@ const RootStackNavigation = () => {
             <Stack.Screen
               name="edit"
               component={EditProfile}
-              options={{title: i18n.get('profile')}}
+              options={{title: transaltionStore.get('profile')}}
             />
             <Stack.Screen name="user-details" component={UserDetails} />
             <Stack.Screen
               name="delete-user"
               component={ListDeleteUser}
-              options={{title: i18n.get('deleter')}}
+              options={{title: transaltionStore.get('deleter')}}
             />
             <Stack.Screen
               name="logout"

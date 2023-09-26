@@ -1,7 +1,6 @@
 import React from 'react';
 import {COLORS, SHADOWS, SIZES, FONTS} from '../constants';
 import {Tprops} from '../types';
-// import {t} from '../assets/i18n';
 
 function CustomTheme<T>(Component: React.ComponentType<T>) {
   return (props: T & Tprops) => (
@@ -10,7 +9,6 @@ function CustomTheme<T>(Component: React.ComponentType<T>) {
       FONTS={FONTS}
       SIZES={SIZES}
       SHADOWS={SHADOWS}
-      // t={t}
       {...props}
     />
   );

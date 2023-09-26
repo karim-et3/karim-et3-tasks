@@ -4,7 +4,7 @@ import InputText from './common/InputText';
 import userStore from '../mobx/Admin';
 import {TEditProfile} from '../types';
 import {withObserverAndTheme} from '../hoc';
-import i18n from '../mobx/i18n';
+import transaltionStore from '../mobx/Translation';
 
 const EditProfile = ({COLORS, navigation}: TEditProfile) => {
   const [username, setUsername] = useState<string>(
@@ -49,7 +49,7 @@ const EditProfile = ({COLORS, navigation}: TEditProfile) => {
       />
       <View style={{marginTop: 12}}>
         <Button
-          title={i18n.get('submit')}
+          title={transaltionStore.get('submit')}
           color={COLORS.primary}
           onPress={updateUser}
         />

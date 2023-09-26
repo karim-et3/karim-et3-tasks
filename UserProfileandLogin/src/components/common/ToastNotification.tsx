@@ -4,10 +4,9 @@ import React from 'react';
 import {COLORS, SHADOWS} from '../../constants';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TToast} from '../../types';
-import {useTranslation} from 'react-i18next';
+import transaltionStore from '../../mobx/Translation';
 
 const ToastNotification = ({error, text, icon}: TToast) => {
-  const {t} = useTranslation();
   return (
     <Animated.View
       entering={FadeInUp}
@@ -34,7 +33,7 @@ const ToastNotification = ({error, text, icon}: TToast) => {
       <FontAwesomeIcon icon={icon} size={26} color={COLORS.white} />
       <View>
         <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.white}}>
-          {t(text)}
+          {transaltionStore.get(text)}
         </Text>
       </View>
     </Animated.View>

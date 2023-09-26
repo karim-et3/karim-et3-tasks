@@ -2,8 +2,8 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import LanguageSwitchSwitch from './LanguageSwitchSwitch';
 import {withObserverAndTheme} from '../../hoc';
-import i18n from '../../mobx/i18n';
 import {TLanguageSwitchText} from '../../types';
+import transaltionStore from '../../mobx/Translation';
 
 const LanguageSwitchText = ({COLORS, SIZES, FONTS}: TLanguageSwitchText) => {
   return (
@@ -19,7 +19,9 @@ const LanguageSwitchText = ({COLORS, SIZES, FONTS}: TLanguageSwitchText) => {
           fontWeight: FONTS.medium,
           color: COLORS.test_primary3,
         }}>
-        {i18n.getIsArabic ? i18n.get('english') : i18n.get('arabic')}
+        {transaltionStore.IsArabic
+          ? transaltionStore.get('english')
+          : transaltionStore.get('arabic')}
       </Text>
       <LanguageSwitchSwitch />
     </View>

@@ -5,7 +5,7 @@ import userStore from '../mobx/Admin';
 import {TLogin} from '../types';
 import {ToastContext} from '../context/ToastContext';
 import {withObserverAndTheme} from '../hoc';
-import i18n from '../mobx/i18n';
+import transaltionStore from '../mobx/Translation';
 
 const Login = ({COLORS}: TLogin) => {
   const {changeVisiblity} = useContext(ToastContext);
@@ -66,7 +66,7 @@ const Login = ({COLORS}: TLogin) => {
       />
       <View style={{width: '100%', marginTop: 20}}>
         <Button
-          title={i18n.get('submit')}
+          title={transaltionStore.get('submit')}
           color={COLORS.primary}
           onPress={login}
         />
