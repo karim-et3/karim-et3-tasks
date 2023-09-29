@@ -15,13 +15,7 @@ class User {
 
   setUser(user: TUsers) {
     runInAction(() => {
-      this.user.id = user.id;
-      this.user.firstName = user.firstName;
-      this.user.lastName = user.lastName;
-      this.user.image = user.image;
-      this.user.dob = user.dob;
-      this.user.online = user.online;
-      this.user.description = user.description;
+      Object.assign(this.user, user);
       return this.user;
     });
     // this.user = {...user};
