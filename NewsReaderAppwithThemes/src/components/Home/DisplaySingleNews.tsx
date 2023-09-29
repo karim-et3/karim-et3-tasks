@@ -3,6 +3,7 @@ import React from 'react';
 import {Tnews} from '../../types';
 import themeStore from '../../mobx/Theme';
 import {SIZES} from '../../styles';
+import {observer} from 'mobx-react-lite';
 
 const DisplaySingleNews = ({news}: {news: Tnews}) => {
   return (
@@ -39,4 +40,4 @@ const DisplaySingleNews = ({news}: {news: Tnews}) => {
   );
 };
 
-export default DisplaySingleNews;
+export default observer(DisplaySingleNews);

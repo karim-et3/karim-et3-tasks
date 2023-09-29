@@ -1,3 +1,8 @@
+import {NavigationProp, ParamListBase} from '@react-navigation/native';
+
+export type Tnavigation = {
+  navigation: NavigationProp<ParamListBase>;
+};
 export type Tnews = {
   source: {
     id: string | null;

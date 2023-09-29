@@ -1,9 +1,3 @@
-const COLORS = {
-  primary: '#818cf8',
-  black: 'black',
-  grey: 'grey',
-  white: 'white',
-};
 const SIZES = {
   xSmall: 10,
   small: 12,
@@ -41,4 +35,4 @@ const SHADOWS = {
     elevation: 5,
   },
 };
-export {COLORS, SIZES, FONTS, SHADOWS};
+export {SIZES, FONTS, SHADOWS};

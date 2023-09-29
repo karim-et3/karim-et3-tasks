@@ -10,8 +10,8 @@ class Theme {
 
   getPreferedTheme() {
     return runInAction(() => {
-      const test = MMKV.getString('userTheme');
-      if (test) return test === 'light';
+      const temp = MMKV.getString('userTheme');
+      if (temp) return temp === 'light';
       else return Appearance.getColorScheme() === 'light';
     });
   }
@@ -33,7 +33,7 @@ class Theme {
       highlight: this.light.get() ? '#fafafa' : '#334155',
     };
   }
-  get theme() {
+  get isLight() {
     return this.light.get();
   }
   logTheme = () => {

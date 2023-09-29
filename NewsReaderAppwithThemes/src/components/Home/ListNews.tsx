@@ -2,6 +2,7 @@ import {ScrollView} from 'react-native';
 import React from 'react';
 import {Tnews} from '../../types';
 import DisplaySingleNews from './DisplaySingleNews';
+import {observer} from 'mobx-react-lite';
 
 const ListNews = ({data}: {data: Tnews[]}) => {
   return (
@@ -13,4 +14,4 @@ const ListNews = ({data}: {data: Tnews[]}) => {
   );
 };
 
-export default ListNews;
+export default observer(ListNews);

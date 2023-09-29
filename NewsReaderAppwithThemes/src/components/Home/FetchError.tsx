@@ -2,6 +2,7 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import themeStore from '../../mobx/Theme';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {observer} from 'mobx-react-lite';
 
 const FetchError = () => {
   return (
@@ -30,4 +31,4 @@ const FetchError = () => {
   );
 };
 
-export default FetchError;
+export default observer(FetchError);
