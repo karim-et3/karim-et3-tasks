@@ -2,6 +2,7 @@ import {memoize} from 'lodash';
 import {users} from '../constants/users';
 import {observable, runInAction} from 'mobx';
 import {TUsers} from '../types';
+import userStore from './User';
 
 class Users {
   users = observable.array<TUsers>(users);
@@ -11,7 +12,9 @@ class Users {
   }
 
   getUser(id: number) {
-    return this.users.find(user => user.id === id);
+    runInAction(() => {
+      return userStore.setUser(this.users.find(user => user.id === id));
+    });
   }
   deleteUser(id: number) {
     runInAction(() => {

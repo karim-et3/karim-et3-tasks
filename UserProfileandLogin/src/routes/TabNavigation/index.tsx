@@ -21,7 +21,8 @@ const RootTabNavigation = () => {
         name="all-users"
         component={AllUsers}
         options={{
-          tabBarLabel: translationStore.get('all-users'),
+          title: translationStore.get('all users'),
+          tabBarLabel: translationStore.get('all users'),
           tabBarIcon: props => (
             <FontAwesomeIcon
               icon="user-gear"
@@ -49,7 +50,7 @@ const RootTabNavigation = () => {
         name="add-user"
         component={AddUser}
         options={{
-          tabBarLabel: translationStore.get('add-user'),
+          tabBarLabel: translationStore.get('add user'),
           tabBarIcon: props => (
             <FontAwesomeIcon
               icon="user-plus"

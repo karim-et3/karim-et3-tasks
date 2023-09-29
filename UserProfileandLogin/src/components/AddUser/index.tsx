@@ -1,6 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {COLORS} from '../constants';
+import {COLORS} from '../../constants';
 
 const AddUser = () => {
   return (

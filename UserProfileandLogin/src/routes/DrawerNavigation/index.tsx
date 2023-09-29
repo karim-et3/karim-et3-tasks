@@ -11,13 +11,38 @@ import LanguageSwitch from './LanguageSwitch';
 import {withObserverAndTheme} from '../../hoc';
 import {TRootDrawerNavigation} from '../../types';
 import translationStore from '../../mobx/Translation';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {DrawerActions} from '@react-navigation/native';
+import {View, Text} from 'react-native';
 
 const Drawer = createDrawerNavigator();
-const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
+const RootDrawerNavigation = ({
+  COLORS,
+  SIZES,
+  FONTS,
+  navigation,
+}: TRootDrawerNavigation) => {
   return (
     <Drawer.Navigator
       initialRouteName="home-drawer"
       screenOptions={{
+        drawerPosition: translationStore.isArabic ? 'right' : 'left',
+        headerLeft: () =>
+          translationStore.isArabic ? null : (
+            <TouchableOpacity
+              style={{marginLeft: 12}}
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+              <FontAwesomeIcon icon="bars" size={20} />
+            </TouchableOpacity>
+          ),
+        headerRight: () =>
+          translationStore.isArabic ? (
+            <TouchableOpacity
+              style={{marginRight: 12}}
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+              <FontAwesomeIcon icon="bars" size={20} />
+            </TouchableOpacity>
+          ) : null,
         drawerActiveBackgroundColor: COLORS.primary,
         drawerInactiveTintColor: COLORS.test_primary3,
         drawerActiveTintColor: COLORS.white,
@@ -74,6 +99,25 @@ const RootDrawerNavigation = ({COLORS, SIZES}: TRootDrawerNavigation) => {
         name="home-drawer"
         component={RootTabNavigation}
         options={{
+          headerTitle: () => (
+            <View
+              style={{
+                width: '100%',
+                flexDirection: 'row',
+                justifyContent: translationStore.isArabic
+                  ? 'flex-end'
+                  : 'flex-start',
+              }}>
+              <Text
+                style={{
+                  fontSize: SIZES.large,
+                  fontWeight: FONTS.bold,
+                  color: COLORS.test_primary3,
+                }}>
+                {translationStore.get('profile')}
+              </Text>
+            </View>
+          ),
           drawerLabelStyle: {fontSize: SIZES.medium, marginLeft: -10},
           title: translationStore.get('home'),
           drawerIcon: props => (

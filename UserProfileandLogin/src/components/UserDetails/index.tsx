@@ -1,31 +1,25 @@
 import {View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import usersStore from '../../mobx/Users';
 import {TUserDetails} from '../../types';
 import UserDetailsModal from './UserDetailsModal';
 import Loading from '../Loading';
 import {withObserverAndTheme} from '../../hoc';
+import userStore from '../../mobx/User';
 
 const UserDetails = ({route, navigation, COLORS}: TUserDetails) => {
-  const [userDetails, setUserDetails] = useState({
-    firstName: '',
-    lastName: '',
-    description: '',
-    image: 0,
-    id: 0,
-  });
   const id = route.params.id;
   useEffect(() => {
     if (id) {
-      setUserDetails(usersStore.getUser(id));
+      usersStore.getUser(id);
     }
   }, [id]);
   useEffect(() => {
-    if (userDetails)
+    if (userStore.firstName && userStore.lastName)
       navigation.setOptions({
-        title: `${userDetails.firstName} ${userDetails.lastName}`,
+        title: `${userStore.firstName} ${userStore.lastName}`,
       });
-  }, [userDetails]);
+  }, [userStore]);
 
   return (
     <View
@@ -41,17 +35,8 @@ const UserDetails = ({route, navigation, COLORS}: TUserDetails) => {
           borderBottomLeftRadius: 60,
         }}
       />
-      {userDetails.image ? (
-        <View
-          style={{
-            width: '100%',
-            position: 'absolute',
-            marginTop: 50,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <UserDetailsModal userDetails={userDetails} />
-        </View>
+      {userStore.image ? (
+        <UserDetailsModal userDetails={userStore.userDetails} />
       ) : (
         <Loading />
       )}

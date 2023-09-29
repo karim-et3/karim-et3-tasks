@@ -1,7 +1,7 @@
 import {View, ActivityIndicator} from 'react-native';
 import React from 'react';
-import {withObserverAndTheme} from '../hoc';
-import {TCOLORS} from '../types';
+import {withObserverAndTheme} from '../../hoc';
+import {TCOLORS} from '../../types';
 
 const Loading = ({COLORS}: {COLORS: TCOLORS}) => {
   return (

@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TToast} from '../../types';
 import translationStore from '../../mobx/Translation';
 
-const ToastNotification = ({error, text, icon}: TToast) => {
+const ToastNotification = ({error, message, icon}: TToast) => {
   return (
     <Animated.View
       entering={FadeInUp}
@@ -33,7 +33,7 @@ const ToastNotification = ({error, text, icon}: TToast) => {
       <FontAwesomeIcon icon={icon} size={26} color={COLORS.white} />
       <View>
         <Text style={{fontSize: 18, fontWeight: 'bold', color: COLORS.white}}>
-          {translationStore.get(text)}
+          {translationStore.get(message)}
         </Text>
       </View>
     </Animated.View>

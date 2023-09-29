@@ -24,7 +24,7 @@ const HomeEditProfileButton = ({
       }}
       onPress={() => navigation.navigate('edit')}>
       <Text style={{color: COLORS.white}}>
-        {translationStore.get('edit-profile')}
+        {translationStore.get('edit profile')}
       </Text>
     </TouchableOpacity>
   );

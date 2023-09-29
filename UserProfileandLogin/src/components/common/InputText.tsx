@@ -1,11 +1,12 @@
 import {View, TextInput} from 'react-native';
 import React, {useState} from 'react';
 import {TLoginProp} from '../../types';
-import {COLORS} from '../../constants';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import translationStore from '../../mobx/Translation';
+import {withObserverAndTheme} from '../../hoc';
 
 const InputText = ({
+  COLORS,
   value,
   setValue,
   type = 'text',
@@ -54,15 +55,14 @@ const InputText = ({
         value={value}
         passwordRules="required: upper; required: lower; required: digit; max-consecutive: 2; minlength: 8"
         placeholder={translationStore.get(placeholder)}
-        onChangeText={setValue}
+        onChangeText={e => setValue(e)}
         placeholderTextColor={COLORS.placeholder}
         style={{
           color: COLORS.black,
           fontSize: 16,
-          direction: 'rtl',
-          writingDirection: 'rtl',
           width: '100%',
-          paddingHorizontal: 10,
+          paddingLeft: 10,
+          paddingRight: 20,
         }}
       />
     </View>
@@ -73,4 +73,4 @@ InputText.defaultProps = {
   type: 'text',
   placeholder: '',
 };
-export default InputText;
+export default withObserverAndTheme(InputText);

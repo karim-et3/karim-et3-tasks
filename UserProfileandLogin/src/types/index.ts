@@ -4,10 +4,11 @@ import {
   RouteProp,
 } from '@react-navigation/native';
 
-type TsetString = React.Dispatch<React.SetStateAction<string>>;
+export type TsetString = React.Dispatch<React.SetStateAction<string>>;
 
 export type TLoginProp = {
-  setValue: TsetString;
+  // setValue: TsetString
+  setValue: (text: string) => void;
   value: string;
   icon: any;
   placeholder: string;
@@ -28,7 +29,7 @@ export type Tnavigation = {
 };
 export type TToast = {
   error: boolean;
-  text: string;
+  message: string;
   icon: string;
 };
 export type TAdmin = {
@@ -179,6 +180,8 @@ export type THomeEditProfileButton = {
 export type TRootDrawerNavigation = {
   COLORS: TCOLORS;
   SIZES: TSIZES;
+  FONTS: TFONTS;
+  navigation: Tnavigation;
 };
 export type TLanguageSwitchText = {
   COLORS: TCOLORS;

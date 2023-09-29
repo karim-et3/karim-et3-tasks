@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import RootStackNavigation from './src/routes/StackNavigation';
 import ToastContextProvider from './src/context/ToastContext';
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -13,6 +13,7 @@ import {withObserverAndTheme} from './src/hoc';
 function App(): JSX.Element {
   return (
     <SafeAreaView style={{flex: 1}}>
+      <StatusBar animated={true} hidden={true} />
       <ToastContextProvider>
         <RootStackNavigation />
       </ToastContextProvider>

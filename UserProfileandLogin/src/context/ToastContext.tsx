@@ -1,39 +1,35 @@
-import React, {useState, createContext, ReactNode, useEffect} from 'react';
+import React, {createContext, ReactNode, useEffect} from 'react';
 import ToastNotification from '../components/common/ToastNotification';
 import {View} from 'react-native';
 import {TToast} from '../types';
+import toastStore from '../mobx/Toast';
+import {withObserverAndTheme} from '../hoc';
 
 export const ToastContext = createContext(null);
 
 const ToastContextProvider = ({children}: {children: ReactNode}) => {
-  const [showToast, setShowToast] = useState(false);
-  const [temp, setTemp] = useState(true);
-  const [error, setError] = useState(false);
-  const [icon, setIcon] = useState('');
-  const [text, setText] = useState('');
-
-  const changeVisiblity = ({text, icon, error}: TToast) => {
-    setText(text);
-    setIcon(icon);
-    setError(error);
-    setTemp(true);
-    setShowToast(true);
+  const changeVisiblity = ({message, icon, error}: TToast) => {
+    toastStore.setMessage(message);
+    toastStore.setIcon(icon);
+    toastStore.setError(error);
+    toastStore.setTemp(true);
+    toastStore.setShowToast(true);
   };
 
   useEffect(() => {
-    if (showToast && temp) {
-      setTemp(false);
+    if (toastStore.getShowToast && toastStore.getTemp) {
+      toastStore.setTemp(false);
       const timer = setTimeout(() => {
-        setShowToast(false);
+        toastStore.setShowToast(false);
       }, 1500);
       return () => clearTimeout(timer);
     }
-  }, [showToast]);
+  }, [toastStore.getShowToast]);
 
   return (
     <ToastContext.Provider value={{changeVisiblity}}>
       {children}
-      {showToast && (
+      {toastStore.getShowToast && (
         <View
           style={{
             position: 'absolute',
@@ -41,11 +37,15 @@ const ToastContextProvider = ({children}: {children: ReactNode}) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <ToastNotification icon={icon} text={text} error={error} />
+          <ToastNotification
+            icon={toastStore.getIcon}
+            message={toastStore.getMessage}
+            error={toastStore.getError}
+          />
         </View>
       )}
     </ToastContext.Provider>
   );
 };
 
-export default ToastContextProvider;
+export default withObserverAndTheme(ToastContextProvider);

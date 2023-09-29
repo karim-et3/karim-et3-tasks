@@ -7,7 +7,6 @@ import translationStore from '../../mobx/Translation';
 const LanguageSwitchSwitch = ({COLORS}: TLanguageSwitchSwitch) => {
   const changeLanguage = () => {
     const newLanguage = translationStore.isArabic ? 'ENG' : 'AR';
-    console.log(newLanguage);
     translationStore.setLanguage(newLanguage);
   };
   return (
