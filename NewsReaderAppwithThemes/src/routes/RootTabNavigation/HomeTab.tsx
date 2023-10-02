@@ -1,33 +1,18 @@
-import {Text, TouchableHighlight} from 'react-native';
 import React from 'react';
-import themeStore from '../../mobx/Theme';
 import {observer} from 'mobx-react-lite';
-import {MaterialTopTabBarProps} from '@react-navigation/material-top-tabs';
+import TabButton from './TabButton';
+import {THomeTab} from '../../types';
 
-const HomeTab = ({navigation, navigationState}: MaterialTopTabBarProps) => {
+const HomeTab = ({navigation, navigationStateIndex}: THomeTab) => {
   return (
-    <TouchableHighlight
-      underlayColor={themeStore.colors.highlight}
-      activeOpacity={0.5}
-      onPress={() => navigation.navigate('home')}
-      style={{
-        backgroundColor: themeStore.colors.white,
-        borderBottomWidth: navigationState.index === 0 ? 1.5 : 0,
-        borderColor: themeStore.colors.primary,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-      }}>
-      <Text
-        style={{
-          color:
-            navigationState.index === 0
-              ? themeStore.colors.black
-              : themeStore.colors.grey,
-        }}>
-        Home
-      </Text>
-    </TouchableHighlight>
+    <TabButton
+      onPress={() => {
+        navigation.navigate('home');
+      }}
+      index={0}
+      navigationStateIndex={navigationStateIndex}
+      title={'Home'}
+    />
   );
 };
 

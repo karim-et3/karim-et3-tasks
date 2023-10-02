@@ -1,4 +1,8 @@
-import {NavigationProp, ParamListBase} from '@react-navigation/native';
+import {
+  NavigationHelpers,
+  NavigationProp,
+  ParamListBase,
+} from '@react-navigation/native';
 
 export type Tnavigation = {
   navigation: NavigationProp<ParamListBase>;
@@ -15,4 +19,39 @@ export type Tnews = {
   urlToImage: string;
   publishedAt: string;
   content: string;
+};
+export type TDisplaySingleNews = {news: Tnews};
+export type TDisplaySingleNewsDescription = {
+  news: Tnews;
+};
+export type TTabButton = {
+  onPress: () => void;
+  navigationStateIndex: number;
+  index?: number;
+  type?: string;
+  title?: string;
+};
+export type THomeTab = {
+  navigation: NavigationHelpers<ParamListBase>;
+  navigationStateIndex: number;
+};
+
+export type TSearchTab = {
+  navigation: NavigationHelpers<ParamListBase>;
+  navigationStateIndex: number;
+};
+export type TSwitchThemeTab = {
+  navigationStateIndex: number;
+};
+export type TCustomNavigationTab = {
+  navigation: NavigationHelpers<ParamListBase>;
+  navigationStateIndex: number;
+};
+export type TTabButtonSwitch = {
+  navigationStateIndex: number;
+};
+export type TTabButtonTitle = {
+  navigationStateIndex: number;
+  index?: number;
+  title?: string;
 };

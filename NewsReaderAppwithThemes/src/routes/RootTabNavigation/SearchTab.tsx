@@ -1,34 +1,18 @@
-import {Text, TouchableHighlight} from 'react-native';
 import React from 'react';
-import themeStore from '../../mobx/Theme';
 import {observer} from 'mobx-react-lite';
-import {MaterialTopTabBarProps} from '@react-navigation/material-top-tabs';
+import TabButton from './TabButton';
+import {TSearchTab} from '../../types';
 
-const SearchTab = ({navigation, navigationState}: MaterialTopTabBarProps) => {
+const SearchTab = ({navigation, navigationStateIndex}: TSearchTab) => {
   return (
-    <TouchableHighlight
-      underlayColor={themeStore.colors.highlight}
+    <TabButton
       onPress={() => {
         navigation.navigate('search');
       }}
-      style={{
-        backgroundColor: themeStore.colors.white,
-        borderBottomWidth: navigationState.index === 1 ? 1.5 : 0,
-        borderColor: themeStore.colors.primary,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-      }}>
-      <Text
-        style={{
-          color:
-            navigationState.index === 1
-              ? themeStore.colors.black
-              : themeStore.colors.grey,
-        }}>
-        Search
-      </Text>
-    </TouchableHighlight>
+      index={1}
+      navigationStateIndex={navigationStateIndex}
+      title={'Search'}
+    />
   );
 };
 

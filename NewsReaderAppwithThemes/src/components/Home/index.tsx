@@ -1,25 +1,28 @@
 import {View, ActivityIndicator} from 'react-native';
-import React from 'react';
-import useFetch from '../../hook/useFetch';
+import React, {useEffect} from 'react';
 import {observer} from 'mobx-react-lite';
 import themeStore from '../../mobx/Theme';
 import FetchError from './FetchError';
 import ListNews from './ListNews';
+import newsStore from '../../mobx/News';
 
 const Home = () => {
-  const {data, isLoading, error} = useFetch('news');
+  // const {data, isLoading, error} = useFetch('news');
+  useEffect(() => {
+    newsStore.fetchNews('usa');
+  }, []);
   return (
     <View style={{flex: 1, backgroundColor: themeStore.colors.white}}>
-      {isLoading ? (
+      {newsStore.isLoading ? (
         <ActivityIndicator
           style={{flex: 1}}
           color={themeStore.colors.primary}
           size={'large'}
         />
-      ) : error ? (
+      ) : newsStore.getError ? (
         <FetchError />
       ) : (
-        <ListNews data={data} />
+        <ListNews />
       )}
     </View>
   );
