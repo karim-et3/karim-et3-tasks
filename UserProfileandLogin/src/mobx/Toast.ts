@@ -1,5 +1,6 @@
 import {memoize} from 'lodash';
 import {observable, runInAction} from 'mobx';
+import {TToast} from '../types';
 
 class Toast {
   showToast = observable.box<boolean>(false);
@@ -7,6 +8,19 @@ class Toast {
   error = observable.box<boolean>(false);
   icon = observable.box<string>('');
   message = observable.box<string>('');
+
+  changeVisiblity({message, icon, error}: TToast) {
+    toastStore.setMessage(message);
+    toastStore.setIcon(icon);
+    toastStore.setError(error);
+    toastStore.setTemp(true);
+    toastStore.setShowToast(true);
+    const timer = setTimeout(() => {
+      toastStore.setShowToast(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }
+
   setShowToast(status: boolean) {
     runInAction(() => {
       this.showToast.set(status);

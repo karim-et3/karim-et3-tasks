@@ -1,7 +1,7 @@
 import {Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {withObserverAndTheme} from '../../hoc';
-import {TDeleteUserButton} from '../../types';
+import {TDeleteUserButton, TDeleteUserButtonExport} from '../../types';
 import usersStore from '../../mobx/Users';
 import translationStore from '../../mobx/Translation';
 
@@ -24,4 +24,6 @@ const DeleteUserButton = ({id, COLORS, SIZES}: TDeleteUserButton) => {
   );
 };
 
-export default withObserverAndTheme(DeleteUserButton);
+export default withObserverAndTheme(
+  DeleteUserButton,
+) as React.ComponentType<TDeleteUserButtonExport>;

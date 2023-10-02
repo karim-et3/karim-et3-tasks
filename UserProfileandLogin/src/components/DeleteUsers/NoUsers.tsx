@@ -2,8 +2,9 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {withObserverAndTheme} from '../../hoc';
 import translationStore from '../../mobx/Translation';
+import {TNoUsers, TNoUsersExport} from '../../types';
 
-const NoUsers = ({COLORS, SIZES, FONTS}) => {
+const NoUsers = ({COLORS, SIZES, FONTS}: TNoUsers) => {
   return (
     <View
       style={{
@@ -22,4 +23,6 @@ const NoUsers = ({COLORS, SIZES, FONTS}) => {
   );
 };
 
-export default withObserverAndTheme(NoUsers);
+export default withObserverAndTheme(
+  NoUsers,
+) as React.ComponentType<TNoUsersExport>;

@@ -6,13 +6,20 @@ import {
 
 export type TsetString = React.Dispatch<React.SetStateAction<string>>;
 
-export type TLoginProp = {
-  // setValue: TsetString
+export type TInputText = {
+  COLORS: TCOLORS;
   setValue: (text: string) => void;
   value: string;
   icon: any;
   placeholder: string;
   type: string;
+};
+export type TInputTextExport = {
+  setValue: (text: string) => void;
+  value: string;
+  icon: any;
+  placeholder: string;
+  type?: string;
 };
 export type UserDetailsParamsList = {
   'user-details': {id: number};
@@ -89,6 +96,7 @@ export type TCOLORS = {
   test_white: string;
   test_grey: string;
 };
+
 export type TSIZES = {
   xSmall: number;
   small: number;
@@ -133,18 +141,41 @@ export type TDeleteUser = {
   user: TUsers;
 };
 
+export type TDeleteUserExport = {
+  user: TUsers;
+};
+
 export type TDeleteUserDescription = {
   user: TUsers;
   COLORS: TCOLORS;
   SIZES: TSIZES;
   FONTS: TFONTS;
 };
+
+export type TDeleteUserDescriptionExport = {
+  user: TUsers;
+};
+export type TDisplayDeleteUser = {
+  SIZES: TSIZES;
+};
+export type TDisplayDeleteUserExport = {};
+
+export type TNoUsers = {
+  COLORS: TCOLORS;
+  SIZES: TSIZES;
+  FONTS: TFONTS;
+};
+export type TNoUsersExport = {};
+
 export type TLanguageSwitch = {
   COLORS: TCOLORS;
 };
 export type TDeleteUserButton = {
   COLORS: TCOLORS;
   SIZES: TSIZES;
+  id: number;
+};
+export type TDeleteUserButtonExport = {
   id: number;
 };
 export type TEditProfile = {
@@ -157,11 +188,18 @@ export type TDisplayUser = {
   SIZES: TSIZES;
   user: TUsers;
 };
+export type TDisplayUserExport = {
+  user: TUsers;
+};
 export type THome = {
   navigation: Tnavigation;
 };
 export type THomeText = {
   COLORS: TCOLORS;
+  username: string;
+};
+export type THomeTextExport = {
+  // COLORS: TCOLORS;
   username: string;
 };
 export type TListDeleteUser = {
@@ -177,6 +215,11 @@ export type THomeEditProfileButton = {
   COLORS: TCOLORS;
   navigation: Tnavigation;
 };
+export type THomeEditProfileButtonExport = {
+  // COLORS: TCOLORS;
+  navigation: Tnavigation;
+};
+
 export type TRootDrawerNavigation = {
   COLORS: TCOLORS;
   SIZES: TSIZES;
@@ -191,8 +234,5 @@ export type TLanguageSwitchText = {
 export type TLanguageSwitchSwitch = {
   COLORS: TCOLORS;
 };
-export type TNoUsers = {
-  COLORS: TCOLORS;
-  SIZES: TSIZES;
-  FONTS: TFONTS;
-};
+export type TLoading = {COLORS: TCOLORS};
+export type TLoadingExport = {};

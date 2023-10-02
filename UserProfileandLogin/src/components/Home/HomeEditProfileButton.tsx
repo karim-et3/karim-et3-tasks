@@ -1,7 +1,10 @@
 import {Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {withObserverAndTheme} from '../../hoc';
-import {THomeEditProfileButton} from '../../types';
+import {
+  THomeEditProfileButton,
+  THomeEditProfileButtonExport,
+} from '../../types';
 import translationStore from '../../mobx/Translation';
 
 const HomeEditProfileButton = ({
@@ -30,4 +33,6 @@ const HomeEditProfileButton = ({
   );
 };
 
-export default withObserverAndTheme(HomeEditProfileButton);
+export default withObserverAndTheme(
+  HomeEditProfileButton,
+) as React.ComponentType<THomeEditProfileButtonExport>;

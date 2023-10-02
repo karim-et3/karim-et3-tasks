@@ -1,6 +1,6 @@
 import {View, Image} from 'react-native';
 import React from 'react';
-import {TDeleteUser} from '../../types';
+import {TDeleteUser, TDeleteUserExport} from '../../types';
 import {withObserverAndTheme} from '../../hoc';
 import DeleteUserButton from './DeleteUserButton';
 import DeleteUserDescription from './DeleteUserDescription';
@@ -46,4 +46,6 @@ const DeleteUser = ({SHADOWS, SIZES, user}: TDeleteUser) => {
   );
 };
 
-export default withObserverAndTheme(DeleteUser);
+export default withObserverAndTheme(
+  DeleteUser,
+) as React.ComponentType<TDeleteUserExport>;

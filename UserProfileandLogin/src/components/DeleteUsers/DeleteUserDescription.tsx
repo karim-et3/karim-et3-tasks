@@ -1,7 +1,10 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {withObserverAndTheme} from '../../hoc';
-import {TDeleteUserDescription} from '../../types';
+import {
+  TDeleteUserDescription,
+  TDeleteUserDescriptionExport,
+} from '../../types';
 
 const DeleteUserDescription = ({
   COLORS,
@@ -31,4 +34,6 @@ const DeleteUserDescription = ({
   );
 };
 
-export default withObserverAndTheme(DeleteUserDescription);
+export default withObserverAndTheme(
+  DeleteUserDescription,
+) as React.ComponentType<TDeleteUserDescriptionExport>;

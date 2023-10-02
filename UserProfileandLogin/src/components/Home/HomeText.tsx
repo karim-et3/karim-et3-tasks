@@ -1,7 +1,7 @@
 import {Text} from 'react-native';
 import React from 'react';
 import {withObserverAndTheme} from '../../hoc';
-import {THomeText} from '../../types';
+import {THomeText, THomeTextExport} from '../../types';
 import translationStore from '../../mobx/Translation';
 
 const HomeText = ({COLORS, username}: THomeText) => {
@@ -20,4 +20,6 @@ const HomeText = ({COLORS, username}: THomeText) => {
   );
 };
 
-export default withObserverAndTheme(HomeText);
+export default withObserverAndTheme(
+  HomeText,
+) as React.ComponentType<THomeTextExport>;

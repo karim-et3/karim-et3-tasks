@@ -18,9 +18,8 @@ class User {
       Object.assign(this.user, user);
       return this.user;
     });
-    // this.user = {...user};
-    // return this.user;
   }
+
   get userDetails() {
     return this.user;
   }

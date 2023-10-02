@@ -3,8 +3,9 @@ import React from 'react';
 import usersStore from '../../mobx/Users';
 import {withObserverAndTheme} from '../../hoc';
 import DeleteUser from './DeleteUser';
+import {TDisplayDeleteUser, TDisplayDeleteUserExport} from '../../types';
 
-const DisplayDeleteUser = ({SIZES}) => {
+const DisplayDeleteUser = ({SIZES}: TDisplayDeleteUser) => {
   return (
     <View
       style={{
@@ -20,4 +21,6 @@ const DisplayDeleteUser = ({SIZES}) => {
   );
 };
 
-export default withObserverAndTheme(DisplayDeleteUser);
+export default withObserverAndTheme(
+  DisplayDeleteUser,
+) as React.ComponentType<TDisplayDeleteUserExport>;

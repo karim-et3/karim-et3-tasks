@@ -22,6 +22,8 @@ class Admin {
       if (this.tempUsername === 'test' && this.tempPassword === '123') {
         this.setUsername(this.tempUsername);
         this.setLoggedIn(true);
+        this.setTempUsername('');
+        this.setTempPassword('');
         console.log('in');
         return true;
       }

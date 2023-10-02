@@ -1,7 +1,7 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {TDisplayUser} from '../../types';
+import {TDisplayUser, TDisplayUserExport} from '../../types';
 import LinkButton from '../common/LinkButton';
 import {withObserverAndTheme} from '../../hoc';
 
@@ -67,4 +67,6 @@ const DisplayUser = ({COLORS, FONTS, SIZES, user}: TDisplayUser) => {
   );
 };
 
-export default withObserverAndTheme(DisplayUser);
+export default withObserverAndTheme(
+  DisplayUser,
+) as React.ComponentType<TDisplayUserExport>;

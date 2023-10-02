@@ -1,6 +1,6 @@
 import {View, TextInput} from 'react-native';
 import React, {useState} from 'react';
-import {TLoginProp} from '../../types';
+import {TInputTextExport, TInputText} from '../../types';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import translationStore from '../../mobx/Translation';
 import {withObserverAndTheme} from '../../hoc';
@@ -12,7 +12,7 @@ const InputText = ({
   type = 'text',
   icon,
   placeholder = '',
-}: TLoginProp) => {
+}: TInputText) => {
   const [focused, setFocused] = useState(false);
   return (
     <View
@@ -73,4 +73,6 @@ InputText.defaultProps = {
   type: 'text',
   placeholder: '',
 };
-export default withObserverAndTheme(InputText);
+export default withObserverAndTheme(
+  InputText,
+) as React.ComponentType<TInputTextExport>;

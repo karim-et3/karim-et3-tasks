@@ -22,4 +22,4 @@ const Home = ({navigation}: THome) => {
   );
 };
 
-export default withObserverAndTheme(Home);
+export default withObserverAndTheme(Home) as React.ComponentType<THome>;
