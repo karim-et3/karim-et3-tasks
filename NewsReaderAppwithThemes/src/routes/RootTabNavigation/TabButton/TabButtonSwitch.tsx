@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import themeStore from '../../mobx/Theme';
+import themeStore from '../../../mobx/Theme';
 
 const TabButtonSwitch = ({navigationStateIndex}) => {
   return (

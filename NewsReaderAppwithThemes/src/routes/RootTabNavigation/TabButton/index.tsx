@@ -1,8 +1,8 @@
 import {TouchableHighlight} from 'react-native';
 import React from 'react';
-import themeStore from '../../mobx/Theme';
+import themeStore from '../../../mobx/Theme';
 import {observer} from 'mobx-react-lite';
-import {TTabButton} from '../../types';
+import {TTabButton} from '../../../types';
 import TabButtonSwitch from './TabButtonSwitch';
 import TabButtonTitle from './TabButtonTitle';
 

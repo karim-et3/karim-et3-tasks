@@ -1,7 +1,7 @@
 import {Text} from 'react-native';
 import React from 'react';
-import themeStore from '../../mobx/Theme';
-import {TTabButtonTitle} from '../../types';
+import themeStore from '../../../mobx/Theme';
+import {TTabButtonTitle} from '../../../types';
 
 const TabButtonTitle = ({
   navigationStateIndex,

@@ -55,3 +55,10 @@ export type TTabButtonTitle = {
   index?: number;
   title?: string;
 };
+export type TImageModal = {
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  imageURL: string;
+};
+export type TDisplaySingleNewsImage = {
+  imageURL: string;
+};

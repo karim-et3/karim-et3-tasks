@@ -18,6 +18,7 @@ const DisplaySingleNewsDescription = ({
         paddingVertical: 3,
       }}>
       <Text
+        numberOfLines={3}
         style={{
           fontSize: sizesStore.medium,
           flexShrink: 1,
