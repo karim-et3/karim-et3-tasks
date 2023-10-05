@@ -1,7 +1,7 @@
 import React from 'react';
-import {observer} from 'mobx-react-lite';
 import TabButton from './TabButton';
 import {TSearchTab} from '../../types';
+import {withLiteObserver} from '../../components/hoc';
 
 const SearchTab = ({navigation, navigationStateIndex}: TSearchTab) => {
   return (
@@ -16,4 +16,4 @@ const SearchTab = ({navigation, navigationStateIndex}: TSearchTab) => {
   );
 };
 
-export default observer(SearchTab);
+export default withLiteObserver(SearchTab);

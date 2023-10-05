@@ -1,8 +1,8 @@
 import {FlatList} from 'react-native';
 import React from 'react';
 import DisplaySingleNews from './DisplaySingleNews';
-import {observer} from 'mobx-react-lite';
 import newsStore from '../../mobx/News';
+import {withLiteObserver} from '../hoc';
 
 const ListNews = () => {
   return (
@@ -13,4 +13,4 @@ const ListNews = () => {
   );
 };
 
-export default observer(ListNews);
+export default withLiteObserver(ListNews);

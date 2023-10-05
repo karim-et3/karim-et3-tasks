@@ -1,22 +1,21 @@
 import {View, ActivityIndicator} from 'react-native';
 import React, {useEffect} from 'react';
-import {observer} from 'mobx-react-lite';
-import themeStore from '../../mobx/Theme';
 import FetchError from './FetchError';
 import ListNews from './ListNews';
 import newsStore from '../../mobx/News';
+import {WithThemeAndLiteObserver} from '../hoc';
 
-const Home = () => {
-  // const {data, isLoading, error} = useFetch('news');
+const Home = ({COLORS}) => {
   useEffect(() => {
     newsStore.fetchNews('usa');
   }, []);
+
   return (
-    <View style={{flex: 1, backgroundColor: themeStore.colors.white}}>
+    <View style={{flex: 1, backgroundColor: COLORS.white}}>
       {newsStore.isLoading ? (
         <ActivityIndicator
           style={{flex: 1}}
-          color={themeStore.colors.primary}
+          color={COLORS.primary}
           size={'large'}
         />
       ) : newsStore.getError ? (
@@ -28,4 +27,4 @@ const Home = () => {
   );
 };
 
-export default observer(Home);
+export default WithThemeAndLiteObserver(Home);

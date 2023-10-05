@@ -62,3 +62,14 @@ export type TImageModal = {
 export type TDisplaySingleNewsImage = {
   imageURL: string;
 };
+export type TCOLORS = {
+  primary: string;
+  primary_switch: string;
+  black: string;
+  grey: string;
+  white: string;
+  highlight: string;
+};
+export type Tprops = {
+  props: React.ReactPropTypes;
+};

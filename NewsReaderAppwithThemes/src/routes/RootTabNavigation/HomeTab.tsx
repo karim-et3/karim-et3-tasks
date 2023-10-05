@@ -1,7 +1,7 @@
 import React from 'react';
-import {observer} from 'mobx-react-lite';
 import TabButton from './TabButton';
 import {THomeTab} from '../../types';
+import {withLiteObserver} from '../../components/hoc';
 
 const HomeTab = ({navigation, navigationStateIndex}: THomeTab) => {
   return (
@@ -16,4 +16,4 @@ const HomeTab = ({navigation, navigationStateIndex}: THomeTab) => {
   );
 };
 
-export default observer(HomeTab);
+export default withLiteObserver(HomeTab);

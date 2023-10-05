@@ -1,9 +1,9 @@
 import {View} from 'react-native';
 import React from 'react';
 import {TDisplaySingleNews} from '../../types';
-import {observer} from 'mobx-react-lite';
 import DisplaySingleNewsDescription from './DisplaySingleNewsDescription';
 import DisplaySingleNewsImage from './DisplaySingleNewsImage';
+import {withLiteObserver} from '../hoc';
 
 const DisplaySingleNews = ({news}: TDisplaySingleNews) => {
   return (
@@ -18,4 +18,4 @@ const DisplaySingleNews = ({news}: TDisplaySingleNews) => {
   );
 };
 
-export default observer(DisplaySingleNews);
+export default withLiteObserver(DisplaySingleNews);

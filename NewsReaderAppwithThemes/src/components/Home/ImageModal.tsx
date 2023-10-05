@@ -1,6 +1,7 @@
 import {View, Image, Modal, TouchableWithoutFeedback} from 'react-native';
 import React from 'react';
 import {TImageModal} from '../../types';
+import {withLiteObserver} from '../hoc';
 
 const ImageModal = ({setModalVisible, imageURL}: TImageModal) => (
   <Modal
@@ -35,4 +36,4 @@ const ImageModal = ({setModalVisible, imageURL}: TImageModal) => (
   </Modal>
 );
 
-export default ImageModal;
+export default withLiteObserver(ImageModal);

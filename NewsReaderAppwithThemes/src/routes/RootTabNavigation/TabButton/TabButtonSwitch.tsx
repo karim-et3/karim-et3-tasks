@@ -1,9 +1,9 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import themeStore from '../../../mobx/Theme';
+import {WithThemeAndLiteObserver} from '../../../components/hoc';
 
-const TabButtonSwitch = ({navigationStateIndex}) => {
+const TabButtonSwitch = ({COLORS, isLight, navigationStateIndex}) => {
   return (
     <View
       style={{
@@ -12,21 +12,15 @@ const TabButtonSwitch = ({navigationStateIndex}) => {
         justifyContent: 'center',
         gap: 5,
       }}>
-      <FontAwesomeIcon
-        icon={themeStore.isLight ? 'sun' : 'moon'}
-        color={themeStore.colors.primary}
-      />
+      <FontAwesomeIcon icon={isLight ? 'sun' : 'moon'} color={COLORS.primary} />
       <Text
         style={{
-          color:
-            navigationStateIndex === 2
-              ? themeStore.colors.black
-              : themeStore.colors.grey,
+          color: navigationStateIndex === 2 ? COLORS.black : COLORS.grey,
         }}>
-        {themeStore.isLight ? 'Light' : 'Dark'}
+        {isLight ? 'Light' : 'Dark'}
       </Text>
     </View>
   );
 };
 
-export default TabButtonSwitch;
+export default WithThemeAndLiteObserver(TabButtonSwitch);

@@ -2,6 +2,7 @@ import {Image, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import ImageModal from './ImageModal';
 import {TDisplaySingleNewsImage} from '../../types';
+import {withLiteObserver} from '../hoc';
 
 const DisplaySingleNewsImage = ({imageURL}: TDisplaySingleNewsImage) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -23,4 +24,4 @@ const DisplaySingleNewsImage = ({imageURL}: TDisplaySingleNewsImage) => {
   );
 };
 
-export default DisplaySingleNewsImage;
+export default withLiteObserver(DisplaySingleNewsImage);

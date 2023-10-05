@@ -1,10 +1,9 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import themeStore from '../../mobx/Theme';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {observer} from 'mobx-react-lite';
+import {WithThemeAndLiteObserver} from '../hoc';
 
-const FetchError = () => {
+const FetchError = ({COLORS}) => {
   return (
     <View
       style={{
@@ -17,18 +16,14 @@ const FetchError = () => {
         style={{
           padding: 8,
           borderRadius: 200,
-          backgroundColor: themeStore.colors.primary,
+          backgroundColor: COLORS.primary,
           alignSelf: 'center',
         }}>
-        <FontAwesomeIcon
-          size={30}
-          color={themeStore.colors.white}
-          icon="exclamation"
-        />
+        <FontAwesomeIcon size={30} color={COLORS.white} icon="exclamation" />
       </View>
-      <Text style={{color: themeStore.colors.black}}>Error occured.</Text>
+      <Text style={{color: COLORS.black}}>Error occured.</Text>
     </View>
   );
 };
 
-export default observer(FetchError);
+export default WithThemeAndLiteObserver(FetchError);

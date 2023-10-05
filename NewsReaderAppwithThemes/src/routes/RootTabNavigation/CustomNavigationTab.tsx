@@ -1,13 +1,14 @@
 import {View, StyleSheet} from 'react-native';
 import React from 'react';
-import themeStore from '../../mobx/Theme';
 import {SHADOWS} from '../../styles';
 import SwitchThemeTab from './SwitchThemeTab';
 import HomeTab from './HomeTab';
 import SearchTab from './SearchTab';
 import {TCustomNavigationTab} from '../../types';
+import {WithThemeAndLiteObserver} from '../../components/hoc';
 
 const CustomNavigationTab = ({
+  COLORS,
   navigationStateIndex,
   navigation,
 }: TCustomNavigationTab) => {
@@ -16,7 +17,7 @@ const CustomNavigationTab = ({
       style={[
         SHADOWS.medium,
         {
-          borderColor: themeStore.colors.grey,
+          borderColor: COLORS.grey,
           borderBottomWidth: StyleSheet.hairlineWidth,
           height: 44,
           flexDirection: 'row',
@@ -36,4 +37,4 @@ const CustomNavigationTab = ({
   );
 };
 
-export default CustomNavigationTab;
+export default WithThemeAndLiteObserver(CustomNavigationTab);

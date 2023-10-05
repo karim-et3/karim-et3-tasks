@@ -1,9 +1,10 @@
 import {Text} from 'react-native';
 import React from 'react';
-import themeStore from '../../../mobx/Theme';
 import {TTabButtonTitle} from '../../../types';
+import {WithThemeAndLiteObserver} from '../../../components/hoc';
 
 const TabButtonTitle = ({
+  COLORS,
   navigationStateIndex,
   index,
   title,
@@ -11,14 +12,11 @@ const TabButtonTitle = ({
   return (
     <Text
       style={{
-        color:
-          navigationStateIndex === index
-            ? themeStore.colors.black
-            : themeStore.colors.grey,
+        color: navigationStateIndex === index ? COLORS.black : COLORS.grey,
       }}>
       {title}
     </Text>
   );
 };
 
-export default TabButtonTitle;
+export default WithThemeAndLiteObserver(TabButtonTitle);

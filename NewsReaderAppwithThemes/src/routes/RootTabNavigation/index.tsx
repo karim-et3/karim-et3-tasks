@@ -5,8 +5,8 @@ import {
 } from '@react-navigation/material-top-tabs';
 import Home from '../../components/Home';
 import Search from '../../components/Search';
-import {observer} from 'mobx-react-lite';
 import CustomNavigationTab from './CustomNavigationTab';
+import {withLiteObserver} from '../../components/hoc';
 
 const Tab = createMaterialTopTabNavigator();
 const RootTabNavigation = () => {
@@ -25,4 +25,4 @@ const RootTabNavigation = () => {
   );
 };
 
-export default observer(RootTabNavigation);
+export default withLiteObserver(RootTabNavigation);
