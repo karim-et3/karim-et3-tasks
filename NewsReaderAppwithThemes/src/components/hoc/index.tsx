@@ -2,7 +2,7 @@ import compose from './Recompose';
 import CustomTheme from './CustomTheme';
 import {observer as LiteObserver} from 'mobx-react-lite';
 import {ComponentType} from 'react';
-import {TCOLORS} from '../../types';
+import {TTheme} from '../../types';
 
 export type WithLiteObserver = <T extends {}>(
   component: ComponentType<T>,
@@ -12,10 +12,21 @@ export type WithLiteObserver = <T extends {}>(
 export const withLiteObserver = compose(LiteObserver) as WithLiteObserver;
 
 type WithThemeAndLiteObserver = <T extends {}>(
-  component: ComponentType<T & {theme: TCOLORS}>,
+  component: ComponentType<T & {theme: TTheme}>,
   defaultProps?: T,
-) => ComponentType<T & {theme?: TCOLORS}>;
+) => ComponentType<T & {theme?: TTheme}>;
 
 export const WithThemeAndLiteObserver = (component => {
   return compose(CustomTheme, LiteObserver)(component);
+  // return test1(test2(component));
+  // return CustomTheme(LiteObserver(component));
+  // return LiteObserver(CustomTheme(component));
 }) as WithThemeAndLiteObserver;
+
+// export const test1 = component => {
+//   return LiteObserver(component);
+// };
+
+// export const test2 = component => {
+//   return CustomTheme(component);
+// };

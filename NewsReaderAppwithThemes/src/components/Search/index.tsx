@@ -1,13 +1,14 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {WithThemeAndLiteObserver} from '../hoc';
+import {withLiteObserver} from '../hoc';
+import themeStore from '../../mobx/Theme';
 
-const Search = ({COLORS}) => {
+const Search = () => {
   return (
-    <View style={{flex: 1, backgroundColor: COLORS.white}}>
-      <Text style={{color: COLORS.black}}>Search</Text>
+    <View style={{flex: 1, backgroundColor: themeStore.white}}>
+      <Text style={{color: themeStore.black}}>Search</Text>
     </View>
   );
 };
 
-export default WithThemeAndLiteObserver(Search);
+export default withLiteObserver(Search);

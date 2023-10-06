@@ -1,5 +1,5 @@
 import {memoize} from 'lodash';
-import {observable, runInAction} from 'mobx';
+import {makeAutoObservable, observable, runInAction} from 'mobx';
 import {Tnews} from '../types';
 import {NEWS_API_KEY} from '@env';
 import axios from 'axios';
@@ -12,27 +12,29 @@ class News {
   loading = observable.box<boolean>(false);
   error = observable.box('');
 
-  async fetchNews(query: string) {
-    const options = {
-      method: '',
-      url: 'https://www.newsapi.org/v2/everything',
-      params: {
-        q: query,
-        pageSize: 10,
-      },
-      headers: {'X-Api-Key': apiKey},
-    };
-    this.setLoading(true);
-    try {
-      const response = await axios.request(options);
-      this.setNews(response.data.articles);
-    } catch (error: any) {
-      Alert.alert('Error occured');
-      console.log(error);
-      this.setError(error);
-    } finally {
-      this.setLoading(false);
-    }
+  fetchNews(query: string) {
+    runInAction(async () => {
+      const options = {
+        method: '',
+        url: 'https://www.newsapi.org/v2/everything',
+        params: {
+          q: query,
+          pageSize: 10,
+        },
+        headers: {'X-Api-Key': apiKey},
+      };
+      this.setLoading(true);
+      try {
+        const response = await axios.request(options);
+        this.setNews(response.data.articles);
+      } catch (error: any) {
+        Alert.alert('Error occured');
+        console.log(error);
+        this.setError(error);
+      } finally {
+        this.setLoading(false);
+      }
+    });
   }
   setNews(news: Array<Tnews>) {
     runInAction(() => {

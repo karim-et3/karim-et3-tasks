@@ -1,11 +1,14 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {TDisplaySingleNewsDescription} from '../../types';
+import {
+  TDisplaySingleNewsDescription,
+  TDisplaySingleNewsDescriptionExport,
+} from '../../types';
 import {WithThemeAndLiteObserver} from '../hoc';
+import themeStore from '../../mobx/Theme';
 
 const DisplaySingleNewsDescription = ({
   SIZES,
-  COLORS,
   news,
 }: TDisplaySingleNewsDescription) => {
   return (
@@ -22,14 +25,14 @@ const DisplaySingleNewsDescription = ({
         style={{
           fontSize: SIZES.medium,
           flexShrink: 1,
-          color: COLORS.black,
+          color: themeStore.black,
         }}>
         {news.title}
       </Text>
       <Text
         style={{
           fontSize: SIZES.medium,
-          color: COLORS.grey,
+          color: themeStore.grey,
         }}>
         {new Date(news.publishedAt).toLocaleTimeString()}
       </Text>
@@ -37,4 +40,6 @@ const DisplaySingleNewsDescription = ({
   );
 };
 
-export default WithThemeAndLiteObserver(DisplaySingleNewsDescription);
+export default WithThemeAndLiteObserver(
+  DisplaySingleNewsDescription,
+) as React.ComponentType<TDisplaySingleNewsDescriptionExport>;

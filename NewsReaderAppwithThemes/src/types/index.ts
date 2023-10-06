@@ -23,8 +23,14 @@ export type Tnews = {
 export type TDisplaySingleNews = {news: Tnews};
 export type TDisplaySingleNewsDescription = {
   news: Tnews;
+  SIZES: TSIZES;
+  // COLORS: TCOLORS;
+};
+export type TDisplaySingleNewsDescriptionExport = {
+  news: Tnews;
 };
 export type TTabButton = {
+  // COLORS: TCOLORS;
   onPress: () => void;
   navigationStateIndex: number;
   index?: number;
@@ -44,13 +50,12 @@ export type TSwitchThemeTab = {
   navigationStateIndex: number;
 };
 export type TCustomNavigationTab = {
+  // COLORS: TCOLORS;
   navigation: NavigationHelpers<ParamListBase>;
   navigationStateIndex: number;
 };
-export type TTabButtonSwitch = {
-  navigationStateIndex: number;
-};
 export type TTabButtonTitle = {
+  // COLORS: TCOLORS;
   navigationStateIndex: number;
   index?: number;
   title?: string;
@@ -70,6 +75,39 @@ export type TCOLORS = {
   white: string;
   highlight: string;
 };
+export type TSIZES = {
+  xSmall: number;
+  small: number;
+  medium: number;
+  large: number;
+  xLarge: number;
+  xxLarge: number;
+};
+export type TFONTS = {
+  regular: '400';
+  medium: '500';
+  bold: '700';
+};
 export type Tprops = {
   props: React.ReactPropTypes;
+};
+export type TTabButtonSwitch = {
+  // COLORS: TCOLORS;
+  // isLight: boolean;
+  navigationStateIndex: number;
+};
+export type TFetchError = {
+  COLORS: TCOLORS;
+};
+export type TFetchErrorExport = {};
+export type THome = {
+  // isLight: boolean;
+  // COLORS: TCOLORS;
+};
+export type TSearch = {
+  COLORS: TCOLORS;
+};
+export type TTheme = {
+  SIZES: TSIZES;
+  FONTS: TFONTS;
 };

@@ -7,19 +7,20 @@ import {fas} from '@fortawesome/free-solid-svg-icons';
 import {far} from '@fortawesome/free-regular-svg-icons';
 import {faSquareCheck} from '@fortawesome/free-solid-svg-icons/faSquareCheck';
 import {StatusBar} from 'react-native';
-import {WithThemeAndLiteObserver} from './src/components/hoc';
+import {withLiteObserver} from './src/components/hoc';
+import themeStore from './src/mobx/Theme';
 
-function App({COLORS, isLight}) {
+function App() {
   return (
     <NavigationContainer>
       <StatusBar
-        backgroundColor={COLORS.white}
-        barStyle={isLight ? 'dark-content' : 'light-content'}
+        backgroundColor={themeStore.white}
+        barStyle={themeStore.isLight ? 'dark-content' : 'light-content'}
       />
       <RootTabNavigation />
     </NavigationContainer>
   );
 }
 
-export default WithThemeAndLiteObserver(App);
+export default withLiteObserver(App);
 library.add(fab, fas, far, faSquareCheck);

@@ -5,10 +5,10 @@ import SwitchThemeTab from './SwitchThemeTab';
 import HomeTab from './HomeTab';
 import SearchTab from './SearchTab';
 import {TCustomNavigationTab} from '../../types';
-import {WithThemeAndLiteObserver} from '../../components/hoc';
+import {withLiteObserver} from '../../components/hoc';
+import themeStore from '../../mobx/Theme';
 
 const CustomNavigationTab = ({
-  COLORS,
   navigationStateIndex,
   navigation,
 }: TCustomNavigationTab) => {
@@ -17,7 +17,7 @@ const CustomNavigationTab = ({
       style={[
         SHADOWS.medium,
         {
-          borderColor: COLORS.grey,
+          borderColor: themeStore.grey,
           borderBottomWidth: StyleSheet.hairlineWidth,
           height: 44,
           flexDirection: 'row',
@@ -37,4 +37,4 @@ const CustomNavigationTab = ({
   );
 };
 
-export default WithThemeAndLiteObserver(CustomNavigationTab);
+export default withLiteObserver(CustomNavigationTab);

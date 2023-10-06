@@ -3,19 +3,26 @@ import React, {useEffect} from 'react';
 import FetchError from './FetchError';
 import ListNews from './ListNews';
 import newsStore from '../../mobx/News';
-import {WithThemeAndLiteObserver} from '../hoc';
+import {withLiteObserver} from '../hoc';
+import themeStore from '../../mobx/Theme';
 
-const Home = ({COLORS}) => {
+const Home = () => {
   useEffect(() => {
     newsStore.fetchNews('usa');
   }, []);
 
   return (
-    <View style={{flex: 1, backgroundColor: COLORS.white}}>
+    <View style={{flex: 1, backgroundColor: themeStore.white}}>
+      {/* {console.warn(
+        'isLight props:',
+        isLight,
+        'isLight themeStore:',
+        themeStore.isLight,
+      )} */}
       {newsStore.isLoading ? (
         <ActivityIndicator
           style={{flex: 1}}
-          color={COLORS.primary}
+          color={themeStore.primary}
           size={'large'}
         />
       ) : newsStore.getError ? (
@@ -27,4 +34,4 @@ const Home = ({COLORS}) => {
   );
 };
 
-export default WithThemeAndLiteObserver(Home);
+export default withLiteObserver(Home);

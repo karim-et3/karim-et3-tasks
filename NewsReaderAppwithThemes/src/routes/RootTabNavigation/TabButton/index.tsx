@@ -3,10 +3,10 @@ import React from 'react';
 import {TTabButton} from '../../../types';
 import TabButtonSwitch from './TabButtonSwitch';
 import TabButtonTitle from './TabButtonTitle';
-import {WithThemeAndLiteObserver} from '../../../components/hoc';
+import {withLiteObserver} from '../../../components/hoc';
+import themeStore from '../../../mobx/Theme';
 
 const TabButton = ({
-  COLORS,
   onPress,
   navigationStateIndex,
   index,
@@ -15,14 +15,14 @@ const TabButton = ({
 }: TTabButton) => {
   return (
     <TouchableHighlight
-      underlayColor={COLORS.highlight}
+      underlayColor={themeStore.highlight}
       onPress={onPress}
       style={{
         borderBottomWidth: navigationStateIndex === index ? 1.5 : 0,
-        borderColor: COLORS.primary,
+        borderColor: themeStore.primary,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: COLORS.white,
+        backgroundColor: themeStore.white,
         flex: 1,
       }}>
       {type === 'themeswitch' ? (
@@ -38,4 +38,4 @@ const TabButton = ({
   );
 };
 
-export default WithThemeAndLiteObserver(TabButton);
+export default withLiteObserver(TabButton);

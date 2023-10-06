@@ -36,6 +36,25 @@ class Theme {
   get isLight() {
     return this.light.get();
   }
+  get primary() {
+    return this.colors.primary;
+  }
+  get primary_switch() {
+    return this.colors.primary_switch;
+  }
+  get black() {
+    return this.colors.black;
+  }
+  get grey() {
+    return this.colors.grey;
+  }
+  get white() {
+    return this.colors.white;
+  }
+  get highlight() {
+    return this.colors.highlight;
+  }
+
   logTheme = () => {
     runInAction(() => {
       console.log(this.light);
