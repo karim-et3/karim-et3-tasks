@@ -13,22 +13,23 @@ class Search {
   searchBarFocus = observable.box<boolean>(false);
   noResults = observable.box<boolean>(false);
 
-  search(text?: string) {
+  search(text: string) {
     runInAction(async () => {
-      const options = {
-        method: '',
-        url: 'https://www.newsapi.org/v2/everything',
-        params: {
-          q: text ? text : this.text,
-          pageSize: 10,
-        },
-        headers: {'X-Api-Key': apiKey},
-      };
-      this.setLoading(true);
       try {
+        const options = {
+          method: '',
+          url: 'https://www.newsapi.org/v2/everything',
+          params: {
+            q: text ? text : this.text,
+            pageSize: 10,
+          },
+          headers: {'X-Api-Key': apiKey},
+        };
+        this.setLoading(true);
         const response = await axios.request(options);
         if (!response.data.totalResults) this.setNoResults(true);
         else {
+          this.setError('');
           this.setNoResults(false);
           newsStore.setNews(response.data.articles);
         }

@@ -68,14 +68,15 @@ export type TDisplaySingleNewsImage = {
   imageURL: string;
 };
 export type TCOLORS = {
-  primary: string;
-  primary_switch: string;
-  black: string;
-  grey: string;
-  white: string;
-  highlight: string;
-  error: string;
+  primary: '#818cf8';
+  primary_switch: '#818cf8' | '#ffffff';
+  black: '#0f172a' | '#ffffff';
+  grey: '#64748b' | '#94a3b8';
+  white: '#ffffff' | '#1e293b';
+  highlight: '#fafafa' | '#334155';
+  error: '#f43f5e';
 };
+
 export type TSIZES = {
   xSmall: 10;
   small: 12;

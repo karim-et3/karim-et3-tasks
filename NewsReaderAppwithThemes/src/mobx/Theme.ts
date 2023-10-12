@@ -9,11 +9,9 @@ class Theme {
   light = observable.box<boolean>(this.getPreferedTheme());
 
   getPreferedTheme() {
-    return runInAction(() => {
-      const temp = MMKV.getString('userTheme');
-      if (temp) return temp === 'light';
-      else return Appearance.getColorScheme() === 'light';
-    });
+    const temp = MMKV.getString('userTheme');
+    if (temp) return temp === 'light';
+    else return Appearance.getColorScheme() === 'light';
   }
 
   changeTheme = () => {
@@ -38,13 +36,13 @@ class Theme {
     return this.light.get();
   }
   get primary() {
-    return this.colors.primary;
+    return '#818cf8';
   }
   get primary_switch() {
     return this.colors.primary_switch;
   }
   get black() {
-    return this.colors.black;
+    return this.light.get() ? '#0f172a' : '#ffffff';
   }
   get grey() {
     return this.colors.grey;

@@ -29,12 +29,13 @@ const SearchBar = () => {
       />
       <TextInput
         onFocus={() => searchtSore.setSearchBarFocus()}
-        onSubmitEditing={() => searchtSore.getText && searchtSore.search()}
         onBlur={() => searchtSore.setSearchBarFocus()}
         style={{color: themeStore.grey, width: '100%', paddingVertical: 6}}
         cursorColor={themeStore.primary}
         value={searchtSore.getText}
-        onChangeText={text => searchtSore.setText(text)}
+        onChangeText={text => {
+          if (text) searchtSore.search(text);
+        }}
         placeholder={'Search'}
         placeholderTextColor={themeStore.grey}
       />

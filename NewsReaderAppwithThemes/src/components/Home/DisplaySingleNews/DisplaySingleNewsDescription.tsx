@@ -3,9 +3,9 @@ import React from 'react';
 import {
   TDisplaySingleNewsDescription,
   TDisplaySingleNewsDescriptionExport,
-} from '../../types';
-import {WithThemeAndLiteObserver} from '../../hoc';
-import themeStore from '../../mobx/Theme';
+} from '../../../types';
+import {WithThemeAndLiteObserver} from '../../../hoc';
+import themeStore from '../../../mobx/Theme';
 
 const DisplaySingleNewsDescription = ({
   SIZES,
