@@ -1,7 +1,7 @@
 import React from 'react';
 import TabButton from './TabButton';
 import {THomeTab} from '../../types';
-import {withLiteObserver} from '../../components/hoc';
+import {withLiteObserver} from '../../hoc';
 
 const HomeTab = ({navigation, navigationStateIndex}: THomeTab) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 // import {Tprops} from '../../types';
 // import themeStore from '../../mobx/Theme';
-import {FONTS, SIZES} from '../../styles';
+import {FONTS, SIZES} from '../styles';
 
 function CustomTheme<T>(WrappedComponent: React.ComponentType<T>) {
   return (

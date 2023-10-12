@@ -2,7 +2,7 @@ import compose from './Recompose';
 import CustomTheme from './CustomTheme';
 import {observer as LiteObserver} from 'mobx-react-lite';
 import {ComponentType} from 'react';
-import {TTheme} from '../../types';
+import {TTheme} from '../types';
 
 export type WithLiteObserver = <T extends {}>(
   component: ComponentType<T>,

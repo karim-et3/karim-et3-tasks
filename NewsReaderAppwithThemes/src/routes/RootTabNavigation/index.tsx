@@ -6,7 +6,7 @@ import {
 import Home from '../../components/Home';
 import Search from '../../components/Search';
 import CustomNavigationTab from './CustomNavigationTab';
-import {withLiteObserver} from '../../components/hoc';
+import {withLiteObserver} from '../../hoc';
 
 const Tab = createMaterialTopTabNavigator();
 const RootTabNavigation = () => {

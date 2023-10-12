@@ -74,14 +74,15 @@ export type TCOLORS = {
   grey: string;
   white: string;
   highlight: string;
+  error: string;
 };
 export type TSIZES = {
-  xSmall: number;
-  small: number;
-  medium: number;
-  large: number;
-  xLarge: number;
-  xxLarge: number;
+  xSmall: 10;
+  small: 12;
+  medium: 16;
+  large: 20;
+  xLarge: 24;
+  xxLarge: 32;
 };
 export type TFONTS = {
   regular: '400';
@@ -111,3 +112,8 @@ export type TTheme = {
   SIZES: TSIZES;
   FONTS: TFONTS;
 };
+export type TNoResult = {
+  SIZES: TSIZES;
+  FONTS: TFONTS;
+};
+export type TNoResultExport = {};

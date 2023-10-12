@@ -3,7 +3,7 @@ import React from 'react';
 import {TTabButton} from '../../../types';
 import TabButtonSwitch from './TabButtonSwitch';
 import TabButtonTitle from './TabButtonTitle';
-import {withLiteObserver} from '../../../components/hoc';
+import {withLiteObserver} from '../../../hoc';
 import themeStore from '../../../mobx/Theme';
 
 const TabButton = ({

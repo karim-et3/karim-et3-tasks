@@ -4,7 +4,7 @@ import {
   TDisplaySingleNewsDescription,
   TDisplaySingleNewsDescriptionExport,
 } from '../../types';
-import {WithThemeAndLiteObserver} from '../hoc';
+import {WithThemeAndLiteObserver} from '../../hoc';
 import themeStore from '../../mobx/Theme';
 
 const DisplaySingleNewsDescription = ({

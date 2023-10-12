@@ -7,7 +7,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons';
 import {far} from '@fortawesome/free-regular-svg-icons';
 import {faSquareCheck} from '@fortawesome/free-solid-svg-icons/faSquareCheck';
 import {StatusBar} from 'react-native';
-import {withLiteObserver} from './src/components/hoc';
+import {withLiteObserver} from './src/hoc';
 import themeStore from './src/mobx/Theme';
 
 function App() {

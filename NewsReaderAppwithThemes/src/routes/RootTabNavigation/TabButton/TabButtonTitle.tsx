@@ -1,7 +1,7 @@
 import {Text} from 'react-native';
 import React from 'react';
 import {TTabButtonTitle} from '../../../types';
-import {withLiteObserver} from '../../../components/hoc';
+import {withLiteObserver} from '../../../hoc';
 import themeStore from '../../../mobx/Theme';
 
 const TabButtonTitle = ({

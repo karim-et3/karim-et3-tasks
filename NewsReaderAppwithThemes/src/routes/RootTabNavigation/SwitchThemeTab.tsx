@@ -2,7 +2,7 @@ import React from 'react';
 import themeStore from '../../mobx/Theme';
 import TabButton from './TabButton';
 import {TSwitchThemeTab} from '../../types';
-import {withLiteObserver} from '../../components/hoc';
+import {withLiteObserver} from '../../hoc';
 
 const SwitchThemeTab = ({navigationStateIndex}: TSwitchThemeTab) => {
   return (

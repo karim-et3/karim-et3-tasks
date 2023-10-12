@@ -1,7 +1,7 @@
 import React from 'react';
 import TabButton from './TabButton';
 import {TSearchTab} from '../../types';
-import {withLiteObserver} from '../../components/hoc';
+import {withLiteObserver} from '../../hoc';
 
 const SearchTab = ({navigation, navigationStateIndex}: TSearchTab) => {
   return (

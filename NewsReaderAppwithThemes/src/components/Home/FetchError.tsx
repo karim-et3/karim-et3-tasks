@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {withLiteObserver} from '../hoc';
+import {withLiteObserver} from '../../hoc';
 import themeStore from '../../mobx/Theme';
 
 const FetchError = () => {

@@ -31,6 +31,7 @@ class Theme {
       grey: this.light.get() ? '#64748b' : '#94a3b8',
       white: this.light.get() ? '#ffffff' : '#1e293b',
       highlight: this.light.get() ? '#fafafa' : '#334155',
+      error: '#f43f5e',
     };
   }
   get isLight() {
@@ -53,6 +54,9 @@ class Theme {
   }
   get highlight() {
     return this.colors.highlight;
+  }
+  get error() {
+    return this.colors.error;
   }
 
   logTheme = () => {

@@ -5,7 +5,7 @@ import SwitchThemeTab from './SwitchThemeTab';
 import HomeTab from './HomeTab';
 import SearchTab from './SearchTab';
 import {TCustomNavigationTab} from '../../types';
-import {withLiteObserver} from '../../components/hoc';
+import {withLiteObserver} from '../../hoc';
 import themeStore from '../../mobx/Theme';
 
 const CustomNavigationTab = ({
