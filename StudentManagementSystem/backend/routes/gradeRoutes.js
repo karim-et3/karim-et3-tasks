@@ -13,4 +13,8 @@ router
 router.put("/grades/edit", (req, res, next) => {
   gradeController.updateGrade(req, res, next);
 });
+
+router.post("/grades/edit-courses", (req, res, next) => {
+  gradeController.editCourses(req, res, next);
+});
 module.exports = router;

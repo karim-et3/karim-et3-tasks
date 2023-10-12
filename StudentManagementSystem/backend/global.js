@@ -17,9 +17,9 @@ exports.formatdate = (date = "") => {
   // return time;
   let d = new Date();
   if (date) d = new Date(date);
-  let yyyy = d.getFullYear();
-  let mm = d.getMonth() + 1;
-  let dd = d.getDate();
-  let formatedDate = `${yyyy}-${mm}-${dd}`;
+  const yyyy = d.getFullYear();
+  const mm = d.getMonth() + 1;
+  const dd = d.getDate();
+  const formatedDate = `${yyyy}-${mm}-${dd}`;
   return formatedDate;
 };

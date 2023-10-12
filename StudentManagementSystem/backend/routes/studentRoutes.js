@@ -13,5 +13,7 @@ router.get("/students/:id", (req, res, next) =>
 router.put("/students/edit/:id", (req, res, next) =>
   studentController.updateStudent(req, res, next)
 );
-
+router.delete("/students/delete/:id", (req, res, next) =>
+  studentController.deleteStudent(req, res, next)
+);
 module.exports = router;
