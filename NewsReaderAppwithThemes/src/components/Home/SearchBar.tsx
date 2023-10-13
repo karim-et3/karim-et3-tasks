@@ -34,7 +34,8 @@ const SearchBar = () => {
         cursorColor={themeStore.primary}
         value={searchtSore.getText}
         onChangeText={text => {
-          if (text) searchtSore.search(text);
+          searchtSore.setText(text);
+          if (searchtSore.getText) searchtSore.search(searchtSore.getText);
         }}
         placeholder={'Search'}
         placeholderTextColor={themeStore.grey}

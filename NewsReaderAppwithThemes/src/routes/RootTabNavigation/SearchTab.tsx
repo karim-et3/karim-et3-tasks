@@ -3,17 +3,19 @@ import TabButton from './TabButton';
 import {TSearchTab} from '../../types';
 import {withLiteObserver} from '../../hoc';
 
-const SearchTab = ({navigation, navigationStateIndex}: TSearchTab) => {
-  return (
-    <TabButton
-      onPress={() => {
-        navigation.navigate('search');
-      }}
-      index={1}
-      navigationStateIndex={navigationStateIndex}
-      title={'Search'}
-    />
-  );
-};
+const SearchTab = withLiteObserver(
+  ({navigation, navigationStateIndex}: TSearchTab) => {
+    return (
+      <TabButton
+        onPress={() => {
+          navigation.navigate('search');
+        }}
+        index={1}
+        navigationStateIndex={navigationStateIndex}
+        title={'Search'}
+      />
+    );
+  },
+);
 
-export default withLiteObserver(SearchTab);
+export default SearchTab;

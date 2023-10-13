@@ -3,30 +3,32 @@ import React, {useState} from 'react';
 import ImageModal from './ImageModal';
 import {TDisplaySingleNewsImage} from '../../../types';
 import {withLiteObserver} from '../../../hoc';
-import NoResult from '../NoResult';
+import UnavailableImage from './UnavailableImage';
 
-const DisplaySingleNewsImage = ({imageURL}: TDisplaySingleNewsImage) => {
-  const [modalVisible, setModalVisible] = useState(false);
+const DisplaySingleNewsImage = withLiteObserver(
+  ({imageURL}: TDisplaySingleNewsImage) => {
+    const [modalVisible, setModalVisible] = useState(false);
 
-  return (
-    <TouchableOpacity onPress={() => setModalVisible(true)}>
-      {imageURL ? (
-        <Image
-          source={{uri: imageURL}}
-          style={{
-            width: 100,
-            height: 100,
-            resizeMode: 'cover',
-          }}
-        />
-      ) : (
-        <NoResult />
-      )}
-      {modalVisible && (
-        <ImageModal setModalVisible={setModalVisible} imageURL={imageURL} />
-      )}
-    </TouchableOpacity>
-  );
-};
+    return (
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+        {imageURL ? (
+          <Image
+            source={{uri: imageURL}}
+            style={{
+              width: 100,
+              height: 100,
+              resizeMode: 'cover',
+            }}
+          />
+        ) : (
+          <UnavailableImage />
+        )}
+        {modalVisible && (
+          <ImageModal setModalVisible={setModalVisible} imageURL={imageURL} />
+        )}
+      </TouchableOpacity>
+    );
+  },
+);
 
-export default withLiteObserver(DisplaySingleNewsImage);
+export default DisplaySingleNewsImage;

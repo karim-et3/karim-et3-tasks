@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {withLiteObserver} from '../../hoc';
 import themeStore from '../../mobx/Theme';
 
-const FetchError = () => {
+const FetchError = withLiteObserver(() => {
   return (
     <View
       style={{
@@ -29,6 +29,6 @@ const FetchError = () => {
       <Text style={{color: themeStore.black}}>Error occured.</Text>
     </View>
   );
-};
+});
 
-export default withLiteObserver(FetchError);
+export default FetchError;

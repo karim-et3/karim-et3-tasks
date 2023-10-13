@@ -1,11 +1,22 @@
 import {
   NavigationHelpers,
-  NavigationProp,
+  // NavigationProp,
   ParamListBase,
 } from '@react-navigation/native';
 
-export type Tnavigation = {
-  navigation: NavigationProp<ParamListBase>;
+// export type Tnavigation = {
+//   navigation: NavigationProp<ParamListBase>;
+// };
+// export type Tnavigation = MaterialTopTabScreenProps<RootTabParamList, 'home'>;
+
+export type TnavigationState = {
+  history: [{key: string; type: string}];
+  index: number;
+  key: string;
+  routeNames: [string];
+  routes: [{key: string; name: string; params: object | undefined}];
+  stale: boolean;
+  type: string;
 };
 export type Tnews = {
   source: {
@@ -21,16 +32,11 @@ export type Tnews = {
   content: string;
 };
 export type TDisplaySingleNews = {news: Tnews};
-export type TDisplaySingleNewsDescription = {
-  news: Tnews;
-  SIZES: TSIZES;
-  // COLORS: TCOLORS;
-};
+
 export type TDisplaySingleNewsDescriptionExport = {
   news: Tnews;
 };
 export type TTabButton = {
-  // COLORS: TCOLORS;
   onPress: () => void;
   navigationStateIndex: number;
   index?: number;
@@ -50,12 +56,10 @@ export type TSwitchThemeTab = {
   navigationStateIndex: number;
 };
 export type TCustomNavigationTab = {
-  // COLORS: TCOLORS;
   navigation: NavigationHelpers<ParamListBase>;
   navigationStateIndex: number;
 };
 export type TTabButtonTitle = {
-  // COLORS: TCOLORS;
   navigationStateIndex: number;
   index?: number;
   title?: string;
@@ -94,18 +98,13 @@ export type Tprops = {
   props: React.ReactPropTypes;
 };
 export type TTabButtonSwitch = {
-  // COLORS: TCOLORS;
-  // isLight: boolean;
   navigationStateIndex: number;
 };
 export type TFetchError = {
   COLORS: TCOLORS;
 };
 export type TFetchErrorExport = {};
-export type THome = {
-  // isLight: boolean;
-  // COLORS: TCOLORS;
-};
+export type THome = {};
 export type TSearch = {
   COLORS: TCOLORS;
 };
@@ -113,8 +112,13 @@ export type TTheme = {
   SIZES: TSIZES;
   FONTS: TFONTS;
 };
-export type TNoResult = {
-  SIZES: TSIZES;
-  FONTS: TFONTS;
-};
+
 export type TNoResultExport = {};
+
+// export type RootTabParamList = {
+//   home: undefined;
+//   search: undefined;
+// };
+// export type homeProps = MaterialTopTabScreenProps<RootTabParamList, 'home'> & {
+//   navigationIndex: number;
+// };

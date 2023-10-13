@@ -1,16 +1,14 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {
-  TDisplaySingleNewsDescription,
-  TDisplaySingleNewsDescriptionExport,
-} from '../../../types';
+import {Tnews} from '../../../types';
 import {WithThemeAndLiteObserver} from '../../../hoc';
 import themeStore from '../../../mobx/Theme';
 
-const DisplaySingleNewsDescription = ({
-  SIZES,
-  news,
-}: TDisplaySingleNewsDescription) => {
+type Props = {news: Tnews};
+
+const DisplaySingleNewsDescription = WithThemeAndLiteObserver<Props>(props => {
+  const {news, theme} = props;
+  const {SIZES} = theme;
   return (
     <View
       style={{
@@ -38,8 +36,6 @@ const DisplaySingleNewsDescription = ({
       </Text>
     </View>
   );
-};
+});
 
-export default WithThemeAndLiteObserver(
-  DisplaySingleNewsDescription,
-) as React.ComponentType<TDisplaySingleNewsDescriptionExport>;
+export default DisplaySingleNewsDescription;

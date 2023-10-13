@@ -9,7 +9,7 @@ import CustomNavigationTab from './CustomNavigationTab';
 import {withLiteObserver} from '../../hoc';
 
 const Tab = createMaterialTopTabNavigator();
-const RootTabNavigation = () => {
+const RootTabNavigation = withLiteObserver(() => {
   return (
     <Tab.Navigator
       initialRouteName="home"
@@ -23,6 +23,6 @@ const RootTabNavigation = () => {
       <Tab.Screen name="search" component={Search} />
     </Tab.Navigator>
   );
-};
+});
 
-export default withLiteObserver(RootTabNavigation);
+export default RootTabNavigation;

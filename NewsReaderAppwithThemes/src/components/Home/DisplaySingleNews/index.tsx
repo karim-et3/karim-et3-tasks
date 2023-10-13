@@ -5,7 +5,7 @@ import DisplaySingleNewsDescription from './DisplaySingleNewsDescription';
 import DisplaySingleNewsImage from './DisplaySingleNewsImage';
 import {withLiteObserver} from '../../../hoc';
 
-const DisplaySingleNews = ({news}: TDisplaySingleNews) => {
+const DisplaySingleNews = withLiteObserver(({news}: TDisplaySingleNews) => {
   return (
     <View
       style={{
@@ -16,6 +16,6 @@ const DisplaySingleNews = ({news}: TDisplaySingleNews) => {
       <DisplaySingleNewsDescription news={news} />
     </View>
   );
-};
+});
 
-export default withLiteObserver(DisplaySingleNews);
+export default DisplaySingleNews;

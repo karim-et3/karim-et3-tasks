@@ -4,7 +4,7 @@ import {withLiteObserver} from '../../hoc';
 import themeStore from '../../mobx/Theme';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
-const Search = () => {
+const Search = withLiteObserver(() => {
   return (
     <View
       style={{
@@ -16,6 +16,6 @@ const Search = () => {
       <FontAwesomeIcon icon="ban" color={themeStore.error} size={120} />
     </View>
   );
-};
+});
 
-export default withLiteObserver(Search);
+export default Search;

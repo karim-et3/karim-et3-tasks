@@ -20,7 +20,7 @@ class Search {
           method: '',
           url: 'https://www.newsapi.org/v2/everything',
           params: {
-            q: text ? text : this.text,
+            q: text,
             pageSize: 10,
           },
           headers: {'X-Api-Key': apiKey},

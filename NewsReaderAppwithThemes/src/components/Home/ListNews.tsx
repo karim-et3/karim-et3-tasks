@@ -4,13 +4,13 @@ import DisplaySingleNews from './DisplaySingleNews';
 import newsStore from '../../mobx/News';
 import {withLiteObserver} from '../../hoc';
 
-const ListNews = () => {
+const ListNews = withLiteObserver(() => {
   return (
     <FlatList
       data={newsStore.getNews}
       renderItem={({item}) => <DisplaySingleNews news={item} />}
     />
   );
-};
+});
 
-export default withLiteObserver(ListNews);
+export default ListNews;

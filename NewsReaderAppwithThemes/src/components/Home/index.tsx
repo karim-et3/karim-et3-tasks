@@ -8,9 +8,9 @@ import SearchBar from './SearchBar';
 import searchtSore from '../../mobx/Search';
 import NoResult from './NoResult';
 
-const Home = () => {
+const Home = withLiteObserver(() => {
   useEffect(() => {
-    searchtSore.search('arab');
+    searchtSore.search('tech');
   }, []);
 
   return (
@@ -31,6 +31,6 @@ const Home = () => {
       )}
     </View>
   );
-};
+});
 
-export default withLiteObserver(Home);
+export default Home;

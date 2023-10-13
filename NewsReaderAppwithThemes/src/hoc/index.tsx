@@ -18,10 +18,10 @@ type WithThemeAndLiteObserver = <T extends {}>(
 
 export const WithThemeAndLiteObserver = (component => {
   return compose(CustomTheme, LiteObserver)(component);
-  // return test1(test2(component));
-  // return CustomTheme(LiteObserver(component));
-  // return LiteObserver(CustomTheme(component));
 }) as WithThemeAndLiteObserver;
+// return test1(test2(component));
+// return CustomTheme(LiteObserver(component));
+// return LiteObserver(CustomTheme(component));
 
 // export const test1 = component => {
 //   return LiteObserver(component);

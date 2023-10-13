@@ -3,14 +3,17 @@ import React from 'react';
 import {WithThemeAndLiteObserver} from '../../hoc';
 import themeStore from '../../mobx/Theme';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {TNoResult, TNoResultExport} from '../../types';
 
-const NoResult = ({FONTS, SIZES}: TNoResult) => {
+type Props = {};
+const NoResult = WithThemeAndLiteObserver<Props>(props => {
+  const {theme} = props;
+  const {FONTS, SIZES} = theme;
   return (
     <View
       style={{
         flex: 1,
-        justifyContent: 'center',
+        marginTop: 160,
+        // justifyContent: 'center',
         alignItems: 'center',
         gap: SIZES.small,
       }}>
@@ -25,8 +28,6 @@ const NoResult = ({FONTS, SIZES}: TNoResult) => {
       </Text>
     </View>
   );
-};
+});
 
-export default WithThemeAndLiteObserver(
-  NoResult,
-) as React.ComponentType<TNoResultExport>;
+export default NoResult;
