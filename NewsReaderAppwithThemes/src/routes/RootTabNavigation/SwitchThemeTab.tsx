@@ -11,6 +11,7 @@ const SwitchThemeTab = withLiteObserver(
         onPress={() => themeStore.changeTheme()}
         navigationStateIndex={navigationStateIndex}
         type="themeswitch"
+        title={themeStore.isLight ? 'Light' : 'Dark'}
       />
     );
   },

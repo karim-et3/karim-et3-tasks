@@ -1,10 +1,10 @@
-import {TouchableHighlight} from 'react-native';
+import {TouchableHighlight, View} from 'react-native';
 import React from 'react';
 import {TTabButton} from '../../../types';
-import TabButtonSwitch from './TabButtonSwitch';
 import TabButtonTitle from './TabButtonTitle';
 import {withLiteObserver} from '../../../hoc';
 import themeStore from '../../../mobx/Theme';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 const TabButton = withLiteObserver(
   ({onPress, navigationStateIndex, index, type, title}: TTabButton) => {
@@ -20,15 +20,24 @@ const TabButton = withLiteObserver(
           backgroundColor: themeStore.white,
           flex: 1,
         }}>
-        {type === 'themeswitch' ? (
-          <TabButtonSwitch navigationStateIndex={navigationStateIndex} />
-        ) : (
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 5,
+          }}>
+          {type === 'themeswitch' && (
+            <FontAwesomeIcon
+              icon={themeStore.isLight ? 'sun' : 'moon'}
+              color={themeStore.primary}
+            />
+          )}
           <TabButtonTitle
-            navigationStateIndex={navigationStateIndex}
-            index={index}
             title={title}
+            navigationStateIndex={navigationStateIndex}
           />
-        )}
+        </View>
       </TouchableHighlight>
     );
   },

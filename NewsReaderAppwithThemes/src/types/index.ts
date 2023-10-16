@@ -39,9 +39,9 @@ export type TDisplaySingleNewsDescriptionExport = {
 export type TTabButton = {
   onPress: () => void;
   navigationStateIndex: number;
+  title: string;
   index?: number;
   type?: string;
-  title?: string;
 };
 export type THomeTab = {
   navigation: NavigationHelpers<ParamListBase>;
