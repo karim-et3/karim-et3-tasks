@@ -31,7 +31,7 @@ const SubjectsGradesButtons = WithThemeAndLiteObserver<Props>(props => {
         backgroundColor={COLORS.primary}
         shadow="medium"
         onPress={() =>
-          navigation.navigate('add-grade', {
+          navigation.navigate('grades', {
             id,
           })
         }

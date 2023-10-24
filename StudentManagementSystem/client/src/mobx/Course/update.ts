@@ -1,37 +1,56 @@
 import {runInAction} from 'mobx';
 import toastStore from '../Toast';
 import courseStore from '.';
-import axios from 'axios';
-import {IP, PORT} from '@env';
 import {navigate} from '../../routes/NavigationRef';
 import {TCourse, TCourses} from '../../types';
 import {mergeWith} from 'lodash';
-import {readSingle} from './read';
+import subjectStore from '../Subject';
+import axiosHelper from '../../helpers/axiosHelper';
 
 const update = ({id, code, subject, duration}: {id: number} & TCourse) => {
   const customizer_ = ({
     id,
     code,
-    subject,
+    subject_id,
     duration,
     created_at,
     updated_at,
   }: TCourses) => {
-    return {id, code, subject, duration, created_at, updated_at};
+    return {id, code, subject_id, duration, created_at, updated_at};
   };
   runInAction(async () => {
     try {
+      if (!code) {
+        toastStore.changeVisiblity({
+          message: 'Code is required',
+          error: true,
+        });
+        return;
+      }
+      if (!subject) {
+        toastStore.changeVisiblity({
+          message: 'Subject is required',
+          error: true,
+        });
+        return;
+      }
       courseStore.setIsLoading(true);
-      const response = await axios.put(
-        `http://${IP}:${PORT}/courses/edit/${id}`,
-        {
+      const indexSubjectID = subjectStore.subjects.findIndex(
+        sub => sub.name === subject,
+      );
+      const subjectID = subjectStore.subjects[indexSubjectID].id;
+
+      const response = await axiosHelper({
+        path: `courses/edit/${id}`,
+        method: 'PUT',
+        data: {
           data: {
             code,
-            subject,
+            subjectID,
             duration,
           },
         },
-      );
+      });
       toastStore.changeVisiblity({
         message: response.data.message,
         error: false,
@@ -39,7 +58,6 @@ const update = ({id, code, subject, duration}: {id: number} & TCourse) => {
       const course = response.data.course;
       const index = courseStore.courses.findIndex(course => course.id === id);
       courseStore.courses[index] = mergeWith(course, customizer_);
-      readSingle(id);
       console.log(response.data.course);
       console.log(JSON.stringify(courseStore.courses, null, 6));
       navigate('courses', {});

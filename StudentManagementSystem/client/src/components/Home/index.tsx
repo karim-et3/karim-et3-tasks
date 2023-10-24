@@ -5,6 +5,7 @@ import LoadingModal from '../../common/LoadingModal';
 import studentStore from '../../mobx/Student';
 import courseStore from '../../mobx/Course';
 import {WithThemeAndLiteObserver} from '../../hoc/theme';
+import subjectStore from '../../mobx/Subject';
 
 const Home = () => {
   return (
@@ -23,9 +24,21 @@ const Home = () => {
             marginHorizontal: 60,
             flexWrap: 'wrap',
           }}>
-          <CountBox icon="users" count={studentStore.students.length} />
-          <CountBox icon="folder-tree" count={courseStore.courses.length} />
-          <CountBox icon="table-list" count={1230} />
+          <CountBox
+            icon="users"
+            count={studentStore.students.length}
+            link={'students'}
+          />
+          <CountBox
+            icon="table-list"
+            count={courseStore.courses.length}
+            link="courses"
+          />
+          <CountBox
+            icon="folder-tree"
+            count={subjectStore.subjects.length}
+            link="subjects"
+          />
         </View>
       )}
     </>

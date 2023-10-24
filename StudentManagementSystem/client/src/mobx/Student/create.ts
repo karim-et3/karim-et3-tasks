@@ -1,10 +1,9 @@
 import {runInAction} from 'mobx';
 import studentStore from '.';
 import toastStore from '../Toast';
-import {IP, PORT} from '@env';
-import axios from 'axios';
 import {navigate} from '../../routes/NavigationRef';
 import {TStudent} from '../../types';
+import axiosHelper from '../../helpers/axiosHelper';
 
 const create = ({
   firstName,
@@ -15,57 +14,58 @@ const create = ({
   address,
 }: TStudent) => {
   runInAction(async () => {
-    studentStore.setIsLoading(true);
-    studentStore.isSubmitButtonDisabled.set(true);
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     const phoneRegex = /^(?:\D*|\d{8})$/;
     try {
-      if (!studentStore.student.firstName) {
+      if (!firstName) {
         toastStore.changeVisiblity({
           message: 'First name is required.',
           error: true,
         });
         return;
       }
-      if (!studentStore.student.lastName) {
+      if (!lastName) {
         toastStore.changeVisiblity({
           message: 'Last name is required.',
           error: true,
         });
         return;
       }
-      if (!studentStore.student.firstName) {
+      if (!email) {
         toastStore.changeVisiblity({
           message: 'Email is required.',
           error: true,
         });
         return;
       }
-      if (!studentStore.student.firstName) {
+      if (!dateOfBirth) {
         toastStore.changeVisiblity({
           message: 'Date of birth is required.',
           error: true,
         });
         return;
       }
-      if (!emailRegex.test(studentStore.student.email)) {
+      if (!emailRegex.test(email)) {
         toastStore.changeVisiblity({
           message: 'Invalid Email.',
           error: true,
         });
         return;
       }
-      if (!phoneRegex.test(studentStore.student.phoneNumber)) {
+      if (!phoneRegex.test(phoneNumber)) {
         toastStore.changeVisiblity({
           message: 'Invalid Phone number.',
           error: true,
         });
         return;
       }
-
-      const response = await axios.post(`http://${IP}:${PORT}/students`, {
+      studentStore.setIsLoading(true);
+      const response = await axiosHelper({
+        path: 'students/',
+        method: 'POST',
         data: {firstName, lastName, email, phoneNumber, dateOfBirth, address},
       });
+
       toastStore.changeVisiblity({
         message: response.data.message,
         error: false,

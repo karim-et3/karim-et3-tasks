@@ -7,7 +7,8 @@ import studentStore from '../../../mobx/Student';
 import {CustomButton} from '../../../common';
 import LoadingModal from '../../../common/LoadingModal';
 
-const AddStudent = WithThemeAndLiteObserver<{}>(() => {
+const AddStudent = WithThemeAndLiteObserver<{}>(props => {
+  const {SIZES} = props.theme;
   const blurRef = useRef(null);
   useEffect(() => {
     return () => {
@@ -23,7 +24,7 @@ const AddStudent = WithThemeAndLiteObserver<{}>(() => {
           style={{
             alignItems: 'center',
             justifyContent: 'center',
-            marginVertical: 30,
+            margin: SIZES.xxLarge,
             gap: 16,
           }}>
           <Image
@@ -41,7 +42,7 @@ const AddStudent = WithThemeAndLiteObserver<{}>(() => {
           <InputField
             numeric={false}
             blurRef={blurRef}
-            value={studentStore.tempFirstName}
+            value={studentStore.getTempFirstName}
             setValue={e => studentStore.setTempFirstName(e)}
             icon="user"
             placeholder="First Name"
@@ -52,7 +53,7 @@ const AddStudent = WithThemeAndLiteObserver<{}>(() => {
           <InputField
             numeric={false}
             blurRef={blurRef}
-            value={studentStore.tempLastName}
+            value={studentStore.getTempLastName}
             setValue={e => studentStore.setTempLastName(e)}
             icon="user"
             placeholder="Last Name"
@@ -63,7 +64,7 @@ const AddStudent = WithThemeAndLiteObserver<{}>(() => {
           <InputField
             numeric={false}
             blurRef={blurRef}
-            value={studentStore.tempEmail}
+            value={studentStore.getTempEmail}
             setValue={e => studentStore.setTempEmail(e)}
             icon="at"
             placeholder="Email"
@@ -74,7 +75,7 @@ const AddStudent = WithThemeAndLiteObserver<{}>(() => {
           <InputField
             numeric={false}
             blurRef={blurRef}
-            value={studentStore.tempPhoneNumber}
+            value={studentStore.getTempPhoneNumber}
             setValue={e => studentStore.setTempPhoneNumber(e)}
             icon="phone"
             placeholder="Phone Number"
@@ -84,29 +85,26 @@ const AddStudent = WithThemeAndLiteObserver<{}>(() => {
           <InputField
             numeric={false}
             blurRef={blurRef}
-            value={studentStore.tempAddress}
+            value={studentStore.getTempAddress}
             setValue={e => studentStore.setTempAddress(e)}
             icon="location-dot"
             placeholder="Address"
             focus={studentStore.addressFocus}
             setFocus={() => studentStore.setAddressFocus()}
           />
-          <View
-            style={{
-              width: '90%',
-            }}>
-            <CustomButton
-              disabled={studentStore.getIsSubmitButtonDisabled}
-              shadow="medium"
-              text="Submit"
-              textColor={COLORS.white}
-              backgroundColor={COLORS.primary}
-              onPress={() => {
-                blurRef.current.blur();
-                studentStore.addStudent();
-              }}
-            />
-          </View>
+          <CustomButton
+            style={{marginTop: SIZES.large}}
+            disabled={studentStore.getIsSubmitButtonDisabled}
+            shadow="medium"
+            text="Submit"
+            textColor={COLORS.white}
+            backgroundColor={COLORS.primary}
+            onPress={() => {
+              studentStore.setIsSubmitButtonDisabled(true);
+              blurRef.current.blur();
+              studentStore.addStudent();
+            }}
+          />
         </View>
       )}
     </>

@@ -1,10 +1,10 @@
 import {runInAction} from 'mobx';
 import courseStore from '.';
 import toastStore from '../Toast';
-import axios from 'axios';
-import {IP, PORT} from '@env';
 import {navigate} from '../../routes/NavigationRef';
 import {TCourse} from '../../types';
+import subjectStore from '../Subject';
+import axiosHelper from '../../helpers/axiosHelper';
 
 const create = ({code, subject, duration}: TCourse) => {
   runInAction(async () => {
@@ -24,18 +24,23 @@ const create = ({code, subject, duration}: TCourse) => {
         return;
       }
       courseStore.setIsLoading(true);
-      const response = await axios.post(`http://${IP}:${PORT}/courses`, {
-        data: {code, subject, duration},
+      const indexSubjectID = subjectStore.subjects.findIndex(
+        sub => sub.name === subject,
+      );
+      const subjectID = subjectStore.subjects[indexSubjectID].id;
+      const response = await axiosHelper({
+        path: 'courses/',
+        method: 'POST',
+        data: {code, subjectID, duration},
       });
-      console.log(response.data.course);
+      console.log(response.data);
       courseStore.courses.push(response.data.course);
       toastStore.changeVisiblity({
         message: response.data.message,
         error: false,
       });
 
-      courseStore.resetInput();
-      navigate('home-drawer', {screen: 'courses'});
+      navigate('courses', {});
     } catch (error: any) {
       console.log(JSON.stringify(error.response.data, null, 3));
       toastStore.changeVisiblity({

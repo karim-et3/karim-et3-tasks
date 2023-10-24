@@ -8,13 +8,15 @@ class Toast {
   message = observable.box<string>('message');
 
   changeVisiblity({message, error}: TToast) {
-    toastStore.setMessage(message);
-    toastStore.setError(error);
-    toastStore.setShowToast(true);
-    const timer = setTimeout(() => {
-      toastStore.setShowToast(false);
-    }, 1500);
-    return () => clearTimeout(timer);
+    runInAction(() => {
+      toastStore.setMessage(message);
+      toastStore.setError(error);
+      toastStore.setShowToast(true);
+      const timer = setTimeout(() => {
+        toastStore.setShowToast(false);
+      }, 1500);
+      return () => clearTimeout(timer);
+    });
   }
 
   setShowToast(status: boolean) {

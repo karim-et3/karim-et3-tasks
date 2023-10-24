@@ -34,7 +34,7 @@ const InputField = WithThemeAndLiteObserver<Props>(props => {
   return (
     <View
       style={{
-        width: '90%',
+        width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
         borderColor: focus ? COLORS.primary : COLORS.grey,

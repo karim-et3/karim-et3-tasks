@@ -1,28 +1,26 @@
-import {IP, PORT} from '@env';
-import axios from 'axios';
 import {runInAction} from 'mobx';
 import gradeStore from '.';
 import {navigate} from '../../routes/NavigationRef';
 import toastStore from '../Toast';
+import axiosHelper from '../../helpers/axiosHelper';
 
 const update = () => {};
 const updateCoursesChecked = (id: number) => {
   runInAction(async () => {
     try {
       gradeStore.setIsLoading(true);
-      const result = await axios.post(
-        `http://${IP}:${PORT}/grades/edit-courses`,
-        {
-          id,
-          coursesCheked: gradeStore.getCoursesChecked,
-        },
-      );
+      const response = await axiosHelper({
+        path: 'grades/edit-courses/',
+        method: 'POST',
+        data: {id, coursesCheked: gradeStore.getCoursesChecked},
+      });
+
       toastStore.changeVisiblity({
-        message: result.data.message,
+        message: response.data.message,
         error: false,
       });
-      navigate('student-details', {params: {id}});
-      gradeStore.fetchGradesForStudent(id);
+      // gradeStore.fetchGradesForStudent(id);
+      navigate('student-details', {id});
     } catch (error: any) {
       console.log(JSON.stringify(error.response.data, null, 3));
       toastStore.changeVisiblity({

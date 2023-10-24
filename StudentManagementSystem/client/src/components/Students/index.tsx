@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import StudentItem from './StudentItem';
 import {WithThemeAndLiteObserver} from '../../hoc/theme';
-import EmptyList from './EmptyList';
+import EmptyList from '../EmptyList';
 import {FlatList, StyleSheet, View} from 'react-native';
 import studentStore from '../../mobx/Student';
 import {COLORS} from '../../styles';
@@ -29,7 +29,7 @@ const Students = WithThemeAndLiteObserver<{}>(() => {
           )}
           renderItem={item => <StudentItem student={item.item} />}
           keyExtractor={item => item.id.toString()}
-          ListEmptyComponent={<EmptyList />}
+          ListEmptyComponent={<EmptyList text="No Students." />}
         />
       )}
     </>

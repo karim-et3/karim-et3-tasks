@@ -13,7 +13,6 @@ const AddCoursesToStudent = WithThemeAndLiteObserver<{}>(props => {
   const {route, theme} = props;
   const {COLORS, FONTS, SIZES} = theme;
   const {id} = route.params;
-  console.log('is this changing', id);
   useEffect(() => {
     gradeStore.fetchGradesForStudent(id);
   }, []);

@@ -98,7 +98,7 @@ const RootDrawerNavigation = WithThemeAndLiteObserver<Props>(props => {
           title: 'Courses',
           drawerIcon: props => (
             <FontAwesomeIcon
-              icon="folder-tree"
+              icon="table-list"
               size={18}
               color={props.focused ? COLORS.white : COLORS.black}
             />
@@ -154,20 +154,6 @@ const RootDrawerNavigation = WithThemeAndLiteObserver<Props>(props => {
               </Text>
               <FontAwesomeIcon icon="plus" color={COLORS.primary} />
             </TouchableOpacity>
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="grades"
-        component={Grades}
-        options={{
-          title: 'Grades',
-          drawerIcon: props => (
-            <FontAwesomeIcon
-              icon="table-list"
-              size={18}
-              color={props.focused ? COLORS.white : COLORS.black}
-            />
           ),
         }}
       />

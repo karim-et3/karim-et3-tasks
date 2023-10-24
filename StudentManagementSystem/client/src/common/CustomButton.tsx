@@ -10,23 +10,34 @@ type Props = {
   onPress: () => void;
   shadow?: 'small' | 'medium';
   disabled?: boolean;
+  style?: object;
 };
 
 const CustomButton = WithThemeAndLiteObserver<Props>(props => {
-  const {text, textColor, backgroundColor, onPress, shadow, disabled, theme} =
-    props;
+  const {
+    text,
+    textColor,
+    backgroundColor,
+    onPress,
+    shadow,
+    disabled,
+    style,
+    theme,
+  } = props;
   const {SIZES, FONTS, SHADOWS} = theme;
   return (
     <Pressable
       disabled={disabled}
       onPress={onPress}
       style={[
+        style,
         shadow === 'small'
           ? SHADOWS.small
           : shadow === 'medium'
           ? SHADOWS.medium
           : null,
         {
+          width: '100%',
           flex: 1,
           minHeight: 38,
           backgroundColor: disabled ? COLORS.grey : backgroundColor,
@@ -40,7 +51,7 @@ const CustomButton = WithThemeAndLiteObserver<Props>(props => {
         style={{
           color: textColor,
           fontSize: SIZES.medium,
-          fontWeight: FONTS.medium,
+          fontWeight: FONTS.bold,
         }}>
         {text}
       </Text>

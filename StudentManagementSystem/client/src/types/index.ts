@@ -187,21 +187,27 @@ export type TButton = {
 export type TCourses = {
   id: number;
   code: string;
-  subject: string;
+  subject_id: number;
   duration: string;
   created_at: Date;
   updated_at: Date;
+};
+export type TCourse = {
+  code: string;
+  subject: string;
+  duration: string;
 };
 export type TGrades = {
   course_id: number;
   student_id: number;
   grade?: number;
 };
-export type TSubject = {};
-
-export type TCourse = {
+export type TSubjects = {
   id: number;
-  code: string;
-  subject: string;
-  duration: string;
+  name: string;
+  created_at: Date;
+  updated_at: Date;
+};
+export type TSubject = {
+  name: string;
 };

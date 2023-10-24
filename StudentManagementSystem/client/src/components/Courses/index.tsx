@@ -6,6 +6,7 @@ import {WithThemeAndLiteObserver} from '../../hoc/theme';
 import {StackScreenProps} from '@react-navigation/stack';
 import {ParamListBase} from '@react-navigation/native';
 import LoadingModal from '../../common/LoadingModal';
+import EmptyList from '../EmptyList';
 
 type Props = {
   navigation: StackScreenProps<ParamListBase>;
@@ -34,6 +35,7 @@ const Courses = WithThemeAndLiteObserver<Props>(props => {
               <CourseItem navigation={navigation} course={item.item} />
             )}
             numColumns={2}
+            ListEmptyComponent={<EmptyList text="No Courses." />}
           />
         </View>
       )}

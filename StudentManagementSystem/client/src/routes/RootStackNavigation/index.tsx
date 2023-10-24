@@ -10,6 +10,8 @@ import EditStudent from '../../components/Students/EditStudent';
 import AddSubject from '../../components/Subjects/AddSubject';
 import AddCourseToStudent from '../../components/Students/AddCoursesToStudent';
 import EditCourse from '../../components/Courses/EditCourse';
+import EditSubject from '../../components/Subjects/EditSubject';
+import Grades from '../../components/Grades';
 
 const Stack = createStackNavigator();
 const RootStackNavigation = () => {
@@ -46,7 +48,13 @@ const RootStackNavigation = () => {
         options={{title: 'Student Courses'}}
         component={AddCourseToStudent}
       />
-      <Stack.Screen name="add-grade" component={AddGrade} />
+      <Stack.Screen
+        name="grades"
+        component={Grades}
+        options={{
+          title: 'Grades',
+        }}
+      />
       <Stack.Screen
         name="student-details"
         component={StudentDetails}
@@ -64,6 +72,11 @@ const RootStackNavigation = () => {
         name="edit-course"
         component={EditCourse}
         options={{title: 'Edit Course'}}
+      />
+      <Stack.Screen
+        name="edit-subject"
+        component={EditSubject}
+        options={{title: 'Edit Subject'}}
       />
     </Stack.Navigator>
   );

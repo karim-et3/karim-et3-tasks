@@ -26,8 +26,8 @@ const StudentDetails = WithThemeAndLiteObserver<Props>(props => {
   const [modalVisible, setModalVisible] = useState(false);
   const {id} = route.params;
   useEffect(() => {
-    studentStore.fetchStudent(id);
-  }, []);
+    if (id) studentStore.fetchStudent(id);
+  }, [id]);
 
   useEffect(() => {
     if (studentStore.student.firstName && studentStore.student.lastName)

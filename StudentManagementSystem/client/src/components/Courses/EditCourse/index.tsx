@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import LoadingModal from '../../../common/LoadingModal';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
 import InputField from '../../../common/InputField';
@@ -11,6 +11,7 @@ type Props = {
   route: any;
 };
 const EditCourse = WithThemeAndLiteObserver<Props>(props => {
+  const blurRef = useRef(null);
   const {route, theme} = props;
   const {COLORS, SIZES} = theme;
   const {id} = route.params;
@@ -37,6 +38,7 @@ const EditCourse = WithThemeAndLiteObserver<Props>(props => {
           }}>
           <DeleteCourse id={id} />
           <InputField
+            blurRef={blurRef}
             numeric={false}
             icon={'file'}
             placeholder={'Course Code'}
@@ -47,6 +49,7 @@ const EditCourse = WithThemeAndLiteObserver<Props>(props => {
           />
           <SubjectSelectBox />
           <InputField
+            blurRef={blurRef}
             numeric={true}
             icon={'clock'}
             placeholder={'Duration'}
@@ -58,11 +61,16 @@ const EditCourse = WithThemeAndLiteObserver<Props>(props => {
           />
           <View style={{flex: 1, width: '90%', marginTop: 20}}>
             <CustomButton
+              disabled={courseStore.getIsSubmitButtonDisabled}
               text={'Submit'}
               shadow="medium"
               textColor={COLORS.white}
               backgroundColor={COLORS.primary}
-              onPress={() => courseStore.putCourse()}
+              onPress={() => {
+                courseStore.setIsSubmitButtonDisabled(true);
+                blurRef.current.blur();
+                courseStore.putCourse(id);
+              }}
             />
           </View>
         </View>

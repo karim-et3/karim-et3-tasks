@@ -1,17 +1,24 @@
-import {IP, PORT} from '@env';
-import axios from 'axios';
 import {runInAction} from 'mobx';
 import toastStore from '../Toast';
 import studentStore from '.';
-import {cloneWith, merge} from 'lodash';
+import {mergeWith} from 'lodash';
 import {TStudents} from '../../types';
+import axiosHelper from '../../helpers/axiosHelper';
 
 const setupEdit = (id: number) => {
   runInAction(() => {
     studentStore.setIsLoading(true);
     const index = studentStore.students.findIndex(std => std.id === id);
-    studentStore.tempStudent = merge(studentStore.students[index]);
-    // Object.assign(studentStore.tempStudent, studentStore.students[index]);
+    if (index !== -1) {
+      const {firstName, lastName, email, dateOfBirth, phoneNumber, address} =
+        studentStore.students[index];
+      studentStore.setTempFirstName(firstName);
+      studentStore.setTempLastName(lastName);
+      studentStore.setTempEmail(email);
+      studentStore.setTempDateOfBirth(dateOfBirth);
+      studentStore.setTempPhoneNumber(phoneNumber);
+      studentStore.setTempAddress(address);
+    }
     studentStore.setIsLoading(false);
   });
 };
@@ -19,8 +26,11 @@ const read = () => {
   runInAction(async () => {
     studentStore.setIsLoading(true);
     try {
-      const result = await axios.get(`http://${IP}:${PORT}/students`);
-      studentStore.students.replace(result.data.students);
+      const response = await axiosHelper({
+        path: 'students/',
+        method: 'GET',
+      });
+      studentStore.setStudents(response.data.students);
       console.log('student =>', JSON.stringify(studentStore.students, null, 3));
     } catch (error: any) {
       console.log(JSON.stringify(error.response.data, null, 3));
@@ -50,7 +60,7 @@ const readSingle = (id: number) => {
   runInAction(() => {
     studentStore.setIsLoading(true);
     const index = studentStore.students.findIndex(std => std.id === id);
-    studentStore.student = cloneWith(studentStore.students[index], customizer);
+    studentStore.student = mergeWith(studentStore.students[index], customizer);
     console.log(JSON.stringify(studentStore.student, null, 3));
     studentStore.setIsLoading(false);
   });

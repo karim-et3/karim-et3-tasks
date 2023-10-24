@@ -1,31 +1,31 @@
 import {runInAction} from 'mobx';
 import toastStore from '../Toast';
 import courseStore from '.';
-import {IP, PORT} from '@env';
-import axios from 'axios';
 import {navigate} from '../../routes/NavigationRef';
+import axiosHelper from '../../helpers/axiosHelper';
 
-const remove = ({id}: {id: number}) => {
-  runInAction(async () => {
-    try {
-      const response = await axios.delete(
-        `http://${IP}:${PORT}/courses/delete/${id}`,
-      );
-      console.log(response.data);
-      toastStore.changeVisiblity({
-        message: response.data.message,
-        error: false,
-      });
-      navigate('courses', {});
-    } catch (error: any) {
-      console.log(JSON.stringify(error.response.data, null, 3));
-      toastStore.changeVisiblity({
-        message: error.response.data.message,
-        error: true,
-      });
-    } finally {
-      courseStore.setIsLoading(false);
-    }
-  });
+const remove = async ({id}: {id: number}) => {
+  try {
+    courseStore.setIsLoading(true);
+    const response = await axiosHelper({
+      path: `courses/delete/${id}`,
+      method: 'DELETE',
+    });
+    const index = courseStore.courses.findIndex(course => course.id === id);
+    runInAction(async () => courseStore.courses.splice(index, 1));
+    toastStore.changeVisiblity({
+      message: response.data.message,
+      error: false,
+    });
+    navigate('courses', {});
+  } catch (error: any) {
+    console.log(JSON.stringify(error.response.data, null, 3));
+    toastStore.changeVisiblity({
+      message: error.response.data.message,
+      error: true,
+    });
+  } finally {
+    courseStore.setIsLoading(false);
+  }
 };
 export {remove};

@@ -1,20 +1,21 @@
 import React from 'react';
 import {CustomButton} from '../../../common';
-import courseStore from '../../../mobx/Course';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {View} from 'react-native';
+import subjectStore from '../../../mobx/Subject';
 
 type Props = {
   id: number;
 };
-const DeleteCourse = WithThemeAndLiteObserver<Props>(props => {
+const DeleteSubject = WithThemeAndLiteObserver<Props>(props => {
   const {id, theme} = props;
-  const {COLORS} = theme;
+  const {SIZES, COLORS} = theme;
   return (
     <View style={{width: '100%'}}>
       <View
         style={{
+          marginBottom: SIZES.small,
           flexDirection: 'row',
           alignSelf: 'flex-end',
           width: 40,
@@ -25,11 +26,11 @@ const DeleteCourse = WithThemeAndLiteObserver<Props>(props => {
           }
           textColor={COLORS.white}
           backgroundColor={COLORS.white}
-          onPress={() => courseStore.deleteCourse(id)}
+          onPress={() => subjectStore.deleteSubject({id})}
         />
       </View>
     </View>
   );
 });
 
-export default DeleteCourse;
+export default DeleteSubject;

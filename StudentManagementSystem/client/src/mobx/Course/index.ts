@@ -8,28 +8,45 @@ import {read, readSingle, setupEdit} from './read';
 
 class Courses {
   courses = observable.array<TCourses>();
-  course = observable.map({
-    id: 0,
-    code: '',
-    subject: '',
-    duration: '',
-  });
-  tempCourse = observable.object({
-    id: 0,
-    code: '',
-    subject: '',
-    duration: '',
-  });
-  focusCode = observable.box<boolean>(false);
-  focusSubject = observable.box<boolean>(false);
-  focusDuration = observable.box<boolean>(false);
   loading = observable.box<boolean>(false);
+  isSubmitButtonDisabled = observable.box<boolean>(false);
+  course = observable.object({
+    id: 0,
+    code: '',
+    subject: '',
+    duration: '',
+  });
+  // tempCourse = observable.object({
+  //   id: 0,
+  //   code: '',
+  //   subject: '',
+  //   duration: '',
+  // });
+  code = observable.box<string>('');
+  subject = observable.box<string>('');
+  duration = observable.box<string>('');
+  courseFocus = observable.object({
+    code: false,
+    subject: false,
+    duration: false,
+  });
 
   fetchCourses = () => read();
   fetchCourse = (id: number) => readSingle(id);
   setupEdit = (id: number) => setupEdit(id);
-  postCourse = () => create(this.tempCourse);
-  putCourse = () => update(this.tempCourse);
+  addCourse = () =>
+    create({
+      code: this.getTempCode,
+      subject: this.getTempSubject,
+      duration: this.getTempDuration,
+    });
+  putCourse = (id: number) =>
+    update({
+      id,
+      code: this.getTempCode,
+      subject: this.getTempSubject,
+      duration: this.getTempDuration,
+    });
   deleteCourse = (id: number) => remove({id});
 
   resetInput() {
@@ -38,9 +55,9 @@ class Courses {
       this.setTempDuration('');
       this.setTempSubject('');
 
-      this.focusDuration.set(false);
-      this.focusCode.set(false);
-      this.focusSubject.set(false);
+      this.courseFocus.code = false;
+      this.courseFocus.subject = false;
+      this.courseFocus.duration = false;
     });
   }
 
@@ -52,38 +69,51 @@ class Courses {
 
   setTempCode(code: string) {
     runInAction(() => {
-      this.tempCourse.code = code;
+      this.code.set(code);
+      this.setIsSubmitButtonDisabled(false);
     });
   }
   setTempSubject(subject: string) {
     runInAction(() => {
-      this.tempCourse.subject = subject;
+      this.subject.set(subject);
+      this.setIsSubmitButtonDisabled(false);
     });
   }
   setTempDuration(duration: string) {
     runInAction(() => {
-      duration = duration.replace(/[^0-9]/g, '');
-      this.tempCourse.duration = duration;
+      if (duration) duration = duration.replace(/[^0-9]/g, '');
+      this.duration.set(duration);
+      this.setIsSubmitButtonDisabled(false);
     });
   }
+
   setFocusCode = () => {
     runInAction(() => {
-      this.focusCode.set(!this.focusCode.get());
+      this.courseFocus.code = !this.courseFocus.code;
     });
   };
   setFocusSubject = () => {
     runInAction(() => {
-      this.focusSubject.set(!this.focusSubject.get());
+      this.courseFocus.subject = !this.courseFocus.subject;
     });
   };
   setFocusDuration = () => {
     runInAction(() => {
-      this.focusDuration.set(!this.focusDuration.get());
+      this.courseFocus.duration = !this.courseFocus.duration;
     });
   };
+
   setIsLoading(status: boolean) {
     runInAction(() => {
       this.loading.set(status);
+    });
+  }
+  get getIsSubmitButtonDisabled() {
+    return this.isSubmitButtonDisabled.get();
+  }
+  setIsSubmitButtonDisabled(status: boolean) {
+    runInAction(() => {
+      this.isSubmitButtonDisabled.set(status);
     });
   }
   get getCourses() {
@@ -98,23 +128,25 @@ class Courses {
   get getDuration() {
     return this.course.duration;
   }
+
   get getTempCode() {
-    return this.tempCourse.code;
+    return this.code.get();
   }
   get getTempSubject() {
-    return this.tempCourse.subject;
+    return this.subject.get();
   }
   get getTempDuration() {
-    return this.tempCourse.duration;
+    return this.duration.get();
   }
+
   get getFocusCode() {
-    return this.focusCode.get();
+    return this.courseFocus.code;
   }
   get getFocusSubject() {
-    return this.focusSubject.get();
+    return this.courseFocus.subject;
   }
   get getFocusDuration() {
-    return this.focusDuration.get();
+    return this.courseFocus.duration;
   }
   get isLoading() {
     return this.loading.get();

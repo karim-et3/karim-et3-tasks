@@ -5,6 +5,7 @@ import {TCourses} from '../../../types';
 import {CustomModal} from '../../../common';
 import {StackScreenProps} from '@react-navigation/stack';
 import {ParamListBase} from '@react-navigation/native';
+import subjectStore from '../../../mobx/Subject';
 
 type Props = {
   course: TCourses;
@@ -14,6 +15,11 @@ const CourseItem = WithThemeAndLiteObserver<Props>(props => {
   const {course, navigation, theme} = props;
   const {SIZES, COLORS, FONTS} = theme;
   const [modalVisible, setModalVisible] = useState(false);
+  const getSubjectNamefromID = (id: number) => {
+    const index = subjectStore.subjects.findIndex(sub => sub.id === id);
+    const subject = subjectStore.subjects[index].name;
+    return subject;
+  };
   return (
     <>
       <TouchableOpacity onPress={() => setModalVisible(true)}>
@@ -53,7 +59,7 @@ const CourseItem = WithThemeAndLiteObserver<Props>(props => {
               <Text style={{color: COLORS.black, fontSize: SIZES.large}}>
                 Subject:{' '}
                 <Text style={{color: COLORS.secondary, fontSize: SIZES.large}}>
-                  {course.subject}
+                  {getSubjectNamefromID(course.subject_id)}
                 </Text>
               </Text>
               <Text style={{color: COLORS.black, fontSize: SIZES.large}}>

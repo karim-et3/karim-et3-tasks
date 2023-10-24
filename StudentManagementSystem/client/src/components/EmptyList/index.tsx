@@ -1,9 +1,13 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {WithThemeAndLiteObserver} from '../../../hoc/theme';
+import {WithThemeAndLiteObserver} from '../../hoc/theme';
 
-const EmptyList = WithThemeAndLiteObserver<{}>(props => {
-  const {COLORS, SIZES, FONTS} = props.theme;
+type Props = {
+  text: string;
+};
+const EmptyList = WithThemeAndLiteObserver<Props>(props => {
+  const {text, theme} = props;
+  const {COLORS, SIZES, FONTS} = theme;
   return (
     <View
       style={{
@@ -17,7 +21,7 @@ const EmptyList = WithThemeAndLiteObserver<{}>(props => {
           fontWeight: FONTS.bold,
           color: COLORS.secondary,
         }}>
-        No Students
+        {text}
       </Text>
     </View>
   );

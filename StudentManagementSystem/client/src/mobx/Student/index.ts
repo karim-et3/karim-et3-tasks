@@ -19,15 +19,23 @@ class Students {
     dateOfBirth: new Date(),
     address: '',
   });
-  tempStudent = observable.object({
-    id: 0,
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    dateOfBirth: new Date(),
-    address: '',
-  });
+  // tempStudent = observable.object({
+  //   id: 0,
+  //   firstName: '',
+  //   lastName: '',
+  //   email: '',
+  //   phoneNumber: '',
+  //   dateOfBirth: new Date(),
+  //   address: '',
+  // });
+
+  firstName = observable.box<string>('');
+  lastName = observable.box<string>('');
+  email = observable.box<string>('');
+  phoneNumber = observable.box<string>('');
+  dateOfBirth = observable.box<Date>(new Date());
+  address = observable.box<string>('');
+
   studentFocus = observable.object<TStudentFocus>({
     firstName: false,
     lastName: false,
@@ -40,41 +48,64 @@ class Students {
   fetchStudents = () => read();
   setupEdit = (id: number) => setupEdit(id);
   fetchStudent = (id: number) => readSingle(id);
-  addStudent = () => create(this.tempStudent);
-  editStudent = () => update(this.tempStudent);
+  addStudent = () =>
+    create({
+      firstName: this.getTempFirstName,
+      lastName: this.getTempLastName,
+      email: this.getTempEmail,
+      phoneNumber: this.getTempPhoneNumber,
+      dateOfBirth: this.getTempDateOfBirth,
+      address: this.getTempAddress,
+    });
+  editStudent = (id: number) =>
+    update({
+      id,
+      firstName: this.getTempFirstName,
+      lastName: this.getTempLastName,
+      email: this.getTempEmail,
+      phoneNumber: this.getTempPhoneNumber,
+      dateOfBirth: this.getTempDateOfBirth,
+      address: this.getTempAddress,
+    });
   deleteStudent = (id: number) => remove({id});
 
   resetInput() {
-    this.setTempFirstName('');
-    this.setTempLastName('');
-    this.setTempEmail('');
-    this.setTempPhoneNumber('');
-    this.setTempAddress('');
-    this.setTempDateOfBirth(new Date());
-    this.studentFocus.firstName = false;
-    this.studentFocus.lastName = false;
-    this.studentFocus.email = false;
-    this.studentFocus.phoneNumber = false;
-    this.studentFocus.address = false;
-    this.studentFocus.dateOfBirth = false;
+    runInAction(() => {
+      this.setTempFirstName('');
+      this.setTempLastName('');
+      this.setTempEmail('');
+      this.setTempPhoneNumber('');
+      this.setTempAddress('');
+      this.setTempDateOfBirth(new Date());
+      this.studentFocus.firstName = false;
+      this.studentFocus.lastName = false;
+      this.studentFocus.email = false;
+      this.studentFocus.phoneNumber = false;
+      this.studentFocus.address = false;
+      this.studentFocus.dateOfBirth = false;
+    });
   }
-
-  get firstName() {
+  setStudents(students: Array<TStudents>) {
+    runInAction(() => {
+      this.students.replace(students);
+    });
+  }
+  get getFirstName() {
     return this.student.firstName;
   }
-  get lastName() {
+  get getLastName() {
     return this.student.lastName;
   }
-  get email() {
+  get getEmail() {
     return this.student.email;
   }
-  get phoneNumber() {
+  get getPhoneNumber() {
     return this.student.phoneNumber;
   }
-  get address() {
+  get getAddress() {
     return this.student.address;
   }
-  get dateOfBirth() {
+  get getDateOfBirth() {
     return this.student.dateOfBirth;
   }
 
@@ -135,58 +166,58 @@ class Students {
     return this.students;
   }
 
-  get tempFirstName() {
-    return this.tempStudent.firstName;
+  get getTempFirstName() {
+    return this.firstName.get();
   }
-  get tempLastName() {
-    return this.tempStudent.lastName;
+  get getTempLastName() {
+    return this.lastName.get();
   }
-  get tempEmail() {
-    return this.tempStudent.email;
+  get getTempEmail() {
+    return this.email.get();
   }
-  get tempPhoneNumber() {
-    return this.tempStudent.phoneNumber;
+  get getTempPhoneNumber() {
+    return this.phoneNumber.get();
   }
-  get tempAddress() {
-    return this.tempStudent.address;
+  get getTempAddress() {
+    return this.address.get();
   }
-  get tempDateOfBirth() {
-    return this.tempStudent.dateOfBirth;
+  get getTempDateOfBirth() {
+    return this.dateOfBirth.get();
   }
   setTempFirstName(firstName: string) {
     runInAction(() => {
       this.isSubmitButtonDisabled.set(false);
-      this.tempStudent.firstName = firstName;
+      this.firstName.set(firstName);
     });
   }
   setTempLastName(lastName: string) {
     runInAction(() => {
       this.isSubmitButtonDisabled.set(false);
-      this.tempStudent.lastName = lastName;
+      this.lastName.set(lastName);
     });
   }
   setTempEmail(email: string) {
     runInAction(() => {
       this.isSubmitButtonDisabled.set(false);
-      this.tempStudent.email = email;
+      this.email.set(email);
     });
   }
   setTempAddress(address: string) {
     runInAction(() => {
       this.isSubmitButtonDisabled.set(false);
-      this.tempStudent.address = address;
+      this.address.set(address);
     });
   }
   setTempPhoneNumber(phoneNumber: string) {
     runInAction(() => {
       this.isSubmitButtonDisabled.set(false);
-      this.tempStudent.phoneNumber = phoneNumber;
+      this.phoneNumber.set(phoneNumber);
     });
   }
   setTempDateOfBirth(dateOfBirth: Date) {
     runInAction(() => {
       this.isSubmitButtonDisabled.set(false);
-      this.tempStudent.dateOfBirth = dateOfBirth;
+      this.dateOfBirth.set(dateOfBirth);
     });
   }
   setIsLoading(status: boolean) {
@@ -196,6 +227,11 @@ class Students {
   }
   get isLoading() {
     return this.loading.get();
+  }
+  setIsSubmitButtonDisabled(status: boolean) {
+    runInAction(() => {
+      this.isSubmitButtonDisabled.set(status);
+    });
   }
 }
 const createStudentInstance = memoize(

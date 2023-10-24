@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {WithThemeAndLiteObserver} from './src/hoc/theme';
@@ -13,7 +13,6 @@ import toastStore from './src/mobx/Toast';
 import ToastNotification from './src/common/ToastNotification';
 import {navigationRef} from './src/routes/NavigationRef';
 import LoadingHome from './src/common/LoadingHome';
-import {merge} from 'lodash';
 
 const App = WithThemeAndLiteObserver<{}>(props => {
   const {COLORS} = props.theme;

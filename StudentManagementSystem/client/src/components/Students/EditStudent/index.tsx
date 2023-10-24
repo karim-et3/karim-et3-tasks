@@ -1,13 +1,14 @@
-import {View, Image, Button} from 'react-native';
+import {View, Image} from 'react-native';
 import React, {useEffect, useRef} from 'react';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
 import InputField from '../../../common/InputField';
 import studentStore from '../../../mobx/Student';
-import {COLORS} from '../../../styles';
 import LoadingModal from '../../../common/LoadingModal';
+import {CustomButton} from '../../../common';
 
 type Props = {};
 const EditStudent = WithThemeAndLiteObserver<Props>(props => {
+  const {COLORS, SIZES} = props.theme;
   const blurRef = useRef(null);
   const {route} = props;
   const {id} = route.params;
@@ -27,7 +28,12 @@ const EditStudent = WithThemeAndLiteObserver<Props>(props => {
         <LoadingModal />
       ) : (
         <View
-          style={{alignItems: 'center', marginVertical: 30, gap: 16, flex: 1}}>
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: SIZES.xxLarge,
+            gap: 16,
+          }}>
           <Image
             style={{
               width: 80,
@@ -42,7 +48,7 @@ const EditStudent = WithThemeAndLiteObserver<Props>(props => {
           />
           <InputField
             blurRef={blurRef}
-            value={studentStore.tempFirstName}
+            value={studentStore.getTempFirstName}
             setValue={e => studentStore.setTempFirstName(e)}
             icon="user"
             placeholder="First Name"
@@ -53,7 +59,7 @@ const EditStudent = WithThemeAndLiteObserver<Props>(props => {
           />
           <InputField
             blurRef={blurRef}
-            value={studentStore.tempLastName}
+            value={studentStore.getTempLastName}
             setValue={e => studentStore.setTempLastName(e)}
             icon="user"
             placeholder="Last Name"
@@ -64,7 +70,7 @@ const EditStudent = WithThemeAndLiteObserver<Props>(props => {
           />
           <InputField
             blurRef={blurRef}
-            value={studentStore.tempEmail}
+            value={studentStore.getTempEmail}
             setValue={e => studentStore.setTempEmail(e)}
             icon="at"
             placeholder="Email"
@@ -75,7 +81,7 @@ const EditStudent = WithThemeAndLiteObserver<Props>(props => {
           />
           <InputField
             blurRef={blurRef}
-            value={studentStore.tempPhoneNumber}
+            value={studentStore.getTempPhoneNumber}
             setValue={e => studentStore.setTempPhoneNumber(e)}
             icon="phone"
             placeholder="Phone Number"
@@ -85,7 +91,7 @@ const EditStudent = WithThemeAndLiteObserver<Props>(props => {
           />
           <InputField
             blurRef={blurRef}
-            value={studentStore.tempAddress}
+            value={studentStore.getTempAddress}
             setValue={e => studentStore.setTempAddress(e)}
             icon="location-dot"
             placeholder="Address"
@@ -93,16 +99,19 @@ const EditStudent = WithThemeAndLiteObserver<Props>(props => {
             setFocus={() => studentStore.setAddressFocus()}
             numeric={false}
           />
-          <View style={{width: '90%', marginTop: 30}}>
-            <Button
-              disabled={studentStore.getIsSubmitButtonDisabled}
-              title="Submit"
-              color={COLORS.primary}
-              onPress={() => {
-                blurRef.current.blur();
-                studentStore.editStudent();
-              }}></Button>
-          </View>
+          <CustomButton
+            style={{marginTop: SIZES.large}}
+            disabled={studentStore.getIsSubmitButtonDisabled}
+            shadow="medium"
+            text="Submit"
+            textColor={COLORS.white}
+            backgroundColor={COLORS.primary}
+            onPress={() => {
+              studentStore.setIsSubmitButtonDisabled(true);
+              blurRef.current.blur();
+              studentStore.editStudent(id);
+            }}
+          />
         </View>
       )}
     </>

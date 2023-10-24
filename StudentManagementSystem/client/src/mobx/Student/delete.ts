@@ -1,22 +1,23 @@
-import {IP, PORT} from '@env';
-import axios from 'axios';
 import studentStore from '.';
 import toastStore from '../Toast';
 import {runInAction} from 'mobx';
 import {navigate} from '../../routes/NavigationRef';
+import axiosHelper from '../../helpers/axiosHelper';
 
 const remove = ({id}: {id: number}) => {
   runInAction(async () => {
     try {
       studentStore.setIsLoading(true);
-      const result = await axios.delete(
-        `http://${IP}:${PORT}/students/delete/${id}`,
-      );
-      console.log(result.data);
+      const response = await axiosHelper({
+        path: `students/delete/${id}`,
+        method: 'DELETE',
+      });
+
+      console.log(response.data);
       const index = studentStore.students.findIndex(std => std.id === id);
       studentStore.students.splice(index, 1);
       toastStore.changeVisiblity({
-        message: result.data.message,
+        message: response.data.message,
         error: false,
       });
       navigate('students', {});
