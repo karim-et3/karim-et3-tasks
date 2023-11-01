@@ -9,6 +9,7 @@ import {update} from './update';
 class Students {
   students = observable.array<TStudents>();
   loading = observable.box<boolean>(false);
+  primeLoading = observable.box<boolean>(true);
   isSubmitButtonDisabled = observable.box<boolean>(false);
   student = observable.object({
     id: 0,
@@ -210,8 +211,11 @@ class Students {
   }
   setTempPhoneNumber(phoneNumber: string) {
     runInAction(() => {
-      this.isSubmitButtonDisabled.set(false);
-      this.phoneNumber.set(phoneNumber);
+      if (phoneNumber) {
+        phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+        this.isSubmitButtonDisabled.set(false);
+        this.phoneNumber.set(phoneNumber);
+      } else this.phoneNumber.set('');
     });
   }
   setTempDateOfBirth(dateOfBirth: Date) {
@@ -227,6 +231,14 @@ class Students {
   }
   get isLoading() {
     return this.loading.get();
+  }
+  setIsPrimeLoading(status: boolean) {
+    runInAction(() => {
+      this.primeLoading.set(status);
+    });
+  }
+  get isPrimeLoading() {
+    return this.primeLoading.get();
   }
   setIsSubmitButtonDisabled(status: boolean) {
     runInAction(() => {

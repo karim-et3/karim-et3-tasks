@@ -2,10 +2,10 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {TCourse} from '../../../types';
+import {TCourses} from '../../../types';
 import gradeStore from '../../../mobx/Grade';
 
-type Props = {course: TCourse};
+type Props = {course: TCourses};
 const StudentCourseItem = WithThemeAndLiteObserver<Props>(props => {
   const {course, theme} = props;
   const {COLORS, SIZES} = theme;
@@ -33,7 +33,7 @@ const StudentCourseItem = WithThemeAndLiteObserver<Props>(props => {
         }
         size={24}
         isChecked={gradeStore.grades.some(
-          grade => grade.course_id === course.id,
+          grade => grade.courseID === course.id,
         )}
         textContainerStyle={{marginLeft: 5}}
         fillColor={COLORS.primary}

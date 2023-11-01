@@ -1,8 +1,8 @@
 import {runInAction} from 'mobx';
 import gradeStore from '.';
-import {navigate} from '../../routes/NavigationRef';
+import {navigate} from '../../routes/navigationRef';
 import toastStore from '../Toast';
-import axiosHelper from '../../helpers/axiosHelper';
+import {axiosHelper} from '../../helpers';
 
 const update = () => {};
 const updateCoursesChecked = (id: number) => {
@@ -11,8 +11,8 @@ const updateCoursesChecked = (id: number) => {
       gradeStore.setIsLoading(true);
       const response = await axiosHelper({
         path: 'grades/edit-courses/',
-        method: 'POST',
-        data: {id, coursesCheked: gradeStore.getCoursesChecked},
+        method: 'post',
+        data: {data: {id, coursesCheked: gradeStore.getCoursesChecked}},
       });
 
       toastStore.changeVisiblity({

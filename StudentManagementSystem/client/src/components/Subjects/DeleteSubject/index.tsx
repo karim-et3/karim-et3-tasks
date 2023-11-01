@@ -1,18 +1,55 @@
 import React from 'react';
-import {CustomButton} from '../../../common';
+import {CustomButton, CustomModal} from '../../../common';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import subjectStore from '../../../mobx/Subject';
+import modalStore from '../../../mobx/Modal';
 
 type Props = {
   id: number;
 };
 const DeleteSubject = WithThemeAndLiteObserver<Props>(props => {
   const {id, theme} = props;
-  const {SIZES, COLORS} = theme;
+  const {SIZES, FONTS, COLORS} = theme;
   return (
     <View style={{width: '100%'}}>
+      {modalStore.isOpenSubjectDelete && (
+        <CustomModal
+          title={
+            <>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  fontSize: SIZES.xLarge,
+                  fontWeight: FONTS.bold,
+                }}>
+                Attention!
+              </Text>
+              <Text style={{marginTop: SIZES.large}}>
+                Deleting this subject will also delete all associated courses
+                and their enrolled students grades.
+              </Text>
+            </>
+          }
+          buttonOneText={'cancel'}
+          buttonOneStyle={{
+            backgroundColor: COLORS.grey,
+            color: COLORS.white,
+          }}
+          buttonOneOnPress={() => modalStore.setIsOpenSubjectDelete()}
+          buttonTwoText={'delete'}
+          buttonTwoStyle={{
+            backgroundColor: COLORS.error,
+            color: COLORS.white,
+          }}
+          buttonTwoOnPress={() => {
+            modalStore.setIsOpenSubjectDelete();
+            subjectStore.deleteSubject({id});
+          }}
+          setModalVisible={() => modalStore.setIsOpenSubjectDelete()}
+        />
+      )}
       <View
         style={{
           marginBottom: SIZES.small,
@@ -26,7 +63,7 @@ const DeleteSubject = WithThemeAndLiteObserver<Props>(props => {
           }
           textColor={COLORS.white}
           backgroundColor={COLORS.white}
-          onPress={() => subjectStore.deleteSubject({id})}
+          onPress={() => modalStore.setIsOpenSubjectDelete()}
         />
       </View>
     </View>

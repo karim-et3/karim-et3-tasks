@@ -1,18 +1,20 @@
 import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
-import {T_Student} from '../../../types';
+import {RootStackNavigationProp, TStudents} from '../../../types';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
-import LinkButton from '../../../common/LinkButton';
 import Animated, {FadeIn, FadeOutUp} from 'react-native-reanimated';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 type Props = {
-  student: T_Student;
+  student: TStudents;
+  navigation: RootStackNavigationProp;
 };
 const StudentItem = WithThemeAndLiteObserver<Props>(props => {
-  const {student, theme} = props;
+  const {student, theme, navigation} = props;
   const {COLORS, SIZES, FONTS} = theme;
   return (
-    <LinkButton to={{screen: 'student-details', params: {id: student.id}}}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('student-details', {id: student.id})}>
       <Animated.View
         entering={FadeIn}
         exiting={FadeOutUp}
@@ -49,7 +51,7 @@ const StudentItem = WithThemeAndLiteObserver<Props>(props => {
           </Text>
         </View>
       </Animated.View>
-    </LinkButton>
+    </TouchableOpacity>
   );
 });
 

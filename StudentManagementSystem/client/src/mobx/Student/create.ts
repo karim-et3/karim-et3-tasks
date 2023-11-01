@@ -1,9 +1,9 @@
 import {runInAction} from 'mobx';
 import studentStore from '.';
 import toastStore from '../Toast';
-import {navigate} from '../../routes/NavigationRef';
+import {navigate} from '../../routes/navigationRef';
 import {TStudent} from '../../types';
-import axiosHelper from '../../helpers/axiosHelper';
+import {axiosHelper} from '../../helpers';
 
 const create = ({
   firstName,
@@ -62,8 +62,10 @@ const create = ({
       studentStore.setIsLoading(true);
       const response = await axiosHelper({
         path: 'students/',
-        method: 'POST',
-        data: {firstName, lastName, email, phoneNumber, dateOfBirth, address},
+        method: 'post',
+        data: {
+          data: {firstName, lastName, email, phoneNumber, dateOfBirth, address},
+        },
       });
 
       toastStore.changeVisiblity({

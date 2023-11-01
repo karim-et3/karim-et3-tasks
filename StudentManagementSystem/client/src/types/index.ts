@@ -1,6 +1,8 @@
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import {ParamListBase} from '@react-navigation/native';
 import {StackScreenProps} from '@react-navigation/stack';
+import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
 
 type TCOLORS = {
   green: string;
@@ -25,11 +27,18 @@ type TCOLORS = {
   // test_white: string;
   // test_grey: string;
 };
+
+// type TFONTS = {
+//   regular: '100' | '200' | '300' | '400';
+//   medium: '500' | '600';
+//   bold: '700' | '800' | '900';
+// };
 type TFONTS = {
-  regular: '100' | '200' | '300' | '400';
-  medium: '500' | '600';
-  bold: '700' | '800' | '900';
+  regular: '400';
+  medium: '500';
+  bold: '700';
 };
+
 type TSIZES = {
   xSmall: 10;
   small: 12;
@@ -187,7 +196,7 @@ export type TButton = {
 export type TCourses = {
   id: number;
   code: string;
-  subject_id: number;
+  subjectID: number;
   duration: string;
   created_at: Date;
   updated_at: Date;
@@ -198,8 +207,8 @@ export type TCourse = {
   duration: string;
 };
 export type TGrades = {
-  course_id: number;
-  student_id: number;
+  courseID: number;
+  studentID: number;
   grade?: number;
 };
 export type TSubjects = {
@@ -211,3 +220,51 @@ export type TSubjects = {
 export type TSubject = {
   name: string;
 };
+
+export type RootDrawerParamList = {
+  'home-drawer': undefined;
+  students: undefined;
+  courses: undefined;
+  subjects: undefined;
+};
+export type RootStackParamList = {
+  home: RootDrawerParamList;
+  'add-student': undefined;
+  'add-course': undefined;
+  'add-subject': undefined;
+  'add-course-to-student': {id: number};
+  grades: {id: number};
+  'student-details': {id: number};
+  'edit-student': {id: number};
+  'edit-course': {id: number};
+  'edit-subject': {id: number};
+};
+
+// export type StudentScreenNavigationProp = NativeStackNavigationProp<
+//   RootStackParamList,
+//   'student-details'
+// >;
+// export type HomeScreenNavigationProp =
+//   NativeStackNavigationProp<RootStackParamList>;
+
+// export type DrawerScreenNavigationProp =
+//   DrawerNavigationProp<RootStackParamList>;
+
+// export type HomeScreenNavigationProp =
+//   NativeStackNavigationProp<RootDrawerParamList>;
+
+// export type EditStudentScreenProps = NativeStackNavigationProp<
+//   RootStackParamList,
+//   'edit-student'
+// >;
+
+// export type CourseItemScreenNavigation = NativeStackNavigationProp<
+//   RootStackParamList,
+//   'edit-student'
+// >;
+
+export type RootStackNavigationProp =
+  NativeStackNavigationProp<RootStackParamList>;
+
+export type RootDrawerNavigationProp =
+  DrawerNavigationProp<RootDrawerParamList>;

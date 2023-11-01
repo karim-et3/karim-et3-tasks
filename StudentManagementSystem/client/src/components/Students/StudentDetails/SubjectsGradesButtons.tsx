@@ -2,11 +2,10 @@ import {View} from 'react-native';
 import React from 'react';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
 import {CustomButton} from '../../../common';
-import {ParamListBase} from '@react-navigation/native';
-import {StackScreenProps} from '@react-navigation/stack';
+import {RootStackNavigationProp} from '../../../types';
 
 type Props = {
-  navigation: StackScreenProps<ParamListBase>;
+  navigation: RootStackNavigationProp;
   id: number;
 };
 const SubjectsGradesButtons = WithThemeAndLiteObserver<Props>(props => {

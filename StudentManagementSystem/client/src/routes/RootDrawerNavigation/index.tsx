@@ -2,24 +2,22 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Students from '../../components/Students';
 import Courses from '../../components/Courses';
-import Grades from '../../components/Grades';
 import Home from '../../components/Home';
 import {WithThemeAndLiteObserver} from '../../hoc/theme';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {DrawerActions, ParamListBase} from '@react-navigation/native';
+import {DrawerActions} from '@react-navigation/native';
 import {Text} from 'react-native';
-import {FONTS} from '../../styles';
 import Subjects from '../../components/Subjects';
-import {StackScreenProps} from '@react-navigation/stack';
+import {RootDrawerParamList, RootStackNavigationProp} from '../../types';
 
-type Props = {
-  navigation: StackScreenProps<ParamListBase>;
-};
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator<RootDrawerParamList>();
+
+type Props = {navigation: RootStackNavigationProp};
+
 const RootDrawerNavigation = WithThemeAndLiteObserver<Props>(props => {
   const {navigation, theme} = props;
-  const {SIZES, COLORS} = theme;
+  const {SIZES, FONTS, COLORS} = theme;
   return (
     <Drawer.Navigator
       initialRouteName="home-drawer"

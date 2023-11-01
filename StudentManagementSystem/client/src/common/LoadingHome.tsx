@@ -5,25 +5,14 @@ import courseStore from '../mobx/Course';
 import studentStore from '../mobx/Student';
 import subjectStore from '../mobx/Subject';
 
-type Props = {
-  setIsAppReady: React.Dispatch<React.SetStateAction<boolean>>;
-};
-const LoadingHome = WithThemeAndLiteObserver<Props>(props => {
-  const {setIsAppReady, theme} = props;
+const LoadingHome = WithThemeAndLiteObserver<{}>(props => {
+  const {theme} = props;
   const {COLORS} = theme;
   useEffect(() => {
     courseStore.fetchCourses();
     studentStore.fetchStudents();
     subjectStore.fetchSubjects();
   }, []);
-  useEffect(() => {
-    if (
-      !studentStore.isLoading &&
-      !courseStore.isLoading &&
-      !subjectStore.isLoading
-    )
-      setIsAppReady(true);
-  }, [studentStore.isLoading, courseStore.isLoading, subjectStore.isLoading]);
 
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>

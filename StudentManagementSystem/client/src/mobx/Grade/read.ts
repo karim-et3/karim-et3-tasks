@@ -1,7 +1,7 @@
 import {runInAction} from 'mobx';
 import toastStore from '../Toast';
 import gradeStore from '.';
-import axiosHelper from '../../helpers/axiosHelper';
+import {axiosHelper} from '../../helpers';
 
 const read = () => {};
 const readSingle = (id: number) => {
@@ -10,7 +10,7 @@ const readSingle = (id: number) => {
       gradeStore.setIsLoading(true);
       const response = await axiosHelper({
         path: 'grades/',
-        method: 'GET',
+        method: 'get',
         params: {
           studentID: id,
         },

@@ -5,11 +5,16 @@ import courseStore from '../../../mobx/Course';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
 import {FlatList} from 'react-native-gesture-handler';
 import {CustomButton} from '../../../common';
-import LoadingModal from '../../../common/LoadingModal';
+import {LoadingModal} from '../../../common';
 import gradeStore from '../../../mobx/Grade';
 import StudentCourseItem from './StudentCourseItem';
+import EmptyList from '../../../common/EmptyList';
+import {RouteProp} from '@react-navigation/native';
 
-const AddCoursesToStudent = WithThemeAndLiteObserver<{}>(props => {
+type Props = {
+  route: RouteProp<{params: {id: number}}, 'params'>;
+};
+const AddCoursesToStudent = WithThemeAndLiteObserver<Props>(props => {
   const {route, theme} = props;
   const {COLORS, FONTS, SIZES} = theme;
   const {id} = route.params;
@@ -48,12 +53,15 @@ const AddCoursesToStudent = WithThemeAndLiteObserver<{}>(props => {
             style={{alignSelf: 'center'}}
             data={courseStore.getCourses}
             renderItem={item => <StudentCourseItem course={item.item} />}
+            ListEmptyComponent={<EmptyList text={'No Courses.'} />}
           />
 
           <View style={{margin: SIZES.medium}}>
             <CustomButton
+              disabled={courseStore.getCourses.length === 0}
               text={'Submit'}
               textColor={COLORS.white}
+              shadow="medium"
               backgroundColor={COLORS.primary}
               onPress={() => gradeStore.postCoursesChecked(id)}
             />

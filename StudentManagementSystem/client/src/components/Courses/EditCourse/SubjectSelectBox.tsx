@@ -25,7 +25,7 @@ const SubjectSelectBox = WithThemeAndLiteObserver<Props>(props => {
           }}
           maxHeight={100}
           search={false}
-          placeholder="Subject"
+          placeholder="Subject *"
           dropdownStyles={{
             backgroundColor: COLORS.slate,
             borderColor: courseStore.getFocusSubject

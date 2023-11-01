@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, {useState} from 'react';
+import React from 'react';
 import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {WithThemeAndLiteObserver} from './src/hoc/theme';
@@ -11,18 +11,18 @@ import {faSquareCheck} from '@fortawesome/free-solid-svg-icons/faSquareCheck';
 import RootStackNavigation from './src/routes/RootStackNavigation';
 import toastStore from './src/mobx/Toast';
 import ToastNotification from './src/common/ToastNotification';
-import {navigationRef} from './src/routes/NavigationRef';
-import LoadingHome from './src/common/LoadingHome';
+import {navigationRef} from './src/routes/navigationRef';
+import {LoadingHome} from './src/common';
+import globalStore from './src/mobx/Global';
 
 const App = WithThemeAndLiteObserver<{}>(props => {
   const {COLORS} = props.theme;
-  const [isAppReady, setIsAppReady] = useState(false);
-
+  console.log(globalStore.isAppReady);
   return (
     <NavigationContainer ref={navigationRef}>
       <StatusBar barStyle={'light-content'} backgroundColor={COLORS.primary} />
-      {!isAppReady ? (
-        <LoadingHome setIsAppReady={setIsAppReady} />
+      {!globalStore.isAppReady ? (
+        <LoadingHome />
       ) : (
         <>
           {toastStore.show && (

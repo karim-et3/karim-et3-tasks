@@ -19,7 +19,7 @@ const SubjectSelectBox = WithThemeAndLiteObserver<Props>(props => {
               ? COLORS.primary
               : COLORS.grey,
           }}
-          placeholder="Subject"
+          placeholder="Subject *"
           search={false}
           maxHeight={100}
           dropdownStyles={{

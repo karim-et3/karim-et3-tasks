@@ -1,16 +1,15 @@
 import {View} from 'react-native';
 import React, {useEffect, useRef} from 'react';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
-import InputField from '../../../common/InputField';
+import {InputField} from '../../../common';
 import courseStore from '../../../mobx/Course';
-import {COLORS} from '../../../styles';
 import {CustomButton} from '../../../common';
-import LoadingModal from '../../../common/LoadingModal';
+import {LoadingModal} from '../../../common';
 import SubjectSelectBox from './SubjectSelectBox';
 
 const AddCourse = WithThemeAndLiteObserver<{}>(props => {
-  const blurRef = useRef(null);
-  const {SIZES} = props.theme;
+  const blurRef = useRef<any>(null);
+  const {COLORS, SIZES} = props.theme;
   useEffect(() => {
     return () => {
       courseStore.resetInput();
@@ -23,6 +22,7 @@ const AddCourse = WithThemeAndLiteObserver<{}>(props => {
       ) : (
         <View style={{alignItems: 'center', margin: SIZES.xxLarge, gap: 10}}>
           <InputField
+            required={true}
             blurRef={blurRef}
             numeric={false}
             icon={'file'}
@@ -53,7 +53,7 @@ const AddCourse = WithThemeAndLiteObserver<{}>(props => {
               backgroundColor={COLORS.primary}
               onPress={() => {
                 courseStore.setIsSubmitButtonDisabled(true);
-                blurRef.current.blur();
+                blurRef.current?.blur();
                 courseStore.addCourse();
               }}
             />

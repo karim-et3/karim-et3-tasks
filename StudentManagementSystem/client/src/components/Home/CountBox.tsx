@@ -3,19 +3,21 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {WithThemeAndLiteObserver} from '../../hoc/theme';
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
-import LinkButton from '../../common/LinkButton';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {RootDrawerNavigationProp} from '../../types';
 
 type Props = {
   icon: IconProp;
   count: number;
-  link: string;
+  link: 'students' | 'subjects' | 'courses';
+  navigation: RootDrawerNavigationProp;
 };
 const CountBox = WithThemeAndLiteObserver<Props>(props => {
-  const {icon, count, link, theme} = props;
+  const {icon, count, navigation, link, theme} = props;
 
   const {COLORS, FONTS, SIZES} = theme;
   return (
-    <LinkButton to={{screen: link}}>
+    <TouchableOpacity onPress={() => navigation.navigate(link)}>
       <View
         style={[
           // SHADOWS.small,
@@ -46,7 +48,7 @@ const CountBox = WithThemeAndLiteObserver<Props>(props => {
           {count}
         </Text>
       </View>
-    </LinkButton>
+    </TouchableOpacity>
   );
 });
 

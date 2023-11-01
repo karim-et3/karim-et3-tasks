@@ -1,17 +1,18 @@
 import {View} from 'react-native';
 import React, {useEffect, useRef} from 'react';
-import LoadingModal from '../../../common/LoadingModal';
+import {LoadingModal} from '../../../common';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
-import InputField from '../../../common/InputField';
+import {InputField} from '../../../common';
 import {CustomButton} from '../../../common';
 import courseStore from '../../../mobx/Course';
 import SubjectSelectBox from './SubjectSelectBox';
-import DeleteCourse from '../DeleteCourse/DeleteCourse';
+import DeleteCourse from '../DeleteCourse';
+import {RouteProp} from '@react-navigation/native';
 type Props = {
-  route: any;
+  route: RouteProp<{params: {id: number}}, 'params'>;
 };
 const EditCourse = WithThemeAndLiteObserver<Props>(props => {
-  const blurRef = useRef(null);
+  const blurRef = useRef<any>(null);
   const {route, theme} = props;
   const {COLORS, SIZES} = theme;
   const {id} = route.params;
@@ -38,6 +39,7 @@ const EditCourse = WithThemeAndLiteObserver<Props>(props => {
           }}>
           <DeleteCourse id={id} />
           <InputField
+            required={true}
             blurRef={blurRef}
             numeric={false}
             icon={'file'}
@@ -68,7 +70,7 @@ const EditCourse = WithThemeAndLiteObserver<Props>(props => {
               backgroundColor={COLORS.primary}
               onPress={() => {
                 courseStore.setIsSubmitButtonDisabled(true);
-                blurRef.current.blur();
+                blurRef.current?.blur();
                 courseStore.putCourse(id);
               }}
             />

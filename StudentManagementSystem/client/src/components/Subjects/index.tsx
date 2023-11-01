@@ -3,9 +3,9 @@ import React from 'react';
 import {FlatList} from 'react-native-gesture-handler';
 import SubjectItem from './SubjectItem';
 import subjectStore from '../../mobx/Subject';
-import EmptyList from '../EmptyList';
+import {EmptyList} from '../../common';
 import {WithThemeAndLiteObserver} from '../../hoc/theme';
-import LoadingModal from '../../common/LoadingModal';
+import {LoadingModal} from '../../common';
 
 const Subjects = WithThemeAndLiteObserver<{}>(props => {
   const {SIZES, COLORS, FONTS} = props.theme;
@@ -63,7 +63,7 @@ const Subjects = WithThemeAndLiteObserver<{}>(props => {
                 <></>
               )
             }
-            data={subjectStore.subjects}
+            data={subjectStore.getSubjects}
             contentContainerStyle={{
               alignItems: 'center',
             }}

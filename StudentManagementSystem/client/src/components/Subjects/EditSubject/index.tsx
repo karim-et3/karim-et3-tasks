@@ -1,14 +1,17 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import React, {useEffect} from 'react';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
 import subjectStore from '../../../mobx/Subject';
-import InputField from '../../../common/InputField';
-import LoadingModal from '../../../common/LoadingModal';
+import {InputField} from '../../../common';
+import {LoadingModal} from '../../../common';
 import {CustomButton} from '../../../common';
-import DeleteCourse from '../../Courses/DeleteCourse/DeleteCourse';
 import DeleteSubject from '../DeleteSubject';
+import {RouteProp} from '@react-navigation/native';
 
-const EditSubject = WithThemeAndLiteObserver<{}>(props => {
+type Props = {
+  route: RouteProp<{params: {id: number}}, 'params'>;
+};
+const EditSubject = WithThemeAndLiteObserver<Props>(props => {
   const {route, theme} = props;
   const {COLORS, SIZES} = theme;
   const {id} = route.params;

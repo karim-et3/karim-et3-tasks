@@ -1,15 +1,15 @@
 import {runInAction} from 'mobx';
 import toastStore from '../Toast';
 import courseStore from '.';
-import {navigate} from '../../routes/NavigationRef';
-import axiosHelper from '../../helpers/axiosHelper';
+import {navigate} from '../../routes/navigationRef';
+import {axiosHelper} from '../../helpers';
 
 const remove = async ({id}: {id: number}) => {
   try {
     courseStore.setIsLoading(true);
     const response = await axiosHelper({
       path: `courses/delete/${id}`,
-      method: 'DELETE',
+      method: 'delete',
     });
     const index = courseStore.courses.findIndex(course => course.id === id);
     runInAction(async () => courseStore.courses.splice(index, 1));

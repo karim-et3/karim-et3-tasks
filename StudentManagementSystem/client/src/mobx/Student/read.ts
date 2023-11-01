@@ -3,7 +3,7 @@ import toastStore from '../Toast';
 import studentStore from '.';
 import {mergeWith} from 'lodash';
 import {TStudents} from '../../types';
-import axiosHelper from '../../helpers/axiosHelper';
+import {axiosHelper} from '../../helpers';
 
 const setupEdit = (id: number) => {
   runInAction(() => {
@@ -24,11 +24,11 @@ const setupEdit = (id: number) => {
 };
 const read = () => {
   runInAction(async () => {
-    studentStore.setIsLoading(true);
+    studentStore.setIsPrimeLoading(true);
     try {
       const response = await axiosHelper({
         path: 'students/',
-        method: 'GET',
+        method: 'get',
       });
       studentStore.setStudents(response.data.students);
       console.log('student =>', JSON.stringify(studentStore.students, null, 3));
@@ -39,7 +39,7 @@ const read = () => {
         error: true,
       });
     } finally {
-      studentStore.setIsLoading(false);
+      studentStore.setIsPrimeLoading(false);
     }
   });
 };

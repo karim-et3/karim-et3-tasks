@@ -4,14 +4,18 @@ import {WithThemeAndLiteObserver} from '../../hoc/theme';
 import {SelectList} from 'react-native-dropdown-select-list';
 import gradeStore from '../../mobx/Grade';
 import {CustomButton} from '../../common';
+import {RouteProp} from '@react-navigation/native';
+import courseStore from '../../mobx/Course';
 
-const Grades = WithThemeAndLiteObserver<{}>(props => {
+type Props = {
+  route: RouteProp<{params: {id: number}}, 'params'>;
+};
+const Grades = WithThemeAndLiteObserver<Props>(props => {
   const {route, theme} = props;
   const {COLORS, SIZES} = theme;
   const {id} = route.params;
   useEffect(() => {
     gradeStore.fetchGradesForStudent(id);
-    // gradeStore.setCoursesCheckedNames();
   }, []);
   useEffect(() => {
     return () => {
@@ -63,6 +67,11 @@ const Grades = WithThemeAndLiteObserver<{}>(props => {
         />
       </View>
       <CustomButton
+        shadow="medium"
+        disabled={
+          courseStore.getCourses.length === 0 ||
+          gradeStore.getIsSubmitButtonDisabled
+        }
         style={{marginTop: 60}}
         text={'ADD'}
         textColor={COLORS.white}

@@ -1,7 +1,6 @@
 import {Text, Pressable} from 'react-native';
 import React, {ReactNode} from 'react';
 import {WithThemeAndLiteObserver} from '../hoc/theme';
-import {COLORS} from '../styles';
 
 type Props = {
   text: string | ReactNode;
@@ -24,7 +23,7 @@ const CustomButton = WithThemeAndLiteObserver<Props>(props => {
     style,
     theme,
   } = props;
-  const {SIZES, FONTS, SHADOWS} = theme;
+  const {COLORS, SIZES, FONTS, SHADOWS} = theme;
   return (
     <Pressable
       disabled={disabled}

@@ -1,10 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import RootDrawerNavigation from '../RootDrawerNavigation';
-import AddGrade from '../../components/Grades/AddGrade';
 import AddCourse from '../../components/Courses/AddCourse';
 import AddStudent from '../../components/Students/AddStudent';
-import {COLORS} from '../../styles';
 import StudentDetails from '../../components/Students/StudentDetails';
 import EditStudent from '../../components/Students/EditStudent';
 import AddSubject from '../../components/Subjects/AddSubject';
@@ -12,9 +10,12 @@ import AddCourseToStudent from '../../components/Students/AddCoursesToStudent';
 import EditCourse from '../../components/Courses/EditCourse';
 import EditSubject from '../../components/Subjects/EditSubject';
 import Grades from '../../components/Grades';
+import {RootStackParamList} from '../../types';
+import {WithThemeAndLiteObserver} from '../../hoc/theme';
 
-const Stack = createStackNavigator();
-const RootStackNavigation = () => {
+const Stack = createStackNavigator<RootStackParamList>();
+const RootStackNavigation = WithThemeAndLiteObserver(props => {
+  const {COLORS} = props.theme;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -80,6 +81,6 @@ const RootStackNavigation = () => {
       />
     </Stack.Navigator>
   );
-};
+});
 
 export default RootStackNavigation;

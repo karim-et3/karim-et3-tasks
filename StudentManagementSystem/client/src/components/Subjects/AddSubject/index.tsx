@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 import React, {useEffect} from 'react';
-import InputField from '../../../common/InputField';
+import {InputField} from '../../../common';
 import subjectStore from '../../../mobx/Subject';
 import {CustomButton} from '../../../common';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
@@ -18,6 +18,7 @@ const AddSubject = WithThemeAndLiteObserver<{}>(props => {
         margin: SIZES.xxLarge,
       }}>
       <InputField
+        required={true}
         numeric={false}
         icon={'font'}
         placeholder={'Name'}

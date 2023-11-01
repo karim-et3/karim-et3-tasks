@@ -14,6 +14,7 @@ class Grade {
   tempCourse = observable.box<string>('');
   tempGrade = observable.box<number>(0);
   focusGrade = observable.box<boolean>(false);
+  isSubmitButtonDisabled = observable.box<boolean>(false);
 
   fetchGradesForStudent = (id: number) => readSingle(id);
   postCoursesChecked = (id: number) => updateCoursesChecked(id);
@@ -26,14 +27,24 @@ class Grade {
   resetInput = () => {
     runInAction(() => {
       this.setTempGrade('0');
+      this.setIsSubmitButtonDisabled(false);
     });
   };
+  setIsSubmitButtonDisabled(status: boolean) {
+    runInAction(() => {
+      this.isSubmitButtonDisabled.set(status);
+    });
+  }
+  get getIsSubmitButtonDisabled() {
+    return this.isSubmitButtonDisabled.get();
+  }
   setTempCourse = (course: string) => {
     runInAction(() => {
       this.tempCourse.set(course);
       const id = courseStore.courses.find(c => c.code === course)?.id;
       const grade =
-        this.getGrades.find(grade => grade.course_id === id)?.grade ?? 0;
+        this.getGrades.find(grade => grade.courseID === id)?.grade ?? 0;
+      this.setIsSubmitButtonDisabled(false);
       this.setTempGrade(grade.toString());
     });
   };
@@ -75,7 +86,7 @@ class Grade {
   }
   setCoursesChecked() {
     runInAction(async () => {
-      this.coursesChecked.replace(this.grades.map(grade => grade.course_id));
+      this.coursesChecked.replace(this.grades.map(grade => grade.courseID));
     });
   }
   addCoursesChecked(id: number) {

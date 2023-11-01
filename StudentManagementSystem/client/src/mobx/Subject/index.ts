@@ -9,6 +9,7 @@ import {remove} from './delete';
 class Subject {
   subjects = observable.array<TSubjects>();
   loading = observable.box<boolean>(false);
+  primeLoading = observable.box<boolean>(true);
   tempName = observable.box<string>('');
   focusName = observable.box<boolean>(false);
   submitButtonDisabled = observable.box<boolean>(false);
@@ -50,14 +51,7 @@ class Subject {
       this.focusName.set(!this.getFocusName);
     });
   }
-  get isSubmitButtonDisabled() {
-    return this.submitButtonDisabled.get();
-  }
-  setIsSubmitButtonDisabled(status: boolean) {
-    runInAction(() => {
-      this.submitButtonDisabled.set(status);
-    });
-  }
+
   get isLoading() {
     return this.loading.get();
   }
@@ -66,6 +60,26 @@ class Subject {
     runInAction(() => {
       this.loading.set(status);
     });
+  }
+  setIsPrimeLoading(status: boolean) {
+    runInAction(() => {
+      this.primeLoading.set(status);
+    });
+  }
+  get isPrimeLoading() {
+    return this.primeLoading.get();
+  }
+
+  get isSubmitButtonDisabled() {
+    return this.submitButtonDisabled.get();
+  }
+  setIsSubmitButtonDisabled(status: boolean) {
+    runInAction(() => {
+      this.submitButtonDisabled.set(status);
+    });
+  }
+  get getSubjects() {
+    return this.subjects;
   }
 }
 const createSubjectInstance = memoize(

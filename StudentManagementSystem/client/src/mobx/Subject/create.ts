@@ -1,9 +1,9 @@
 import subjectStore from '.';
 import toastStore from '../Toast';
 import {runInAction} from 'mobx';
-import {navigate} from '../../routes/NavigationRef';
+import {navigate} from '../../routes/navigationRef';
 import {TSubject} from '../../types';
-import axiosHelper from '../../helpers/axiosHelper';
+import {axiosHelper} from '../../helpers';
 
 const create = async ({name}: TSubject) => {
   try {
@@ -17,11 +17,13 @@ const create = async ({name}: TSubject) => {
     subjectStore.setIsLoading(true);
     const response = await axiosHelper({
       path: 'subjects/',
-      method: 'POST',
-      data: {subject: {name}},
+      method: 'post',
+      data: {data: {name}},
     });
 
-    runInAction(() => subjectStore.subjects.push(response.data.subject));
+    runInAction(() => {
+      subjectStore.subjects.push(response.data.subject);
+    });
 
     toastStore.changeVisiblity({
       message: 'Subject added.',

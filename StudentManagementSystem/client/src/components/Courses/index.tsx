@@ -3,20 +3,16 @@ import React from 'react';
 import courseStore from '../../mobx/Course';
 import CourseItem from './CourseItem';
 import {WithThemeAndLiteObserver} from '../../hoc/theme';
-import {StackScreenProps} from '@react-navigation/stack';
-import {ParamListBase} from '@react-navigation/native';
-import LoadingModal from '../../common/LoadingModal';
-import EmptyList from '../EmptyList';
+import {LoadingModal} from '../../common';
+import {EmptyList} from '../../common';
+import {RootStackNavigationProp} from '../../types';
 
 type Props = {
-  navigation: StackScreenProps<ParamListBase>;
+  navigation: RootStackNavigationProp;
 };
 const Courses = WithThemeAndLiteObserver<Props>(props => {
   const {navigation} = props;
   const {SIZES} = props.theme;
-  // useEffect(() => {
-  //   courseStore.fetchCourses();
-  // }, [courseStore.getCourses]);
 
   return (
     <>
@@ -36,6 +32,7 @@ const Courses = WithThemeAndLiteObserver<Props>(props => {
             )}
             numColumns={2}
             ListEmptyComponent={<EmptyList text="No Courses." />}
+            extraData={courseStore.getRefresh}
           />
         </View>
       )}

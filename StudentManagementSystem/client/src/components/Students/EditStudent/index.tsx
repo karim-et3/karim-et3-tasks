@@ -1,16 +1,19 @@
 import {View, Image} from 'react-native';
 import React, {useEffect, useRef} from 'react';
 import {WithThemeAndLiteObserver} from '../../../hoc/theme';
-import InputField from '../../../common/InputField';
+import {InputField} from '../../../common';
 import studentStore from '../../../mobx/Student';
-import LoadingModal from '../../../common/LoadingModal';
+import {LoadingModal} from '../../../common';
 import {CustomButton} from '../../../common';
+import {RouteProp} from '@react-navigation/native';
 
-type Props = {};
+type Props = {
+  route: RouteProp<{params: {id: number}}, 'params'>;
+};
 const EditStudent = WithThemeAndLiteObserver<Props>(props => {
-  const {COLORS, SIZES} = props.theme;
-  const blurRef = useRef(null);
-  const {route} = props;
+  const blurRef = useRef<any>(null);
+  const {route, theme} = props;
+  const {COLORS, SIZES} = theme;
   const {id} = route.params;
   useEffect(() => {
     console.log('in edit');
@@ -80,6 +83,7 @@ const EditStudent = WithThemeAndLiteObserver<Props>(props => {
             numeric={false}
           />
           <InputField
+            maxLength={8}
             blurRef={blurRef}
             value={studentStore.getTempPhoneNumber}
             setValue={e => studentStore.setTempPhoneNumber(e)}
@@ -108,7 +112,7 @@ const EditStudent = WithThemeAndLiteObserver<Props>(props => {
             backgroundColor={COLORS.primary}
             onPress={() => {
               studentStore.setIsSubmitButtonDisabled(true);
-              blurRef.current.blur();
+              blurRef.current?.blur();
               studentStore.editStudent(id);
             }}
           />

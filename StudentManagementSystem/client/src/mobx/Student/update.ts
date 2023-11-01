@@ -1,11 +1,11 @@
 import {runInAction} from 'mobx';
 import studentStore from '.';
-import {navigate} from '../../routes/NavigationRef';
+import {navigate} from '../../routes/navigationRef';
 import toastStore from '../Toast';
 import {TStudent} from '../../types';
 import {merge} from 'lodash';
 import {readSingle} from './read';
-import axiosHelper from '../../helpers/axiosHelper';
+import {axiosHelper} from '../../helpers';
 
 const update = ({
   id,
@@ -20,28 +20,28 @@ const update = ({
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     const phoneRegex = /^(?:\D*|\d{8})$/;
     try {
-      if (!studentStore.student.firstName) {
+      if (!firstName) {
         toastStore.changeVisiblity({
           message: 'First name is required.',
           error: true,
         });
         return;
       }
-      if (!studentStore.student.lastName) {
+      if (!lastName) {
         toastStore.changeVisiblity({
           message: 'Last name is required.',
           error: true,
         });
         return;
       }
-      if (!studentStore.student.firstName) {
+      if (!email) {
         toastStore.changeVisiblity({
           message: 'Email is required.',
           error: true,
         });
         return;
       }
-      if (!studentStore.student.firstName) {
+      if (!dateOfBirth) {
         toastStore.changeVisiblity({
           message: 'Date of birth is required.',
           error: true,
@@ -66,7 +66,7 @@ const update = ({
       studentStore.setIsLoading(true);
       const response = await axiosHelper({
         path: `students/edit/${id}`,
-        method: 'PUT',
+        method: 'put',
         data: {
           data: {
             firstName,

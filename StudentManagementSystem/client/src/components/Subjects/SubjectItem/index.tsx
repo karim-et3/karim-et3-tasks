@@ -4,20 +4,20 @@ import {WithThemeAndLiteObserver} from '../../../hoc/theme';
 import {TSubject} from '../../../types';
 import subjectStore from '../../../mobx/Subject';
 import {CustomModal} from '../../../common';
-import {FONTS} from '../../../styles';
-import {navigate} from '../../../routes/NavigationRef';
+import {navigate} from '../../../routes/navigationRef';
+import courseStore from '../../../mobx/Course';
 
 type Props = {
-  subject: TSubject;
+  subject: TSubject & {id: number};
   index: number;
 };
 const SubjectItem = WithThemeAndLiteObserver<Props>(props => {
   const {subject, index, theme} = props;
-  const {COLORS, SIZES} = theme;
-  const [modalVisible, setModalVisible] = useState(false);
+  const {COLORS, FONTS, SIZES} = theme;
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      {modalVisible && (
+      {isModalOpen && (
         <CustomModal
           title={
             <View>
@@ -30,7 +30,11 @@ const SubjectItem = WithThemeAndLiteObserver<Props>(props => {
                 {subject.name}
               </Text>
               <Text style={{marginTop: SIZES.small, fontSize: SIZES.medium}}>
-                Registered course: {subject.id}
+                Registered course:{' '}
+                {
+                  courseStore.getCourses.filter(c => c.subjectID === subject.id)
+                    .length
+                }
               </Text>
             </View>
           }
@@ -39,20 +43,25 @@ const SubjectItem = WithThemeAndLiteObserver<Props>(props => {
             backgroundColor: COLORS.grey,
             color: COLORS.white,
           }}
-          buttonOneOnPress={() => setModalVisible(false)}
+          buttonOneOnPress={() => setIsModalOpen(false)}
           buttonTwoText={'Edit'}
           buttonTwoStyle={{
             backgroundColor: COLORS.green,
             color: COLORS.white,
           }}
           buttonTwoOnPress={() => {
+            setIsModalOpen(false);
             navigate('edit-subject', {id: subject.id});
-            setModalVisible(false);
           }}
-          setModalVisible={setModalVisible}
+          setModalVisible={s => setIsModalOpen(s)}
         />
       )}
-      <Pressable style={{width: '100%'}} onPress={() => setModalVisible(true)}>
+      <Pressable
+        style={{
+          width: '100%',
+          backgroundColor: index % 2 === 0 ? 'white' : '#f8fafc',
+        }}
+        onPress={() => setIsModalOpen(true)}>
         <View
           style={{flexDirection: 'row', alignItems: 'center', width: '100%'}}>
           <View
@@ -76,7 +85,12 @@ const SubjectItem = WithThemeAndLiteObserver<Props>(props => {
               borderColor: COLORS.primary,
               width: '30%',
             }}>
-            <Text style={{}}> {subject.id}</Text>
+            <Text style={{}}>
+              {
+                courseStore.getCourses.filter(c => c.subjectID === subject.id)
+                  .length
+              }
+            </Text>
           </View>
         </View>
       </Pressable>

@@ -10,18 +10,17 @@ class Courses {
   courses = observable.array<TCourses>();
   loading = observable.box<boolean>(false);
   isSubmitButtonDisabled = observable.box<boolean>(false);
+  primeLoading = observable.box<boolean>(true);
+  refresh = observable.box<boolean>(false);
+  get getRefresh() {
+    return this.refresh.get();
+  }
   course = observable.object({
     id: 0,
     code: '',
     subject: '',
     duration: '',
   });
-  // tempCourse = observable.object({
-  //   id: 0,
-  //   code: '',
-  //   subject: '',
-  //   duration: '',
-  // });
   code = observable.box<string>('');
   subject = observable.box<string>('');
   duration = observable.box<string>('');
@@ -60,7 +59,11 @@ class Courses {
       this.courseFocus.duration = false;
     });
   }
-
+  getNumberOfCoursesUnserSameSubject(id: number) {
+    return runInAction(() => {
+      return this.getCourses.filter(course => course.subjectID === id).length;
+    });
+  }
   setCourses(courses: TCourses[]) {
     runInAction(() => {
       this.courses.replace(courses);
@@ -150,6 +153,14 @@ class Courses {
   }
   get isLoading() {
     return this.loading.get();
+  }
+  setIsPrimeLoading(status: boolean) {
+    runInAction(() => {
+      this.primeLoading.set(status);
+    });
+  }
+  get isPrimeLoading() {
+    return this.primeLoading.get();
   }
 }
 

@@ -1,7 +1,7 @@
 import subjectStore from '.';
 import toastStore from '../Toast';
 import {runInAction} from 'mobx';
-import axiosHelper from '../../helpers/axiosHelper';
+import {axiosHelper} from '../../helpers';
 
 const setupEdit = ({id}: {id: number}) => {
   runInAction(() => {
@@ -15,10 +15,10 @@ const setupEdit = ({id}: {id: number}) => {
 const read = () => {
   runInAction(async () => {
     try {
-      subjectStore.setIsLoading(true);
+      subjectStore.setIsPrimeLoading(true);
       const response = await axiosHelper({
         path: 'subjects/',
-        method: 'GET',
+        method: 'get',
       });
       console.log(
         'subjects =>',
@@ -32,7 +32,7 @@ const read = () => {
         error: true,
       });
     } finally {
-      subjectStore.setIsLoading(false);
+      subjectStore.setIsPrimeLoading(false);
     }
   });
 };

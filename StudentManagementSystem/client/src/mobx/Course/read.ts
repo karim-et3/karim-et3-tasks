@@ -4,16 +4,16 @@ import toastStore from '../Toast';
 import {mergeWith} from 'lodash';
 import {TCourses} from '../../types';
 import subjectStore from '../Subject';
-import axiosHelper from '../../helpers/axiosHelper';
+import {axiosHelper} from '../../helpers';
 
 const setupEdit = (id: number) => {
   runInAction(() => {
     courseStore.setIsLoading(true);
     const index = courseStore.courses.findIndex(course => course.id === id);
     if (index !== -1) {
-      const {code, subject_id, duration} = courseStore.courses[index];
+      const {code, subjectID, duration} = courseStore.courses[index];
       const indexSubjectID = subjectStore.subjects.findIndex(
-        sub => sub.id === subject_id,
+        sub => sub.id === subjectID,
       );
       const subject = subjectStore.subjects[indexSubjectID].name;
       courseStore.setTempCode(code);
@@ -26,9 +26,9 @@ const setupEdit = (id: number) => {
 
 const read = () => {
   runInAction(async () => {
-    courseStore.setIsLoading(true);
+    courseStore.setIsPrimeLoading(true);
     try {
-      const response = await axiosHelper({path: 'courses/', method: 'GET'});
+      const response = await axiosHelper({path: 'courses/', method: 'get'});
       console.log('courses =>', JSON.stringify(response.data.courses, null, 3));
       courseStore.setCourses(response.data.courses);
     } catch (error: any) {
@@ -38,7 +38,7 @@ const read = () => {
         error: true,
       });
     } finally {
-      courseStore.setIsLoading(false);
+      courseStore.setIsPrimeLoading(false);
     }
   });
 };
@@ -46,12 +46,12 @@ const readSingle = (id: number) => {
   const customizer = ({
     id,
     code,
-    subject_id,
+    subjectID,
     duration,
     created_at,
     updated_at,
   }: TCourses) => {
-    const index = subjectStore.subjects.findIndex(sub => sub.id === subject_id);
+    const index = subjectStore.subjects.findIndex(sub => sub.id === subjectID);
     const subject = subjectStore.subjects[index].name;
     return {id, code, subject, duration};
   };

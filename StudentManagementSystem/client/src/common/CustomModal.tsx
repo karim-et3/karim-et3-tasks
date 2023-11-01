@@ -62,14 +62,15 @@ const CustomModal = WithThemeAndLiteObserver<Props>(props => {
                   alignItems: 'flex-end',
                 }}>
                 <CustomButton
-                  text={buttonOneText}
+                  text={buttonOneText.toUpperCase()}
                   textColor={buttonOneStyle.color}
                   backgroundColor={buttonOneStyle.backgroundColor}
                   onPress={buttonOneOnPress}
+                  shadow="small"
                 />
                 {buttonTwoText && buttonTwoOnPress && buttonTwoStyle && (
                   <CustomButton
-                    text={buttonTwoText}
+                    text={buttonTwoText.toUpperCase()}
                     textColor={buttonTwoStyle.color}
                     backgroundColor={buttonTwoStyle.backgroundColor}
                     onPress={buttonTwoOnPress}

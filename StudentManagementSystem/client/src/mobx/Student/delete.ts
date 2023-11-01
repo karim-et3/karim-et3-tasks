@@ -1,8 +1,8 @@
 import studentStore from '.';
 import toastStore from '../Toast';
 import {runInAction} from 'mobx';
-import {navigate} from '../../routes/NavigationRef';
-import axiosHelper from '../../helpers/axiosHelper';
+import {navigate} from '../../routes/navigationRef';
+import {axiosHelper} from '../../helpers';
 
 const remove = ({id}: {id: number}) => {
   runInAction(async () => {
@@ -10,7 +10,7 @@ const remove = ({id}: {id: number}) => {
       studentStore.setIsLoading(true);
       const response = await axiosHelper({
         path: `students/delete/${id}`,
-        method: 'DELETE',
+        method: 'delete',
       });
 
       console.log(response.data);
